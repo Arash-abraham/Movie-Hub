@@ -1,4 +1,4 @@
-# Cinema-Hub
+# Movie-Hub
 
 # Install
 
