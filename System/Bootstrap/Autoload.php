@@ -4,7 +4,7 @@
         public static function Loader() {
             spl_autoload_register(function($className) {
                 $className = str_replace('\\' , DIRECTORY_SEPARATOR , $className);
-                require_once $_SERVER['DOCUMENT_ROOT']. "/MVC/{$className}.php";
+                require_once $_SERVER['DOCUMENT_ROOT']. "/Movie-Hub/{$className}.php";
             });
         }
     } 
