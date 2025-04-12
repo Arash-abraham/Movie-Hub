@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ Movie-Hub/index.php [QSA,L]
+
+
+RewriteCond %{REQUEST_URI} !^/Movie-Hub/Errors/403.html
+RewriteCond %{THE_REQUEST} !/Public/ [NC]
+RewriteCond %{THE_REQUEST} /(Application|System|View)/ [NC]
+# RewriteRule ^ - [R=403,L]
+
+ErrorDocument 403 /Movie-Hub/Errors/403.html
+ErrorDocument 404 /Movie-Hub/Errors/404.html
