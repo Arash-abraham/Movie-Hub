@@ -1,12 +1,12 @@
 <?php
-    $base_url = 'http://localhost/MVC/';
-    define('BASE_DIR' , '/MVC/');
+    $base_url = 'http://localhost/Movie-Hub/';
+    define('BASE_DIR' , '/Movie-Hub/');
     $tmp = explode('?' , $_SERVER['REQUEST_URI']);
     $current_route = str_replace(BASE_DIR,'',$tmp[0]);
     unset($tmp);
 
     $dbHost = 'localhost';
-    $dbName = 'MVC';
+    $dbName = 'Movie-Hub';
     $dbUsername = 'root';
     $dbPassword = '';
     
