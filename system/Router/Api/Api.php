@@ -21,7 +21,7 @@
 
             global $routes;
 
-            array_push($routes['post'],array('url' => trim($url,'/ '),'class' => $class,'method'=> $method , 'name' => $name));
+            array_push($routes['post'],array('url' => 'api/'.trim($url,'/ '),'class' => $class,'method'=> $method , 'name' => $name));
         }
     }
 ?>
