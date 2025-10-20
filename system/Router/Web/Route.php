@@ -41,7 +41,7 @@
 
             global $routes;
 
-            array_push($routes['get'],array('url' => trim($url,'/ '),'class' => $class,'method'=> $method , 'name' => $name));
+            array_push($routes['delete'],array('url' => trim($url,'/ '),'class' => $class,'method'=> $method , 'name' => $name));
         }
     }
 
