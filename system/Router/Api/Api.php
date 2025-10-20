@@ -2,7 +2,7 @@
 
     namespace System\Router\Api;
 
-    class Route{
+    class Api{
         public static function get($url,$executeMethod,$name=NULL) {
             $executeMethod = explode("@",$executeMethod);
 
