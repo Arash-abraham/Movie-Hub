@@ -31,7 +31,7 @@
 
             global $routes;
 
-            array_push($routes['get'],array('url' => trim($url,'/ '),'class' => $class,'method'=> $method , 'name' => $name));
+            array_push($routes['put'],array('url' => trim($url,'/ '),'class' => $class,'method'=> $method , 'name' => $name));
         }
         public static function delete($url,$executeMethod,$name=NULL) {
             $executeMethod = explode("@",$executeMethod);
