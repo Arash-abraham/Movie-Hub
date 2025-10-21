@@ -17,7 +17,10 @@
 
             $this->routes = $routes;
         }
-    
+        
+        public function methodField() {
+            lowercase_octets($_SERVER['REQUEST_METHOD']);
+        }
     }
 
 ?>
