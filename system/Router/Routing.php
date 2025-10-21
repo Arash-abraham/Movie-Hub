@@ -22,7 +22,9 @@
             $method_field = strtolower($_SERVER['REQUEST_METHOD']);
 
             if($method_field === 'post') {
-                
+                if($_POST['_method']) {
+                    
+                }
             }
         }
     }
