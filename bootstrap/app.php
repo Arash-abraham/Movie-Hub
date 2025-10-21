@@ -8,4 +8,5 @@
 
     $routing = new \System\Router\Routing();
     $routing->run();
+    
 ?>
