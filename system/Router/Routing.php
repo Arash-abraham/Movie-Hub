@@ -19,7 +19,11 @@
         }
         
         public function methodField() {
-            lowercase_octets($_SERVER['REQUEST_METHOD']);
+            $method_field = strtolower($_SERVER['REQUEST_METHOD']);
+
+            if($method_field === 'post') {
+                
+            }
         }
     }
 
