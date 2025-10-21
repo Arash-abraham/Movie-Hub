@@ -22,8 +22,13 @@
             $method_field = strtolower($_SERVER['REQUEST_METHOD']);
 
             if($method_field === 'post') {
-                if($_POST['_method']) {
-                    
+                if(isset($_POST['_method'])) {
+                    if($_POST['_method'] == 'put') {
+                        $method_field = 'put';
+                    }
+                }
+                else if($_POST['_method'] == 'delete') {
+                    $method_field = 'delete';
                 }
             }
         }
