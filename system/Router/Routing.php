@@ -23,6 +23,14 @@
         }
 
         public function match() {
+
+        }
+
+        private function compare() {
+
+        }
+
+        public function error404() {
             
         }
 
