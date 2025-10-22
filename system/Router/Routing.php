@@ -19,11 +19,30 @@
         }
         
         public function run() {
+            $match = $this->match();
+            if(empty($match)) {
+                $this->error404();
+            }
 
+            $classPath = str_replace('\\','/',$match('class'));
+            $path = BASE_DIR . '/app/Http/Controllers'.$classPath.'.php';
+            if(!file_exists($path)) {
+                $this->error404();
+            }
+            
         }
 
         public function match() {
-
+            $resevedRoutes = $this->routes[$this->methodField()];
+            foreach ($resevedRoutes as $resevedRoute) {
+                if($this->compare($resevedRoute['url']) == true) {
+                    return ['class' => $resevedRoute['url'] , 'method' => $resevedRoute['method']];
+                }
+                else {
+                    $this->values = [];
+                }
+            }
+            return [];
         }
 
         private function compare($resevedRouteUrl) {
