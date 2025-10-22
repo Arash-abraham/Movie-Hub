@@ -31,7 +31,9 @@
         }
 
         public function error404() {
-            
+            http_response_code(404);
+            include __DIR__.DIRECTORY_SEPARATOR.'View'.DIRECTORY_SEPARATOR.'404.php';
+            exit;
         }
 
         public function methodField() {
