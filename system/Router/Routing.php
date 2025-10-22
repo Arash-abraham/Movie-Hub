@@ -29,7 +29,7 @@
             if(!file_exists($path)) {
                 $this->error404();
             }
-
+            
         }
 
         public function match() {
@@ -72,7 +72,7 @@
 
         public function error404() {
             http_response_code(404);
-            include __DIR__.DIRECTORY_SEPARATOR.'View'.DIRECTORY_SEPARATOR.'404.twig';
+            include __DIR__.DIRECTORY_SEPARATOR.'View'.DIRECTORY_SEPARATOR.'404.php';
             exit;
         }
 
