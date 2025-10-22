@@ -31,6 +31,12 @@
             if(trim($resevedRoutUrl,'/') === "") {
                 return trim($this->current_route[0],"/") === "" ? true : false;
             }
+
+            // PART 2 
+            $resevedRoutUrlArray = explode('/',$resevedRoutUrl);
+            if(sizeof($this->current_route) != sizeof($resevedRoutUrlArray)) {
+                return false;
+            }
         }
 
         public function error404() {
