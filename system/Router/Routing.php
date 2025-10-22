@@ -18,6 +18,10 @@
             $this->routes = $routes;
         }
         
+        public function run() {
+            
+        }
+
         public function methodField() {
             $method_field = strtolower($_SERVER['REQUEST_METHOD']);
 
