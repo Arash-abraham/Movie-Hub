@@ -26,16 +26,28 @@
 
         }
 
-        private function compare($resevedRoutUrl) {
+        private function compare($resevedRouteUrl) {
             // PART 1
-            if(trim($resevedRoutUrl,'/') === "") {
+            if(trim($resevedRouteUrl,'/') === "") {
                 return trim($this->current_route[0],"/") === "" ? true : false;
             }
 
             // PART 2 
-            $resevedRoutUrlArray = explode('/',$resevedRoutUrl);
-            if(sizeof($this->current_route) != sizeof($resevedRoutUrlArray)) {
+            $resevedRouteUrlArray = explode('/',$resevedRouteUrl);
+            if(sizeof($this->current_route) != sizeof($resevedRouteUrlArray)) {
                 return false;
+            }
+
+            // PART 3
+            foreach ($this->current_route as $key => $currentRouteElement) {
+                $resevedRouteUrlElement = $resevedRouteUrlArray[$key];
+                if(substr($resevedRouteUrlElement,0,1) == '{' and substr($resevedRouteUrlElement,-1) == '}') {
+                    array_push($this->values, $currentRouteElement);
+                }
+                elseif($resevedRouteUrlElement != $currentRouteElement) {
+                    return false;  
+                }
+                
             }
         }
 
