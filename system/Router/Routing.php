@@ -26,8 +26,11 @@
 
         }
 
-        private function compare() {
-
+        private function compare($resevedRoutUrl) {
+            // PART 1
+            if(trim($resevedRoutUrl,'/') === "") {
+                return trim($this->current_route[0],"/") === "" ? true : false;
+            }
         }
 
         public function error404() {
