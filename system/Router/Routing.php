@@ -26,6 +26,7 @@
 
             $classPath = str_replace('\\','/',$match('class'));
             $path = BASE_DIR . '/app/Http/Controllers'.$classPath.'.php';
+            
             if(!file_exists($path)) {
                 $this->error404();
             }
