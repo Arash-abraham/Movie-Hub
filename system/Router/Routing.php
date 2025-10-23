@@ -42,6 +42,9 @@
                 if($parameterCount <= count($this->values)) {
                     call_user_func_array(array($object, $match['method'] ), $this->values);
                 }
+                else {
+                    $this->error404();
+                }
             }
 
             else {
