@@ -40,7 +40,7 @@
                 $reflection = new ReflectionMethod($object, $match['method']);
                 $parameterCount = $reflection->getNumberOfParameters();
                 if($parameterCount <= count($this->values)) {
-                    
+                    call_user_func_array();
                 }
             }
 
