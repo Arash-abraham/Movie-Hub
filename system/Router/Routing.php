@@ -38,6 +38,7 @@
             
             if(method_exists($object, $match['method'])) {
                 $reflection = new ReflectionMethod($object, $match['method']);
+                $parameterCount = $reflection->getNumberOfParameters();
             }
 
             else {
