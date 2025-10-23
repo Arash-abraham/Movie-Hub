@@ -22,17 +22,20 @@
         public function run() {
             $match = $this->match();
             if(empty($match)) {
+                // var_dump($match);
+                // exit;
                 $this->error404();
             }
+            // var_dump($match);
+            // exit;
+            $classPath = str_replace('\\','/',$match['class']);
+            $path = BASE_DIR . '/app/Http/Controllers/'.$classPath.'.php';
 
-            $classPath = str_replace('\\','/',$match('class'));
-            $path = BASE_DIR . '/app/Http/Controllers'.$classPath.'.php';
-            
             if(!file_exists($path)) {
                 $this->error404();
             }
 
-            $class = "\App\Http\Controllers\\" . $match ['class'];
+            $class = "\App\Http\Controllers\\" . $match['class'];
             
             $object = new $class();
             
@@ -53,10 +56,10 @@
         }
 
         public function match() {
-            $resevedRoutes = $this->routes[$this->methodField()];
+            $resevedRoutes = $this->routes[$this->method_field];
             foreach ($resevedRoutes as $resevedRoute) {
                 if($this->compare($resevedRoute['url']) == true) {
-                    return ['class' => $resevedRoute['url'] , 'method' => $resevedRoute['method']];
+                    return ['class' => $resevedRoute['class'] , 'method' => $resevedRoute['method']];
                 }
                 else {
                     $this->values = [];
@@ -64,31 +67,35 @@
             }
             return [];
         }
+        
 
-        private function compare($resevedRouteUrl) {
-            // PART 1
-            if(trim($resevedRouteUrl,'/') === "") {
-                return trim($this->current_route[0],"/") === "" ? true : false;
+        private function compare($reservedRouteUrl){
+
+            //part1
+            if(trim($reservedRouteUrl, '/') === ''){
+              return trim($this->current_route[0], '/') === '' ? true : false;
             }
-
-            // PART 2 
-            $resevedRouteUrlArray = explode('/',$resevedRouteUrl);
-            if(sizeof($this->current_route) != sizeof($resevedRouteUrlArray)) {
-                return false;
+      
+            //part2
+            $reservedRouteUrlArray = explode('/', $reservedRouteUrl);
+            if(sizeof($this->current_route) != sizeof($reservedRouteUrlArray)){
+              return false;
             }
-
-            // PART 3
+      
+            //part3
             foreach ($this->current_route as $key => $currentRouteElement) {
-                $resevedRouteUrlElement = $resevedRouteUrlArray[$key];
-                if(substr($resevedRouteUrlElement,0,1) == '{' and substr($resevedRouteUrlElement,-1) == '}') {
-                    array_push($this->values, $currentRouteElement);
-                }
-                elseif($resevedRouteUrlElement != $currentRouteElement) {
-                    return false;  
-                }
-                
+              $reservedRouteUrlElement = $reservedRouteUrlArray[$key];
+              if(substr($reservedRouteUrlElement, 0, 1) == "{" && substr($reservedRouteUrlElement, -1) == "}"){
+                array_push($this->values, $currentRouteElement);
+              }
+              elseif($reservedRouteUrlElement != $currentRouteElement){
+                return false;
+              }
             }
+            return true;
+      
         }
+      
 
         public function error404() {
             http_response_code(404);
@@ -96,19 +103,25 @@
             exit;
         }
 
-        public function methodField() {
-            $method_field = strtolower($_SERVER['REQUEST_METHOD']);
+        public function methodField(){
 
-            if($method_field === 'post') {
-                if(isset($_POST['_method'])) {
-                    if($_POST['_method'] == 'put') {
+            $method_field = strtolower($_SERVER['REQUEST_METHOD']);
+    
+            if($method_field == 'post'){
+    
+                if(isset($_POST['_method'])){
+    
+                    if($_POST['_method'] == 'put'){
                         $method_field = 'put';
                     }
+                    elseif($_POST['_method'] == 'delete'){
+                        $method_field = 'delete';
+                    }
                 }
-                else if($_POST['_method'] == 'delete') {
-                    $method_field = 'delete';
-                }
+    
             }
+            return $method_field;
+    
         }
     }
 

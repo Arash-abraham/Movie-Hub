@@ -2,7 +2,7 @@
 
     define("APP_TITLE","Movie Hub");
 
-    define("BASE_URL","http://localhost:5000");
+    define("BASE_URL","http://localhost:8000");
 
     define("BASE_DIR",realpath(dirname(__DIR__)).`/../`);
 
