@@ -37,7 +37,7 @@
             $object = new $class();
             
             if(method_exists($object, $match['method'])) {
-                // $ReflectionMrthod = 
+                $reflection = new ReflectionMethod($object, $match['method']);
             }
 
             else {
