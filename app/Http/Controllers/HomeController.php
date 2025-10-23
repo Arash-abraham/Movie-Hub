@@ -14,7 +14,18 @@
         public function store() {
             print 'store method in HomeController';
         }
-        
+
+        public function edit($id) {
+            print 'edit method in HomeController';
+        }
+
+        public function update($id) {
+            print 'update method in HomeController';
+        }
+
+        public function destroy($id) {
+            print 'destroy method in HomeController';
+        }
     }
 
 ?>
