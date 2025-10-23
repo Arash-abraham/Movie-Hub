@@ -7,9 +7,14 @@
             print 'index method in HomeController';
         }
 
-        public function show() {
-
+        public function create() {
+            print 'create method in HomeController';
         }
+
+        public function store() {
+            print 'store method in HomeController';
+        }
+        
     }
 
 ?>
