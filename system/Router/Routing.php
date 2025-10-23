@@ -30,6 +30,9 @@
             if(!file_exists($path)) {
                 $this->error404();
             }
+
+            $class = "\App\Http\Controllers\\" . $match ['class'];
+            $object = new $class();
             
         }
 
