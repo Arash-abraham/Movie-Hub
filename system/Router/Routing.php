@@ -32,10 +32,13 @@
             }
 
             $class = "\App\Http\Controllers\\" . $match ['class'];
+            
             $object = new $class();
+            
             if(method_exists($object, $match['method'])) {
-                return true;
+                
             }
+
             else {
                 $this->error404();
             }
