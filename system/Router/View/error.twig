@@ -20,13 +20,13 @@
         </script>
         <style>
             body {
-                background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
-                            url('http://localhost:5000/roronoa-zoro-one-3840x2160-10523.png');
+                background: url('/img/joker.jpg');
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
                 color: #e2e8f0;
             }
+    
             
             .hero-slider {
                 height: 70vh;
@@ -81,19 +81,23 @@
         </header>
 
         <!-- 404 Content -->
-        <section class="hero-slider relative flex items-center justify-center">
-            <div class="container mx-auto px-4 text-center relative z-10">
+        <section class="hero-slider relative flex items-center">
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-2xl text-left"> 
 
-                <h1 class="text-6xl md:text-8xl font-bold mb-4">{{error_code}}</h1>
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">{{error_title}}</h2>
-                <p class="text-xl max-w-2xl mx-auto mb-8 text-gray-300">
-                    {{message}}
-                </p>
-                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-                    <a href="{{home_url}}" class="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-full font-medium transition flex items-center justify-center">
-                        <i class="fas fa-home mr-2"></i> Go to Homepage
+                    <h1 class="text-6xl md:text-8xl font-bold mb-4">{{error_code}}</h1>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">{{error_title}}</h2>
+                    <p class="text-xl mb-8 text-gray-300">
+                        {{message}}
+                    </p>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+                    <a href="{{home_url}}" class="group relative bg-white/10 backdrop-blur-md border border-white/20 hover:border-red-400/50 px-8 py-4 rounded-2xl font-medium transition-all duration-300 flex items-center justify-center w-fit hover:bg-white/15 hover:scale-105 shadow-lg">
+                        <i class="fas fa-home mr-3 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-semibold">Go to Homepage</span>
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </a>
                 </div>
+                </div>  
             </div>
         </section>
     </body>
