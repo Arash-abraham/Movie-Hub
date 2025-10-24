@@ -9,4 +9,8 @@
     use System\Database\Traits\HasRelation;
     use System\Database\Traits\HasSoftDelete; 
 
+    abstract class Model {
+        use HasAttributes, HasCrud, HasQueryBuilder, HasMethodCaller , HasRelation, HasSoftDelete;
+        
+    }
 ?>
