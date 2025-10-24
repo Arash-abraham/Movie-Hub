@@ -5,4 +5,7 @@
     use PDO;
     use PDOException;
 
+    class DBConnection {
+        
+    }
 ?>
