@@ -98,8 +98,19 @@
       
 
         public function error404() {
+            $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . DIRECTORY_SEPARATOR . 'View');
+            $twig = new \Twig\Environment($loader);
+            
+            $data = [
+                'page_title' => "Page Not Found - ".APP_TITLE,
+                'error_code' => "404",
+                'error_title' => "Oops! Page Not Found",
+                'message' => "It seems like this movie scene has been cut from the final edit. The page you're looking for doesn't exist or has been moved.",
+                'home_url' => BASE_URL
+            ];
+            
             http_response_code(404);
-            include __DIR__.DIRECTORY_SEPARATOR.'View'.DIRECTORY_SEPARATOR.'404.twig';
+            echo $twig->render('error.twig', $data);
             exit;
         }
 
