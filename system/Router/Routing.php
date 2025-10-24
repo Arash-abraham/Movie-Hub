@@ -105,7 +105,7 @@
                 'page_title' => "Page Not Found - ".APP_TITLE,
                 'error_code' => "404",
                 'error_title' => "Oops! Page Not Found",
-                'message' => "It seems like this movie scene has been cut from the final edit. The page you're looking for doesn't exist or has been moved.",
+                'message' => "The page you're looking for doesn't exist or has been moved.",
                 'home_url' => BASE_URL
             ];
             
