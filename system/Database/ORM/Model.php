@@ -7,7 +7,6 @@
     use System\Database\Traits\HasMethodCaller;
     use System\Database\Traits\HasQueryBuilder;
     use System\Database\Traits\HasRelation;
-    use System\Database\Traits\HasTimestamps;
     use System\Database\Traits\HasSoftDelete; 
-    
+
 ?>
