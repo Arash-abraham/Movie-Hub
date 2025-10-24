@@ -14,8 +14,11 @@
 
         public static function getDBConnectionInstance() {
             if (self::$dbConnectionInstance === null) {
-
+                $DBConnectionInstance = new DBConnection();
+                self::$dbConnectionInstance = $DBConnectionInstance->dbConnection();
             }
+
+            return self::$dbConnectionInstance;
         }
 
     }
