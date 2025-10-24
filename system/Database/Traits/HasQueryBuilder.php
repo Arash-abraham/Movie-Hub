@@ -24,10 +24,15 @@
             $this->sql = "";
         }
 
-        protected function setWhere($where) {
-            $this->where = $where;
+        protected function setWhere($operator , $condition) {
+            $array = ["operator" => $operator, "condition"=> $condition];
+            array_push($this->where, $array);
         }
-        
+
+        protected function resetWhere() {
+            $this->where = [];
+        }
+
     }
 
 
