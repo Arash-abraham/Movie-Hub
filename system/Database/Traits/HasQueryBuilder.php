@@ -24,6 +24,10 @@
             $this->sql = "";
         }
 
+        protected function setWhere($where) {
+            $this->where = $where;
+        }
+        
     }
 
 
