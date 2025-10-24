@@ -33,6 +33,12 @@
             $this->where = [];
         }
 
+        protected function setOrderBy($name , $expression) {
+            array_push($this->orderBy , $name . " " . $expression);
+        }
+        protected function resetOrderBy() {
+            $this->orderBy = [];
+        }
     }
 
 
