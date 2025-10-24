@@ -11,7 +11,7 @@
             print 'create method in HomeController';
         }
 
-        public function store() {
+        public function store($id) {
             print 'store method in HomeController';
         }
 
