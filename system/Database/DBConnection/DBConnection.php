@@ -35,5 +35,9 @@
                 exit;
             }
         }
+
+        public static function newInsertId() {
+            return self::getDBConnectionInstance()->lastInsertId();
+        }
     }
 ?>
