@@ -39,6 +39,18 @@
         protected function resetOrderBy() {
             $this->orderBy = [];
         }
+
+        protected function setLimit($from , $number) {
+            $this->limit['from'] = (int)$from;
+            $this->limit['number'] = (int)$number;
+        }
+
+        protected function resetLimit() {
+            unset($this->limit['from']);
+            unset($this->limit['number']);
+        }
+
+        
     }
 
 
