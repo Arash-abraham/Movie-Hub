@@ -50,7 +50,24 @@
             unset($this->limit['number']);
         }
 
-        
+        protected function addValue($attribute , $value) {
+            $this->values[$attribute] = $value;
+            array_push($this->bindValues, $value);
+        }
+
+        protected function removeValues() {
+            $this->values = [];
+            $this->bindValues = [];
+        }
+
+        protected function removeQuery() {
+            $this->resetSql();
+            $this->resetWhere();
+            $this->resetOrderBy();
+            $this->resetLimit();
+            $this->removeValues();
+        }
+
     }
 
 
