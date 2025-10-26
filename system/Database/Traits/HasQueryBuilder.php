@@ -83,6 +83,16 @@
                 }
                 $query .= ' WHERE ' . $whereString;
             }
+
+            if(!empty($this->orderBy)) {
+                $query .= ' ORDER BY ' . implode(', ', $this->orderBy);
+            }
+
+            if(!empty($this->limit)) {
+                $query .= ' LIMIT ' .  $this->limit['from'] . ' , ' . $this->limit['number'] . ' ';
+            }
+            $query .= ' ;';
+            // print $query.'<hr/>'; DEBUG
         }
     }
 
