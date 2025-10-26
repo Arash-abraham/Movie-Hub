@@ -111,8 +111,47 @@
                 :
                     $statement->execute();
             }
-            
+
             return $statement;
+        }
+
+        public function getCount() {
+            $query = '';
+            $query .= "SELECT COUNT(*) FROM $this->table";
+
+            if(!empty($this->where)) {
+                $whereString = '';
+                foreach($this->where as $where) {
+                    $whereString == '' 
+                        ?   
+                            $whereString .= $where['condition'] 
+                        : 
+                            $whereString .= ' ' . $where['operator'] . ' ' . $where['condition'];
+                }
+                $query .= ' WHERE ' . $whereString;
+            }
+
+            $query .= ' ;';
+
+
+            $pdoInstance = DBConnection::getDBConnectionInstance();
+            $statement = $pdoInstance->prepare($query);
+            if(sizeof($this->bindValues) > sizeof($this->values)) {
+                sizeof($this->bindValues) > 0
+                    ? 
+                        $statement->execute($this->bindValues)
+                    :
+                        $statement->execute();
+            }
+            else {
+                sizeof($this->values) > 0
+                ? 
+                    $statement->execute(array_values($this->values))
+                :
+                    $statement->execute();
+            }
+
+            return $statement->fetchColumn();
         }
     }
 
