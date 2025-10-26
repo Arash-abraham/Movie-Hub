@@ -111,7 +111,8 @@
                 :
                     $statement->execute();
             }
-
+            
+            return $statement;
         }
     }
 
