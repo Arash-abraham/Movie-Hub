@@ -157,6 +157,10 @@
         public function getTableName() {
             return ' `' . $this->table . '`';
         }
+
+        public function getAttributeName() {
+            
+        }
     }
 
 
