@@ -17,7 +17,10 @@
                 $object = new $className;
             }
             foreach($array as $attribute => $value) {
-
+                if($this->inHiddenAttribut($attribute)) {
+                    continue;
+                }
+                $this->registerAttribut($object , $attribute, $value);
             }
             return $object->arrayToAttribut($array);
         }
