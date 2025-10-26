@@ -75,7 +75,11 @@
             if(!empty($this->where)) {
                 $whereString = '';
                 foreach($this->where as $where) {
-                    $whereString == '' ? $whereString .= $where['condition'] : $whereString .= ' ' . $where['operator'];
+                    $whereString == '' 
+                        ?   
+                            $whereString .= $where['condition'] 
+                        : 
+                            $whereString .= ' ' . $where['operator'] . ' ' . $where['condition'];
                 }
             }
         }
