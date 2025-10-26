@@ -11,8 +11,8 @@
                     $object->$attribute = $value;
         }
 
-        protected function arrayToAttribut() {
-            // TODO
+        protected function arrayToAttribut(array $array , $object = NULL) {
+            
         }
 
         protected function arrayToObject() {
