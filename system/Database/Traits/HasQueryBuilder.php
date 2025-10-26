@@ -68,6 +68,17 @@
             $this->removeValues();
         }
 
+        protected function executeQuery() {
+            $query = '';
+            $query .= $this->sql;
+
+            if(!empty($this->where)) {
+                $whereString = '';
+                foreach($this->where as $where) {
+                    $whereString == '' ? $whereString .= $where['condition'] : $whereString .= ' ' . $where['operator'];
+                }
+            }
+        }
     }
 
 
