@@ -92,7 +92,11 @@
                 $query .= ' LIMIT ' .  $this->limit['from'] . ' , ' . $this->limit['number'] . ' ';
             }
             $query .= ' ;';
+
             // print $query.'<hr/>'; DEBUG
+
+            $pdoInstance = DBConnection::getDBConnectionInstance();
+        
         }
     }
 
