@@ -16,6 +16,7 @@
                 $className = get_called_class();
                 $object = new $className;
             }
+            return $object->arrayToAttribut($array);
         }
 
         protected function arrayToObject() {
