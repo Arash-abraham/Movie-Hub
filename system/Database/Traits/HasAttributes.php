@@ -22,7 +22,7 @@
                 }
                 $this->registerAttribut($object , $attribute, $value);
             }
-            return $object->arrayToAttribut($array);
+            return $object;
         }
 
         protected function arrayToObject() {
