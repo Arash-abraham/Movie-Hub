@@ -16,6 +16,9 @@
                 $className = get_called_class();
                 $object = new $className;
             }
+            foreach($array as $attribute => $value) {
+
+            }
             return $object->arrayToAttribut($array);
         }
 
