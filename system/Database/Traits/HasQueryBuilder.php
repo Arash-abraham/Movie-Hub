@@ -81,6 +81,7 @@
                         : 
                             $whereString .= ' ' . $where['operator'] . ' ' . $where['condition'];
                 }
+                $query .= ' WHERE ' . $whereString;
             }
         }
     }
