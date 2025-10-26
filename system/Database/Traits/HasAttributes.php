@@ -13,7 +13,8 @@
 
         protected function arrayToAttribut(array $array , $object = NULL) {
             if(!$object) {
-                get_called_class();
+                $className = get_called_class();
+                $object = new $className;
             }
         }
 
