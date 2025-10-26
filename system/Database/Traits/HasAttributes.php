@@ -12,7 +12,9 @@
         }
 
         protected function arrayToAttribut(array $array , $object = NULL) {
-            
+            if(!$object) {
+                get_called_class();
+            }
         }
 
         protected function arrayToObject() {
