@@ -96,7 +96,9 @@
             // print $query.'<hr/>'; DEBUG
 
             $pdoInstance = DBConnection::getDBConnectionInstance();
-        
+            $statement = $pdoInstance->prepare($query);
+            $statement->execute();
+            
         }
     }
 
