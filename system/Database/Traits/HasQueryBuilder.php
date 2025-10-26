@@ -102,7 +102,7 @@
                     ? 
                         $statement->execute($this->bindValues)
                     :
-                        $statement->execute($this->values);
+                        $statement->execute();
             }
             else {
 
