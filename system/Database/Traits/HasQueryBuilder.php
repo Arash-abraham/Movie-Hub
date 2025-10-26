@@ -159,7 +159,7 @@
         }
 
         public function getAttributeName($attribute) {
-            
+            return ' `' . $this->table . '`.`'. $attribute.'` ';
         }
     }
 
