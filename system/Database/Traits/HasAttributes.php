@@ -4,35 +4,35 @@
 
     trait HasAttributes {
         private function registerAttribut() {
-
+            // TODO
         }
 
         protected function arrayToAttribut() {
-
+            // TODO
         }
 
         protected function arrayToObject() {
-
+            // TODO
         }
         
         private function inHiddenAttribut() {
-
+            // TODO
         }
 
         private function inCastsAttribute() {
-
+            // TODO
         }
 
         private function castDecodeValue() {
-
+            // TODO
         }
 
         private function castEncodeValue() {
-            
+            // TODO
         }
 
         private function arrayToCastEncodeValue() {
-            
+            // TODO
         }
     }
 
