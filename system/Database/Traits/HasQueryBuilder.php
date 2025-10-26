@@ -153,6 +153,10 @@
 
             return $statement->fetchColumn();
         }
+
+        public function getTableName() {
+            
+        }
     }
 
 
