@@ -155,7 +155,7 @@
         }
 
         public function getTableName() {
-            
+            return ' `' . $this->table . '`';
         }
     }
 
