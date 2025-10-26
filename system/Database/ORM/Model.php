@@ -20,5 +20,7 @@
         protected $guarded = [];
         protected $createdAt = 'created_at';
         protected $updatedAt = 'updated_at';
+        protected $deletedAt = NULL;
+        protected $collection = [];
     }
 ?>
