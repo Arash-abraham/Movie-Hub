@@ -3,8 +3,8 @@
     namespace System\Database\Traits;
 
     trait HasAttributes {
-        private function registerAttribut() {
-            // TODO
+        private function registerAttribut($object ,  $attribute, $value) {
+
         }
 
         protected function arrayToAttribut() {
