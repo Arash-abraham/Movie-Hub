@@ -4,7 +4,11 @@
 
     trait HasAttributes {
         private function registerAttribut($object , string $attribute, $value) {
-
+            $this->inCastsAttribute($attribute) === true 
+                ? 
+                    $object->$attribute = $this->castDecodeValue($attribute , $value)
+                : 
+                    $object->$attribute = $value;
         }
 
         protected function arrayToAttribut() {
