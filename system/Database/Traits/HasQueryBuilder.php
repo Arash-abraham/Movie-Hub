@@ -107,7 +107,7 @@
             else {
                 sizeof($this->values) > 0
                 ? 
-                    $statement->execute($this->values)
+                    $statement->execute(array_values($this->values))
                 :
                     $statement->execute();
             }
