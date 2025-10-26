@@ -98,7 +98,11 @@
             $pdoInstance = DBConnection::getDBConnectionInstance();
             $statement = $pdoInstance->prepare($query);
             if(sizeof($this->bindValues) > sizeof($this->values)) {
-                
+                sizeof($this->bindValues) > 0
+                    ? 
+                        $statement->execute($this->bindValues)
+                    :
+                        $statement->execute($this->values);
             }
             else {
 
