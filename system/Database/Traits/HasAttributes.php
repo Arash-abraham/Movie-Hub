@@ -3,7 +3,7 @@
     namespace System\Database\Traits;
 
     trait HasAttributes {
-        private function registerAttribut($object ,  $attribute, $value) {
+        private function registerAttribut($object , string $attribute, $value) {
 
         }
 
