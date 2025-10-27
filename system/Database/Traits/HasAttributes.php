@@ -46,8 +46,9 @@
 
         private function castDecodeValue($attributeKey , $value) {
             if($this->casts[$attributeKey] == 'array' or $this->cast[$attributeKey] == 'object') {
-
+                return unserialize($value);
             }
+            return $value;
         }
 
         private function castEncodeValue() {
