@@ -25,7 +25,7 @@
             return $object;
         }
 
-        protected function arrayToObject() {
+        protected function arrayToObject(array $array) {
             $collection = [];
         }
         
