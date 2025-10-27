@@ -4,7 +4,9 @@
     use System\Database\DBConnection\DBConnection;
 
     trait HasCRUD {
-        
+        protected function fill() {
+            
+        }
     }
 
     
