@@ -58,8 +58,18 @@
             return $value;
         }
 
-        private function arrayToCastEncodeValue() {
-            // TODO
+        private function arrayToCastEncodeValue($values) {
+            $newAarry = [];
+
+            foreach($values as $attribute => $value) {
+                $this->inCastsAttribute($attribute) == true
+                    ?
+                        $newAarry[$attribute] = $this->castEncodeValue($attribute,$value)
+                    :
+                        $newAarry[$attribute] = $value;
+            }
+
+            return $newAarry;
         }
     }
 
