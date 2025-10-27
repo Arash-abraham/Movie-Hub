@@ -36,12 +36,12 @@
             $this->collection = $collection;
         }
         
-        private function inHiddenAttribut() {
-            // TODO
+        private function inHiddenAttribut($attribute) {
+            return in_array($attribute, $this->hidden);
         }
 
-        private function inCastsAttribute() {
-            // TODO
+        private function inCastsAttribute($attribute) {
+            return in_array($attribute , array_keys($this->casts));
         }
 
         private function castDecodeValue() {
