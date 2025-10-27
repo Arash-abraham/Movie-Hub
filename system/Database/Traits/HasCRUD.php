@@ -7,7 +7,9 @@
         protected function fill() {
             $fillArray = [];
             foreach ($this->fillable as $attribute) {
-                
+                if(isset($this->$attribute)) {
+                    
+                }
             }
         }
     }
