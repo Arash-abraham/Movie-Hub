@@ -27,6 +27,7 @@
 
         protected function arrayToObject(array $array) {
             $collection = [];
+            tedt
         }
         
         private function inHiddenAttribut() {
