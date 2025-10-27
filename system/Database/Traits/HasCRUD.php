@@ -5,9 +5,9 @@
 
     trait HasCRUD {
         protected function fill() {
-            
+
         }
     }
 
     
-?>
+?> 
