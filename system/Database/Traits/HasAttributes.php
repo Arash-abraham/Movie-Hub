@@ -26,7 +26,7 @@
         }
 
         protected function arrayToObject() {
-            // TODO
+            $collection = [];
         }
         
         private function inHiddenAttribut() {
