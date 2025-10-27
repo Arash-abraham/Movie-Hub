@@ -27,6 +27,13 @@
 
         protected function arrayToObject(array $array) {
             $collection = [];
+
+            foreach($array as $value) {
+                $object = $this->arrayToAttribut($value);
+                array_push($collection, $object);
+            }
+
+            $this->collection = $collection;
         }
         
         private function inHiddenAttribut() {
