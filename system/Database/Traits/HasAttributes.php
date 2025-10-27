@@ -44,8 +44,8 @@
             return in_array($attribute , array_keys($this->casts));
         }
 
-        private function castDecodeValue() {
-            // TODO
+        private function castDecodeValue($attributeKey , $value) {
+            
         }
 
         private function castEncodeValue() {
