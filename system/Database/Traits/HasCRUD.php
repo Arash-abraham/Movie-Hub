@@ -8,7 +8,7 @@
             $fillArray = [];
             foreach ($this->fillable as $attribute) {
                 if(isset($this->$attribute)) {
-                    
+                    array_push($fillArray, `?`);
                 }
             }
         }
