@@ -15,8 +15,10 @@
                         :
                             $this->addValue($attribute , $this->$attribute);
                 }
-
             }
+
+            $fillString = implode(", ", $fillArray);
+            return $fillString;
         }
     }
 
