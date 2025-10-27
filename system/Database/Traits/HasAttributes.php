@@ -51,8 +51,11 @@
             return $value;
         }
 
-        private function castEncodeValue() {
-            // TODO
+        private function castEncodeValue($attributeKey , $value) {
+            if($this->casts[$attributeKey] == 'array' or $this->cast[$attributeKey] == 'object') {
+                return serialize($value);
+            }
+            return $value;
         }
 
         private function arrayToCastEncodeValue() {
