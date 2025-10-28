@@ -21,6 +21,7 @@
                     {$this->getAttributeName($this->updatedAt)} = NOW()
                 ");
                 $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
+                $this->addValue($this->primaryKey , $this->{$this->primaryKey});
             }
         }
 
