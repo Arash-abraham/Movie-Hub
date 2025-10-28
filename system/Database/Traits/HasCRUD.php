@@ -20,6 +20,9 @@
             $fillString = implode(", ", $fillArray);
             return $fillString;
         }
+        // public function guard() {
+        //     $guard = [];
+        // }
     }
 
     
