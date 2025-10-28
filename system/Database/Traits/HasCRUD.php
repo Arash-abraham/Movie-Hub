@@ -20,6 +20,7 @@
                     {$this->getTableName()} SET {$fillString} ,  
                     {$this->getAttributeName($this->updatedAt)} = NOW()
                 ");
+                $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
             }
         }
 
