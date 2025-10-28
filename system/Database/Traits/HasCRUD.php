@@ -28,6 +28,13 @@
 
             $this->resetQuery();
 
+            if(!isset($this->{$this->primaryKey})) {
+                $object = $this->findMethod(DBConnection::newInsertId());
+                $defultVars = get_class_vars(get_called_class());
+                $allVars = get_object_vars($object);
+
+                
+            }
             
         }
 
