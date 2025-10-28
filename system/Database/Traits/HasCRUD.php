@@ -6,7 +6,8 @@
     trait HasCRUD {
 
         public function saveMethod(){
-
+            $fillString = $this->fill();
+            
         }
 
         protected function fill() {
