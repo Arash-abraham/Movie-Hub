@@ -25,6 +25,10 @@
             }
 
             $this->executeQuery();
+
+            $this->resetQuery();
+
+            
         }
 
         protected function fill() {
