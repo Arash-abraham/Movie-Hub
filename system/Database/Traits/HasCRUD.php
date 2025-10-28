@@ -23,6 +23,8 @@
                 $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
                 $this->addValue($this->primaryKey , $this->{$this->primaryKey});
             }
+
+            $this->executeQuery();
         }
 
         protected function fill() {
