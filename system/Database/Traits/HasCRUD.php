@@ -6,7 +6,12 @@
     trait HasCRUD {
 
         protected function delete($id = NULL){
+            $object = $this;
+            $this->resetQuery();
 
+            if($id) {
+                
+            }
         }
 
         public function save(){
