@@ -44,7 +44,11 @@
                     ;
                 }
             }
+            $this->resetQuery();
             
+            $this->setAllowedMethod(['?' , '?' , '?']); // TODO
+
+            return $this;
         }
 
         protected function fill() {
