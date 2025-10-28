@@ -33,6 +33,7 @@
                 $defultVars = get_class_vars(get_called_class());
                 $allVars = get_object_vars($object);
 
+                $differentVars = array_diff(array_keys($allVars), $defultVars);
                 
             }
             
