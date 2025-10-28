@@ -35,6 +35,14 @@
 
                 $differentVars = array_diff(array_keys($allVars), $defultVars);
                 
+                foreach($differentVars as $attribute) {
+                    $this->inCastsAttribute($attribute) == true
+                        ?
+                            $this->registerAttribut($this , $attribute , $this->castEncodeValue($attribute,$object->$attribute))
+                        :
+                        $this->registerAttribut($this , $attribute , $object->$attribute);
+                    ;
+                }
             }
             
         }
