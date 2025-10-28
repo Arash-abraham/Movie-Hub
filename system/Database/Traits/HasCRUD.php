@@ -5,12 +5,14 @@
 
     trait HasCRUD {
 
+        // find method Will be defined in the future.
+
         protected function delete($id = NULL){
             $object = $this;
             $this->resetQuery();
 
             if($id) {
-                
+                $object = $this->find($id);
             }
         }
 
@@ -38,7 +40,7 @@
             $this->resetQuery();
 
             if(!isset($this->{$this->primaryKey})) {
-                $object = $this->findMethod(DBConnection::newInsertId());
+                $object = $this->find(DBConnection::newInsertId());
                 $defultVars = get_class_vars(get_called_class());
                 $allVars = get_object_vars($object);
 
