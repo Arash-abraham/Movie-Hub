@@ -20,6 +20,8 @@
             $object->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
         
             $object->addValue($object->primaryKey , $object->{$object->primaryKey});
+            
+            return $object->executeQuery();
         }
 
         public function save(){
