@@ -13,7 +13,13 @@
 
             if($id) {
                 $object = $this->find($id);
+                $this->resetQuery();
             }
+
+            $object->setSql("DELETE FROM {$object->getTableName()}");
+            $object->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
+        
+            $object->addValue($object->primaryKey , $object->{$object->primaryKey});
         }
 
         public function save(){
