@@ -5,6 +5,10 @@
 
     trait HasCRUD {
 
+        protected function delete($id = NULL){
+
+        }
+
         public function save(){
             $fillString = $this->fill();
 
