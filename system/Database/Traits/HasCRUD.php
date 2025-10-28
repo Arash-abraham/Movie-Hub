@@ -5,7 +5,7 @@
 
     trait HasCRUD {
 
-        public function saveMethod(){
+        public function save(){
             $fillString = $this->fill();
 
             if(!isset($this->{$this->primaryKey})) {

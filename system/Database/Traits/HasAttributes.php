@@ -45,31 +45,31 @@
         }
 
         private function castDecodeValue($attributeKey , $value) {
-            if($this->casts[$attributeKey] == 'array' or $this->cast[$attributeKey] == 'object') {
+            if($this->casts[$attributeKey] == 'array' or $this->casts[$attributeKey] == 'object') {
                 return unserialize($value);
             }
             return $value;
         }
 
         private function castEncodeValue($attributeKey , $value) {
-            if($this->casts[$attributeKey] == 'array' or $this->cast[$attributeKey] == 'object') {
+            if($this->casts[$attributeKey] == 'array' or $this->casts[$attributeKey] == 'object') {
                 return serialize($value);
             }
             return $value;
         }
 
         private function arrayToCastEncodeValue($values) {
-            $newAarry = [];
+            $newArray = [];
 
             foreach($values as $attribute => $value) {
                 $this->inCastsAttribute($attribute) == true
                     ?
-                        $newAarry[$attribute] = $this->castEncodeValue($attribute,$value)
+                        $newArray[$attribute] = $this->castEncodeValue($attribute,$value)
                     :
-                        $newAarry[$attribute] = $value;
+                        $newArray[$attribute] = $value;
             }
 
-            return $newAarry;
+            return $newArray;
         }
     }
 
