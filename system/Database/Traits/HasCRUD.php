@@ -15,6 +15,12 @@
                         {$this->getAttributeName($this->updatedAt)} = NULL
                 ");
             }
+            else {
+                $this->setSql("UPDATE 
+                    {$this->getTableName()} SET {$fillString} ,  
+                    {$this->getAttributeName($this->updatedAt)} = NOW()
+                ");
+            }
         }
 
         protected function fill() {
