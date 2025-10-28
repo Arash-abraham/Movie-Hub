@@ -34,10 +34,6 @@
         private function inGuardedAttribute($attribute) {
             return !empty($this->guarded) && in_array($attribute, $this->guarded);
         }
-        
-        // public function guard() {
-        //     $guard = [];
-        // }
     }
 
     
