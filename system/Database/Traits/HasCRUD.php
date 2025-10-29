@@ -28,6 +28,12 @@
             $this->setSql("SELECT * FROM {$this->getTableName()}");
             $statement = $this->executeQuery();
             $data = $statement->fetchAll();
+
+            if($data) {
+                return $data;
+            }
+            
+            return [];
         }
 
         public function save(){
