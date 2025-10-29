@@ -111,6 +111,7 @@
                     array_push($valuesArray, '?');
                 }
                 $condition = $this->getAttributeName($attribute) . ' IN (' . implode(' , ', $valuesArray)  . ')';
+                $operator = 'AND';
             }
         }
         public function save(){
