@@ -105,7 +105,7 @@
         } 
         protected function whereIn($attribute , $values) {
             if(is_array($values)) {
-                
+                $valuesArray = [];
             }
         }
         public function save(){
