@@ -107,7 +107,7 @@
             if(is_array($values)) {
                 $valuesArray = [];
                 foreach($values as $value) {
-                    
+                    $this->addValue($attribute, $value);
                 }
             }
         }
