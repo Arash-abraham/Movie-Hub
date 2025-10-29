@@ -104,7 +104,9 @@
             return $this;
         } 
         protected function whereIn($attribute , $values) {
-            
+            if(is_array($values)) {
+                
+            }
         }
         public function save(){
             $fillString = $this->fill();
