@@ -57,7 +57,14 @@
                 $condition = $this->getAttributeName($attribute) . ' = ?';
                 $this->addValue($attribute, $firstValue);
             }
-        }
+            else {
+                $condition = $this->getAttributeName($attribute) . ' ' . $firstValue . ' ?';
+                $this->addValue($attribute, $secondValue);
+            }
+
+            $operator = 'AND';
+            $this->setWhere($operator,$condition);
+        } 
 
         public function save(){
             $fillString = $this->fill();
