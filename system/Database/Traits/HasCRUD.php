@@ -114,6 +114,7 @@
                 $operator = 'AND';
                 $this->setWhere($operator,$condition);
                 $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
+                return $this;
             }
         }
         public function save(){
