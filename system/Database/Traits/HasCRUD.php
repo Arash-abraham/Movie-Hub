@@ -42,6 +42,14 @@
             $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
 
             $this->addValue($this->primaryKey);
+            $statement = $this->executeQuery();
+            $data = $statement->fetch();
+            $this->setAllowedMethods(['update','delete','save']);
+        
+            if($data) {
+                return $this->arrayToAttributs($data);
+            }
+            return NULL;
         }
 
         public function save(){

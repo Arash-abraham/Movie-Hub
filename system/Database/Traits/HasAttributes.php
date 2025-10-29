@@ -11,7 +11,7 @@
                     $object->$attribute = $value;
         }
 
-        protected function arrayToAttribut(array $array , $object = NULL) {
+        protected function arrayToAttributs(array $array , $object = NULL) {
             if(!$object) {
                 $className = get_called_class();
                 $object = new $className;
