@@ -84,7 +84,7 @@
             return $this;
         } 
         
-        protected function whereNull($attribute , $firstValue , $secondValue = NULL) {
+        protected function whereNull($attribute) {
 
             $condition = $this->getAttributeName($attribute) . ' ' . $firstValue . ' ?';
 
