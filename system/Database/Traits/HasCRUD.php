@@ -86,7 +86,7 @@
         
         protected function whereNull($attribute) {
 
-            $condition = '';
+            $condition = $this->getAttributeName($attribute) . ' IS NULL '; // " IS NULL " => SQL
 
             $operator = 'AND';
             $this->setWhere($operator,$condition);
