@@ -110,7 +110,7 @@
                     $this->addValue($attribute, $value);
                     array_push($valuesArray, '?');
                 }
-                $condition = $this->getAttributeName($attribute) . ' IN';
+                $condition = $this->getAttributeName($attribute) . ' IN (' . implode(' , ', $valuesArray)  . ')';
             }
         }
         public function save(){
