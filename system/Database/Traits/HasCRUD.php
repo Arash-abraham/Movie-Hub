@@ -106,6 +106,9 @@
         protected function whereIn($attribute , $values) {
             if(is_array($values)) {
                 $valuesArray = [];
+                foreach($values as $value) {
+                    
+                }
             }
         }
         public function save(){
