@@ -40,18 +40,10 @@
         protected function find($id) {
             $this->setSql("SELECT * FROM {$this->getTableName()}");
             $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
-<<<<<<< HEAD
 
-            $this->addValue($this->primaryKey , $id);
-            $statement = $this->executeQuery();
+            $this->addValue($this->primaryKey);
         }
 
-
-=======
-            
-        }
-
->>>>>>> edac3971397319bf1af8aed0c09fed4dc679a7ea
         public function save(){
             $fillString = $this->fill();
 
