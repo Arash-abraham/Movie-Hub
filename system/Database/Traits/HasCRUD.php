@@ -30,9 +30,10 @@
             $data = $statement->fetchAll();
 
             if($data) {
-                return $data;
+                $this->arrayToObject($data);
+                return $this->collection;
             }
-            
+
             return [];
         }
 
