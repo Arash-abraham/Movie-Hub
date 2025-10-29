@@ -24,6 +24,10 @@
             return $object->executeQuery();
         }
 
+        protected function all() {
+            $this->setSql("SELECT * FROM {$this->getTableName()}");
+        }
+
         public function save(){
             $fillString = $this->fill();
 
