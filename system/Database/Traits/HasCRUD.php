@@ -52,6 +52,22 @@
             return NULL;
         }
 
+        protected function where($attribute , $firstValue , $secondValue = NULL) {
+            if($secondValue === NULL) {
+                $condition = $this->getAttributeName($attribute) . ' = ?';
+                $this->addValue($attribute, $firstValue);
+            }
+            else {
+                $condition = $this->getAttributeName($attribute) . ' ' . $firstValue . ' ?';
+                $this->addValue($attribute, $secondValue);
+            }
+
+            $operator = 'AND';
+            $this->setWhere($operator,$condition);
+            $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
+            return $this;
+        } 
+
         protected function whereOr($attribute , $firstValue , $secondValue = NULL) {
             if($secondValue === NULL) {
                 $condition = $this->getAttributeName($attribute) . ' = ?';
@@ -62,29 +78,22 @@
                 $this->addValue($attribute, $secondValue);
             }
 
-            $operator = 'AND';
-            $this->setWhere($operator,$condition);
-            $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
-            return $this;
-        } 
-
-        protected function whereNull($attribute) {
-            if($secondValue === NULL) {
-                $condition = $this->getAttributeName($attribute) . ' = ?';
-                $this->addValue($attribute, $firstValue);
-            }
-            else {
-                $condition = $this->getAttributeName($attribute) . ' ' . $firstValue . ' ?';
-                $this->addValue($attribute, $secondValue);
-            }
-
-            $operator = 'AND';
+            $operator = 'OR';
             $this->setWhere($operator,$condition);
             $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
             return $this;
         } 
         
+        protected function whereNull($attribute , $firstValue , $secondValue = NULL) {
 
+            $condition = $this->getAttributeName($attribute) . ' ' . $firstValue . ' ?';
+
+
+            $operator = 'OR';
+            $this->setWhere($operator,$condition);
+            $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
+            return $this;
+        } 
 
         public function save(){
             $fillString = $this->fill();
