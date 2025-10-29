@@ -26,6 +26,8 @@
 
         protected function all() {
             $this->setSql("SELECT * FROM {$this->getTableName()}");
+            $statement = $this->executeQuery();
+            $data = $statement->fetchAll();
         }
 
         public function save(){
