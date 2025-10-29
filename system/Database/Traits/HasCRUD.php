@@ -52,16 +52,11 @@
             return NULL;
         }
 
-        protected function where($attribute , $conndition = '=' , $value)   {
-            if($conndition != '=') {
-                $this->getAttributeName($attribute) . " {$conndition} ?";
-                $this->addValue($attribute,$value);
+        protected function where($attribute , $firstValue , $secondValue = NULL) {
+            if($secondValue === NULL) {
+                $condition = $this->getAttributeName($attribute) . ' = ?';
+                $this->addValue($attribute, $firstValue);
             }
-            else {
-                $this->getAttributeName($attribute) . ' = ?';
-                $this->addValue($attribute,$value);
-            }
-
         }
 
         public function save(){
