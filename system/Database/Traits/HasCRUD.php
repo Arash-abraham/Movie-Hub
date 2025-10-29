@@ -92,6 +92,16 @@
             $this->setWhere($operator,$condition);
             $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
             return $this;
+        }
+
+        protected function whereNotNull($attribute) {
+
+            $condition = $this->getAttributeName($attribute) . ' IS NULL '; // " IS NULL " => SQL
+
+            $operator = 'AND';
+            $this->setWhere($operator,$condition);
+            $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
+            return $this;
         } 
 
         public function save(){
