@@ -108,6 +108,7 @@
                 $valuesArray = [];
                 foreach($values as $value) {
                     $this->addValue($attribute, $value);
+                    array_push($valuesArray, '?');
                 }
             }
         }
