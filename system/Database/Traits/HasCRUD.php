@@ -112,6 +112,7 @@
                 }
                 $condition = $this->getAttributeName($attribute) . ' IN (' . implode(' , ', $valuesArray)  . ')';
                 $operator = 'AND';
+                $this->setWhere($operator,$condition);
             }
         }
         public function save(){
