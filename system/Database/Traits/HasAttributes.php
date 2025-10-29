@@ -29,7 +29,7 @@
             $collection = [];
 
             foreach($array as $value) {
-                $object = $this->arrayToAttribut($value);
+                $object = $this->arrayToAttributs($value);
                 array_push($collection, $object);
             }
 
