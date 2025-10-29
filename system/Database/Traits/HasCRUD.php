@@ -110,6 +110,7 @@
                     $this->addValue($attribute, $value);
                     array_push($valuesArray, '?');
                 }
+                $condition = $this->getAttributeName($attribute) . '';
             }
         }
         public function save(){
