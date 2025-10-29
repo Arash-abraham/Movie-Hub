@@ -86,10 +86,9 @@
         
         protected function whereNull($attribute) {
 
-            $condition = $this->getAttributeName($attribute) . ' ' . $firstValue . ' ?';
+            $condition = '';
 
-
-            $operator = 'OR';
+            $operator = 'AND';
             $this->setWhere($operator,$condition);
             $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
             return $this;
