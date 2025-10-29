@@ -52,6 +52,17 @@
             return NULL;
         }
 
+        protected function where($attribute , $conndition = '=' , $value)   {
+            if($conndition != '=') {
+                
+            }
+            else {
+                $this->getAttributeName($attribute) . ' = ?';
+                $this->addValue($attribute,$value);
+            }
+
+        }
+
         public function save(){
             $fillString = $this->fill();
 
