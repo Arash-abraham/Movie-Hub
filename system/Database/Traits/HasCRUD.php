@@ -54,7 +54,8 @@
 
         protected function where($attribute , $conndition = '=' , $value)   {
             if($conndition != '=') {
-                
+                $this->getAttributeName($attribute) . " {$conndition} ?";
+                $this->addValue($attribute,$value);
             }
             else {
                 $this->getAttributeName($attribute) . ' = ?';
