@@ -37,6 +37,15 @@
             return [];
         }
 
+        protected function find($id) {
+            $this->setSql("SELECT * FROM {$this->getTableName()}");
+            $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
+
+            $this->addValue($this->primaryKey , $id);
+            $statement = $this->executeQuery();
+        }
+
+
         public function save(){
             $fillString = $this->fill();
 
