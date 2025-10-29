@@ -103,7 +103,7 @@
             $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
             return $this;
         } 
-        protected function whereIn($attribute) {
+        protected function whereIn($attribute , $values) {
             
         }
         public function save(){
