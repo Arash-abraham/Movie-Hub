@@ -141,8 +141,9 @@
 
                     $fields = implode(' , ', $array); 
                 }
-                $this->setSql("SELECT {$fields}");
+                $this->setSql("SELECT {$fields} FROM {$this->getTableName()}");
             }
+            
         }
 
         public function save(){
