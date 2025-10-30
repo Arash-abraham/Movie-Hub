@@ -134,6 +134,11 @@
                 if(empty($array)) {
                     $fields = $this->getTableName() . '*'; // * All In SQL 
                 }
+                else {
+                    foreach($array as $key => $field) {
+                        
+                    }
+                }
             }
         }
 
