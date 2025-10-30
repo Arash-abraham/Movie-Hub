@@ -118,7 +118,7 @@
         }
 
         protected function orderBy($attribute , $expression) {
-            
+            $this->setOrderBy($attribute, $expression);
         }
 
         public function save(){
