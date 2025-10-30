@@ -141,6 +141,7 @@
 
                     $fields = implode(' , ', $array); 
                 }
+                $this->setSql("SELECT {$fields}");
             }
         }
 
