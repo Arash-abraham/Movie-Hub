@@ -123,6 +123,12 @@
             return $this;
         }
 
+        protected function limit($from , $number) {
+            $this->setLimit($from, $number);
+            $this->setAllowedMethods(['limit', 'get', 'paginate']);        
+            return $this;
+        }
+
         public function save(){
             $fillString = $this->fill();
 
