@@ -131,7 +131,9 @@
 
         protected function get($array = []) {
             if($this->sql = '') {
-                
+                if(empty($array)) {
+                    $fields = $this->getTableName() . '*'; // * All In SQL 
+                }
             }
         }
 
