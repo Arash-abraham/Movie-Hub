@@ -129,6 +129,10 @@
             return $this;
         }
 
+        protected function get($array = []) {
+            
+        }
+
         public function save(){
             $fillString = $this->fill();
 
