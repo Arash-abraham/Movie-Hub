@@ -116,7 +116,9 @@
                 return $this;
             }
         }
-        
+
+        protected function orderBy()
+
         public function save(){
             $fillString = $this->fill();
 
