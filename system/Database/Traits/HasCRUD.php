@@ -130,7 +130,9 @@
         }
 
         protected function get($array = []) {
-            
+            if($this->sql = '') {
+                
+            }
         }
 
         public function save(){
