@@ -5,8 +5,6 @@
 
     trait HasCRUD {
 
-        // find method Will be defined in the future.
-
         protected function delete($id = NULL){
             $object = $this;
             $this->resetQuery();
@@ -103,6 +101,7 @@
             $this->setAllowedMethods(['where', 'whereOr', 'whereIn', 'whereNull', 'whereNotNull', 'limit', 'orderBy', 'get', 'paginate']);        
             return $this;
         } 
+
         protected function whereIn($attribute , $values) {
             if(is_array($values)) {
                 $valuesArray = [];
@@ -117,6 +116,7 @@
                 return $this;
             }
         }
+        
         public function save(){
             $fillString = $this->fill();
 
