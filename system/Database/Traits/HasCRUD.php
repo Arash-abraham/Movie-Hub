@@ -119,6 +119,8 @@
 
         protected function orderBy($attribute , $expression) {
             $this->setOrderBy($attribute, $expression);
+            $this->setAllowedMethods(['limit', 'orderBy', 'get', 'paginate']);        
+            return $this;
         }
 
         public function save(){
