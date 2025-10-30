@@ -144,6 +144,13 @@
                 $this->setSql("SELECT {$fields} FROM {$this->getTableName()}");
             }
             
+            $statement = $this->executeQuery();
+            $data = $statement->fetchAll();
+            if($data) {
+                $this->arrayToObjects($data);
+                return $this->collection;
+            }
+            return [];
         }
 
         public function save(){
