@@ -136,8 +136,10 @@
                 }
                 else {
                     foreach($array as $key => $field) {
-                        
+                        $array[$key] = $this->getAttributeName($field);
                     }
+
+                    $fields = implode(' , ', $array); 
                 }
             }
         }
