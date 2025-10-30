@@ -117,7 +117,9 @@
             }
         }
 
-        protected function orderBy()
+        protected function orderBy($attribute , $expression) {
+            
+        }
 
         public function save(){
             $fillString = $this->fill();
