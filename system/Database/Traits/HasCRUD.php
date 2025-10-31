@@ -156,10 +156,10 @@
         protected function paginate($perPage) {
             $totalRows = $this->getCount();
             $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] :1;
-            $totalPages = ceil($totalPages / $perPage);
-            $currentPage = min($currentPage , $totalPages);
-            $currentPage = max($currentPage, $totalPages);
+            $totalPages = ceil($totalRows / $perPage);
+            $currentPage = max(1, min($currentPage, $totalPages));
             $currentRow = ($currentPage - 1) * $perPage;
+            $this->setLimit($currentRow , $perPage);
         }
 
         public function save(){
