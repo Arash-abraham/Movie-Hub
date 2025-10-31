@@ -159,6 +159,7 @@
             $totalPages = ceil($totalPages / $perPage);
             $currentPage = min($currentPage , $totalPages);
             $currentPage = max($currentPage, $totalPages);
+            $currentRow = ($currentPage - 1) * $perPage;
         }
 
         public function save(){
