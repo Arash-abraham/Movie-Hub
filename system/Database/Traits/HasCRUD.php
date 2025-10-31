@@ -5,24 +5,24 @@
 
     trait HasCRUD {
 
-        protected function create($values) {
+        protected function createMethod($values) {
             $values = $this->arrayToCastEncodeValue($values);
             $this->arrayToAttributes($values , $this);
             return $this->save();
         }
 
-        protected function update($values) {
+        protected function updateMethod($values) {
             $values = $this->arrayToCastEncodeValue($values);
             $this->arrayToAttributes($values , $this);
             return $this->save();
         }
 
-        protected function delete($id = NULL){
+        protected function deleteMethod($id = NULL){
             $object = $this;
             $this->resetQuery();
 
             if($id) {
-                $object = $this->find($id);
+                $object = $this->findMethod($id);
                 $this->resetQuery();
             }
 
@@ -34,7 +34,7 @@
             return $object->executeQuery();
         }
 
-        protected function all() {
+        protected function allMethod() {
             $this->setSql("SELECT * FROM {$this->getTableName()}");
             $statement = $this->executeQuery();
             $data = $statement->fetchAll();
@@ -47,7 +47,7 @@
             return [];
         }
 
-        protected function find($id) {
+        protected function findMethod($id) {
             $this->setSql("SELECT * FROM {$this->getTableName()}");
             $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
 
@@ -62,7 +62,7 @@
             return NULL;
         }
 
-        protected function where($attribute , $firstValue , $secondValue = NULL) {
+        protected function whereMethod($attribute , $firstValue , $secondValue = NULL) {
             if($secondValue === NULL) {
                 $condition = $this->getAttributeName($attribute) . ' = ?';
                 $this->addValue($attribute, $firstValue);
@@ -78,7 +78,7 @@
             return $this;
         } 
 
-        protected function whereOr($attribute , $firstValue , $secondValue = NULL) {
+        protected function whereOrMethod($attribute , $firstValue , $secondValue = NULL) {
             if($secondValue === NULL) {
                 $condition = $this->getAttributeName($attribute) . ' = ?';
                 $this->addValue($attribute, $firstValue);
@@ -94,7 +94,7 @@
             return $this;
         } 
         
-        protected function whereNull($attribute) {
+        protected function whereNullMethod($attribute) {
 
             $condition = $this->getAttributeName($attribute) . ' IS NULL '; // " IS NULL " => SQL
 
@@ -104,7 +104,7 @@
             return $this;
         }
 
-        protected function whereNotNull($attribute) {
+        protected function whereNotNullMethod($attribute) {
 
             $condition = $this->getAttributeName($attribute) . ' IS NOT NULL '; // " IS NOT NULL " => SQL
 
@@ -114,7 +114,7 @@
             return $this;
         } 
 
-        protected function whereIn($attribute , $values) {
+        protected function whereInMethod($attribute , $values) {
             if(is_array($values)) {
                 $valuesArray = [];
                 foreach($values as $value) {
@@ -129,19 +129,19 @@
             }
         }
 
-        protected function orderBy($attribute , $expression) {
+        protected function orderByMethod($attribute , $expression) {
             $this->setOrderBy($attribute, $expression);
             $this->setAllowedMethods(['limit', 'orderBy', 'get', 'paginate']);        
             return $this;
         }
 
-        protected function limit($from , $number) {
+        protected function limitMethod($from , $number) {
             $this->setLimit($from, $number);
             $this->setAllowedMethods(['limit', 'get', 'paginate']);        
             return $this;
         }
 
-        protected function get($array = []) {
+        protected function getMethod($array = []) {
             if($this->sql = '') {
                 if(empty($array)) {
                     $fields = $this->getTableName() . '*'; // * All In SQL 
@@ -165,7 +165,7 @@
             return [];
         }
 
-        protected function paginate($perPage) {
+        protected function paginateMethod($perPage) {
             $totalRows = $this->getCount();
             $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] :1;
             $totalPages = ceil($totalRows / $perPage);
@@ -186,7 +186,7 @@
             return [];
         }
 
-        public function save(){
+        public function saveMethod(){
             $fillString = $this->fill();
 
             if(!isset($this->{$this->primaryKey})) {
@@ -210,7 +210,7 @@
             $this->resetQuery();
 
             if(!isset($this->{$this->primaryKey})) {
-                $object = $this->find(DBConnection::newInsertId());
+                $object = $this->findMethod(DBConnection::newInsertId());
                 $defultVars = get_class_vars(get_called_class());
                 $allVars = get_object_vars($object);
 
