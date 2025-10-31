@@ -19,6 +19,13 @@
             'orderBy' , 'get' , 'paginate'
         ];
 
+        public function __call($method, $args) {
+
+        }
+        public function __callStatic($method, $args) {
+            
+        }
+
         private function methodCaller($object , $method , $args) {
             $suffix = 'Method';
             $methodName = $method.$suffix;
