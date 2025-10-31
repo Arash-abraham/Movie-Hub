@@ -153,6 +153,10 @@
             return [];
         }
 
+        protected function paginate() {
+            
+        }
+
         public function save(){
             $fillString = $this->fill();
 
