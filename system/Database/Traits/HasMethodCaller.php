@@ -24,8 +24,9 @@
             $methodName = $method.$suffix;
 
             if (in_array($method , $this->allMethods)) {
-                call_user_func_array([$object , $methodName], $args);
+                return call_user_func_array([$object , $methodName], $args);
             }
+
         }
 
         protected function setAllowedMethods($array) {
