@@ -19,7 +19,7 @@
             'orderBy' , 'get' , 'paginate'
         ];
 
-        private function methodCaller() {
+        private function methodCaller($object , $method , $args) {
             
         }
 
