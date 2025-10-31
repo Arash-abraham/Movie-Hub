@@ -156,7 +156,7 @@
         protected function paginate($perPage) {
             $totalRows = $this->getCount();
             $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] :1;
-
+            $totalPages = ceil($totalPages / $perPage);
         }
 
         public function save(){
