@@ -162,8 +162,16 @@
             $this->setLimit($currentRow , $perPage);
         
             if($this->sql == '') {
-                
+                $this->setSql("SELECT ". $this->getTableName . ".* FROM " . $this->getTableName());
             }
+            
+            $statement = $this->executeQuery();
+            $data = $statement->fetchAll();
+            if($data) {
+                $this->arrayToObjects($data);
+                return $this->collection;
+            }
+            return [];
         }
 
         public function save(){
