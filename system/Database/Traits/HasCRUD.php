@@ -153,7 +153,7 @@
             return [];
         }
 
-        protected function paginate() {
+        protected function paginate($perPage) {
             
         }
 
