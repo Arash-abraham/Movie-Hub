@@ -160,6 +160,10 @@
             $currentPage = max(1, min($currentPage, $totalPages));
             $currentRow = ($currentPage - 1) * $perPage;
             $this->setLimit($currentRow , $perPage);
+        
+            if($this->sql == '') {
+                
+            }
         }
 
         public function save(){
