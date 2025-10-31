@@ -18,6 +18,10 @@
             'whereIn' , 'whereNotNull' , 'limit' ,
             'orderBy' , 'get' , 'paginate'
         ];
+
+        protected function setAllowedMethods($array) {
+            $this->allowedMethods = $array;
+        }
     } 
 
 ?>
