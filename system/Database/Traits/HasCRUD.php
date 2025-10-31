@@ -157,6 +157,8 @@
             $totalRows = $this->getCount();
             $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] :1;
             $totalPages = ceil($totalPages / $perPage);
+            $currentPage = min($currentPage , $totalPages);
+            $currentPage = max($currentPage, $totalPages);
         }
 
         public function save(){
