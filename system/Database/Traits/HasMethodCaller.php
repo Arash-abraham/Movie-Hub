@@ -20,7 +20,8 @@
         ];
 
         private function methodCaller($object , $method , $args) {
-            
+            $suffix = 'Method';
+            $methodName = $method.$suffix;
         }
 
         protected function setAllowedMethods($array) {
