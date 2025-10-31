@@ -19,6 +19,10 @@
             'orderBy' , 'get' , 'paginate'
         ];
 
+        private function methodCaller() {
+            
+        }
+
         protected function setAllowedMethods($array) {
             $this->allowedMethods = $array;
         }
