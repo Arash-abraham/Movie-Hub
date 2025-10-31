@@ -154,7 +154,7 @@
         }
 
         protected function paginate($perPage) {
-            
+            $totalRows = $this->getCount();
         }
 
         public function save(){
