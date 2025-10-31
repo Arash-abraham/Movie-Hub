@@ -5,6 +5,18 @@
 
     trait HasCRUD {
 
+        protected function create($values) {
+            $values = $this->arrayToCastEncodeValue($values);
+            $this->arrayToAttributes($values , $this);
+            return $this->save();
+        }
+
+        protected function update($values) {
+            $values = $this->arrayToCastEncodeValue($values);
+            $this->arrayToAttributes($values , $this);
+            return $this->save();
+        }
+
         protected function delete($id = NULL){
             $object = $this;
             $this->resetQuery();
@@ -164,7 +176,7 @@
             if($this->sql == '') {
                 $this->setSql("SELECT ". $this->getTableName . ".* FROM " . $this->getTableName());
             }
-            
+
             $statement = $this->executeQuery();
             $data = $statement->fetchAll();
             if($data) {
