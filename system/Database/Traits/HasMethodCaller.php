@@ -22,6 +22,10 @@
         private function methodCaller($object , $method , $args) {
             $suffix = 'Method';
             $methodName = $method.$suffix;
+
+            if (in_array($method , $this->allMethods)) {
+                
+            }
         }
 
         protected function setAllowedMethods($array) {
