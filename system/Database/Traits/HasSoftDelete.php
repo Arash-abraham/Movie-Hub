@@ -36,6 +36,25 @@
             return [];
         }
 
+        protected function findMethod($id) {
+            $this->resetQuery();
+
+            $this->setSql("SELECT ".$this->getTableName().".* FROM ".$this->getTableName());
+            $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." = ?");
+            
+            $this->addValue($this->primaryKey);
+
+            $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." IS NULL");
+            
+            $statement = $this->executeQuery();
+            $data = $statement->fetch();
+            $this->setAllowedMethods(['update','delete','save']);
+        
+            if($data) {
+                return $this->arrayToAttributs($data);
+            }
+            return NULL;
+        }
     }
 
 ?>
