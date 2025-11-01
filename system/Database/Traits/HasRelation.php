@@ -17,7 +17,7 @@
                     $sql = "SELECT phones.* FROM users JOIN phones on users.id = phones.user_id"
             */
 
-            $this->setSql("SELECT `b`.* FROM `{$table}` AS `a` JOIN ".$this->getTableName()." AS `b`");
+            $this->setSql("SELECT `b`.* FROM `{$table}` AS `a` JOIN ".$this->getTableName()." AS `b` on `a`.`{$otherKey}` = `b`.`{$foreignKey}`");
         }
 
     }
