@@ -8,8 +8,8 @@
         }
 
         public function getHasRelation() {
-            if() {
-                
+            if($this->{$this->primaryKey}) {
+
             }
         }
 
