@@ -81,6 +81,29 @@
             return [];
         }
 
+        protected function paginateMethod($perPage) {
+            $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." IS NULL");
+
+            $totalRows = $this->getCount();
+            $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] :1;
+            $totalPages = ceil($totalRows / $perPage);
+            $currentPage = max(1, min($currentPage, $totalPages));
+            $currentRow = ($currentPage - 1) * $perPage;
+            $this->setLimit($currentRow , $perPage);
+        
+            if($this->sql == '') {
+                $this->setSql("SELECT ". $this->getTableName . ".* FROM " . $this->getTableName());
+            }
+
+            $statement = $this->executeQuery();
+            $data = $statement->fetchAll();
+            if($data) {
+                $this->arrayToObjects($data);
+                return $this->collection;
+            }
+            return [];
+        }
+
     }
 
 ?>
