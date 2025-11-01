@@ -55,6 +55,31 @@
             }
             return NULL;
         }
+
+        protected function getMethod($array = []) {
+            if($this->sql = '') {
+                if(empty($array)) {
+                    $fields = $this->getTableName() . '*'; // * All In SQL 
+                }
+                else {
+                    foreach($array as $key => $field) {
+                        $array[$key] = $this->getAttributeName($field);
+                    }
+
+                    $fields = implode(' , ', $array); 
+                }
+                $this->setSql("SELECT {$fields} FROM {$this->getTableName()}");
+            }
+            
+            $statement = $this->executeQuery();
+            $data = $statement->fetchAll();
+            if($data) {
+                $this->arrayToObjects($data);
+                return $this->collection;
+            }
+            return [];
+        }
+
     }
 
 ?>
