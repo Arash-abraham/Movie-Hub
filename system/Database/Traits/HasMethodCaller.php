@@ -25,6 +25,7 @@
 
         public static function __callStatic($method, $args) {
             $className = get_called_class();
+            $instance = new $className;
         }
 
         private function methodCaller($object , $method , $args) {
