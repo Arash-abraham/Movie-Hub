@@ -17,7 +17,7 @@
                     $sql = "SELECT phones.* FROM users JOIN phones on users.id = phones.user_id"
             */
 
-            $this->setSql("SELECT ".$this->getTableName().".* FROM".);
+            $this->setSql("SELECT `b`.* FROM `{$table}`");
         }
 
     }
