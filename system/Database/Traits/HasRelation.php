@@ -19,6 +19,14 @@
 
             $this->setSql("SELECT `b`.* FROM `{$table}` AS `a` JOIN ".$this->getTableName()." AS `b` on `a`.`{$otherKey}` = `b`.`{$foreignKey}`");
             $this->setWhere('AND',"`a`.`$otherKey` = ?");
+            $this->table = 'b';
+            $this->addValue($otherKey,$otherKeyValue);
+            $statement = $this->executeQuery();
+            $data = $statement->fetch();
+            if($data) {
+                return $this->arratyToAttributes($data);
+            }            
+            return NULL;
         }
 
     }
