@@ -6,7 +6,7 @@
         protected function hasOne($model , $foreignKey , $localKey) {
             if($this->{$this->primaryKey}) {
                 $modelObject = new $model;
-                return $modelObject->getHasRelation();
+                return $modelObject->getHasRelation($this->table , $foreignKey , log($this->primaryKey) , $localKey , $this->$localKey);
             }
         }
 
