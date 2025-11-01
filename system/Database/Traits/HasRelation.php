@@ -16,6 +16,8 @@
                 we would have to write a command like this for everytime =>
                     $sql = "SELECT phones.* FROM users JOIN phones on users.id = phones.user_id"
             */
+
+            $this->setSql("SELECT ".$this->getTableName().".* FROM".);
         }
 
     }
