@@ -20,9 +20,10 @@
         ];
 
         public function __call($method, $args) {
-
+           return $this->methodCaller($this, $method, $args);
         }
-        public function __callStatic($method, $args) {
+
+        public static function __callStatic($method, $args) {
             
         }
 
