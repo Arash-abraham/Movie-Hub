@@ -18,6 +18,7 @@
             */
 
             $this->setSql("SELECT `b`.* FROM `{$table}` AS `a` JOIN ".$this->getTableName()." AS `b` on `a`.`{$otherKey}` = `b`.`{$foreignKey}`");
+            $this->setWhere('AND',"`a`.`$otherKey` = ?");
         }
 
     }
