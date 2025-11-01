@@ -70,7 +70,8 @@
                 }
                 $this->setSql("SELECT {$fields} FROM {$this->getTableName()}");
             }
-            
+            $this->setWhere("AND", $this->getAttributeName($this->primaryKey)." IS NULL");
+                        
             $statement = $this->executeQuery();
             $data = $statement->fetchAll();
             if($data) {
