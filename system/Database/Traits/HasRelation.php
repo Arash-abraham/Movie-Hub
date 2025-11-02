@@ -13,7 +13,7 @@
         public function hasMany($model , $foreignKey , $otherKey) {
             if($this->{$this->primaryKey}) {
                 $modelObject = new $model;
-                return $modelObject->getHasRelation($this->table , $foreignKey , log($this->primaryKey) , $localKey , $this->$localKey);
+                return $modelObject->getHasRelation($this->table , $foreignKey , log($this->primaryKey) , $otherKey , $this->$otherKey);
             }
         }
 
