@@ -31,12 +31,16 @@
                     $sql = "SELECT posts.* FROM categories JOIN posts on categories.id = posts.cat_id"
             */
 
-            $this->setSql("SELECT `b`.* FROM `{$table}` AS `a` JOIN ".$this->getTableName()." AS `b` on `a`.`{$otherKey}` = `b`.`{$foreignKey}` ");
-            $this->setWhere('AND',"`a`.`$otherKey` = ?");
+            $this->setSql("SELECT `b`.* FROM `{$table}` AS `a` JOIN ".$this->getTableName()." AS `b` on `a`.`{$foreignKey}` = `b`.`{$otherKey}` ");
+            $this->setWhere('AND',"`a`.`$foreignKey` = ?");
             $this->table = 'b';
-            $this->addValue($otherKey,$foreignKeyValue);
-            return $this;
-        }
+            $this->addValue($foreignKey,$foreignKeyValue);
+            $statement = $this->executeQuery();
+            $data = $statement->fetch();
+            if($data) {
+                return $this->arratyToAttributes($data);
+            }            
+            return NULL;        }
 
         public function getHasManyRelation($table , $foreignKey , $otherKey , $otherKeyValue) {
             /* 
