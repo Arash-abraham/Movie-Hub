@@ -17,6 +17,27 @@
             }
         }
 
+        public function blongsTo($model , $foreignKey , $localKey) {
+            if($this->{$this->primaryKey}) {
+                $modelObject = new $model;
+                return $modelObject->blongsTo($this->table , $foreignKey , log($this->primaryKey) , $localKey , $this->$localKey);
+            }
+        }
+        
+        public function getBlongsToRelation($table , $foreignKey , $otherKey , $foreignKeyValue) {
+            /* 
+                If we didn't have this method, 
+                we would have to write a command like this for everytime =>
+                    $sql = "SELECT posts.* FROM categories JOIN posts on categories.id = posts.cat_id"
+            */
+
+            $this->setSql("SELECT `b`.* FROM `{$table}` AS `a` JOIN ".$this->getTableName()." AS `b` on `a`.`{$otherKey}` = `b`.`{$foreignKey}` ");
+            $this->setWhere('AND',"`a`.`$otherKey` = ?");
+            $this->table = 'b';
+            $this->addValue($otherKey,$foreignKeyValue);
+            return $this;
+        }
+        
         public function getHasManyRelation($table , $foreignKey , $otherKey , $otherKeyValue) {
             /* 
                 If we didn't have this method, 
