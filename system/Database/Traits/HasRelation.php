@@ -6,21 +6,21 @@
         protected function hasOne($model , $foreignKey , $localKey) {
             if($this->{$this->primaryKey}) {
                 $modelObject = new $model;
-                return $modelObject->getHasOneRelation($this->table , $foreignKey , log($this->primaryKey) , $localKey , $this->$localKey);
+                return $modelObject->getHasOneRelation($this->table , $foreignKey , $localKey , $this->$localKey);
             }
         }
 
         public function hasMany($model , $foreignKey , $otherKey) {
             if($this->{$this->primaryKey}) {
                 $modelObject = new $model;
-                return $modelObject->getHasRelation($this->table , $foreignKey , log($this->primaryKey) , $otherKey , $this->$otherKey);
+                return $modelObject->getHasRelation($this->table , $foreignKey , $otherKey , $this->$otherKey);
             }
         }
 
         public function blongsTo($model , $foreignKey , $localKey) {
             if($this->{$this->primaryKey}) {
                 $modelObject = new $model;
-                return $modelObject->blongsTo($this->table , $foreignKey , log($this->primaryKey) , $localKey , $this->$localKey);
+                return $modelObject->getBlongsToRelation($this->table , $foreignKey , $localKey , $this->$foreignKey);
             }
         }
         
@@ -37,7 +37,7 @@
             $this->addValue($otherKey,$foreignKeyValue);
             return $this;
         }
-        
+
         public function getHasManyRelation($table , $foreignKey , $otherKey , $otherKeyValue) {
             /* 
                 If we didn't have this method, 
