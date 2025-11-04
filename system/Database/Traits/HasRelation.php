@@ -28,7 +28,8 @@
         
         protected function belongsToMany($model, $commonTable, $localKey, $middleForeignKey, $middleRelation, $foreignKey ) {
             if($this->{$this->primaryKey}) {
-                $modelObject = new $model();
+                $className = "\\App\\" . $model;
+                $modelObject = new $className();
                 return $modelObject->getBelongsToManyRelation($this->table, $commonTable , $localKey, $this->$localKey, $middleForeignKey, $middleRelation, $foreignKey);
             }
         }
