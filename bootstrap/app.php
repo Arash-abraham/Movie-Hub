@@ -1,6 +1,15 @@
 <?php
     // dd helper funcrtion
     
+    function dd(...$args) {
+        foreach ($args as $arg) {
+            echo '<pre style="background: #f4f4f4; padding: 10px; border: 1px solid #ccc; margin: 5px;">';
+            var_dump($arg);
+            echo '</pre>';
+        }
+        die(1);
+    }
+
     require_once("../config/app.php");
     require_once("../config/database.php");
     
