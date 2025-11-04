@@ -13,7 +13,7 @@
         protected $casts = [];
 
         public function roles() {
-            return $this->belongsToMany();
+            return $this->belongsToMany("Role","user_role","id","user_id","role_id","id"); // First id for user , Second id for role
         }
     }
 ?>
