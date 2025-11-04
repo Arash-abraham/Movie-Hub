@@ -13,5 +13,9 @@
         ];
         protected $guarded = ["id"];
         protected $casts = [];
+
+        public function category() {
+            return $this->belongsTo("Category","cat_id","id");
+        }
     }
 ?>
