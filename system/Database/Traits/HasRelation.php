@@ -20,7 +20,8 @@
 
         public function blongsTo($model , $foreignKey , $localKey) {
             if($this->{$this->primaryKey}) {
-                $modelObject = new $model();
+                $className = "\\App\\" . $model;
+                $modelObject = new $className();
                 return $modelObject->getBlongsToRelation($this->table , $foreignKey , $localKey , $this->$foreignKey);
             }
         }
