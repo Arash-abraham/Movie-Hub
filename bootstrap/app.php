@@ -3,9 +3,9 @@
     
     function dd(...$args) {
         foreach ($args as $arg) {
-            echo '<pre style="background: #f4f4f4; padding: 10px; border: 1px solid #ccc; margin: 5px;">';
+            print '<pre style="background: #f4f4f4; padding: 10px; border: 1px solid #ccc; margin: 5px;">';
             var_dump($arg);
-            echo '</pre>';
+            print '</pre>';
         }
         die(1);
     }
