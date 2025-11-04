@@ -13,7 +13,7 @@
         protected $casts = [];
 
         public function posts() {
-            $this->hasMany("","cat_id","id");
+            $this->hasMany("Post","cat_id","id");
         }
     }
 ?>
