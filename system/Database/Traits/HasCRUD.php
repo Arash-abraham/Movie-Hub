@@ -80,25 +80,27 @@
             return [];
         }
 
-        protected function findMethod($id)
-        {
+        protected function findMethod($id) {
             $this->resetQuery();
             $this->setSql("SELECT * FROM {$this->getTableName()}");
-            $this->setWhere("AND", $this->getAttributeName($this->primaryKey) . " = ?", [$id]);
-
+        
+            $this->addValue($this->primaryKey, $id);
+            $this->setWhere("AND", $this->getAttributeName($this->primaryKey) . " = ?");
+        
+            // Soft Delete
             if ($this->deletedAt !== null) {
                 $this->setWhere("AND", $this->getAttributeName($this->deletedAt) . " IS NULL");
             }
-
+        
             $statement = $this->executeQuery();
             $data = $statement->fetch();
-
+        
             $this->setAllowedMethods(['update', 'delete', 'save']);
-
+        
             if ($data) {
                 return $this->arrayToAttributs($data);
             }
-
+        
             return null;
         }
 
