@@ -13,5 +13,9 @@
         ];
         protected $guarded = ["id"];
         protected $casts = [];
+
+        public function posts() {
+            
+        }
     }
 ?>
