@@ -194,30 +194,32 @@
         // ========== PAGINATE ==========
         protected function paginateMethod($perPage)
         {
+            $this->resetQuery();
             $totalRows = $this->getCount();
+        
             $currentPage = max(1, min(isset($_GET["page"]) ? (int)$_GET["page"] : 1, ceil($totalRows / $perPage)));
             $currentRow = ($currentPage - 1) * $perPage;
-            $this->setLimit($currentRow, $perPage);
-
-            if ($this->sql == '') {
-                $this->setSql("SELECT {$this->getTableName()}.* FROM {$this->getTableName()}");
-            }
-
+        
+            $this->resetQuery();
+            $this->setSql("SELECT {$this->getTableName()}.* FROM {$this->getTableName()}");
+        
             if ($this->deletedAt !== null) {
                 $this->setWhere("AND", $this->getAttributeName($this->deletedAt) . " IS NULL");
             }
-
+        
+            $this->setLimit($currentRow, $perPage);
+        
             $statement = $this->executeQuery();
             $data = $statement->fetchAll();
-
+        
             if ($data) {
                 $this->arrayToObjects($data);
                 return $this->collection;
             }
-
+        
             return [];
         }
-
+        
         // ========== SAVE ==========
         public function saveMethod()
         {

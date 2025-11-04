@@ -25,7 +25,7 @@
             return $object;
         }
 
-        protected function arrayToObject(array $array) {
+        protected function arrayToObjects(array $array) {
             $collection = [];
 
             foreach($array as $value) {

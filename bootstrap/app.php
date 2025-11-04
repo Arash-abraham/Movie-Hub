@@ -200,7 +200,10 @@
     require_once("../routes/web.php");
     require_once("../routes/api.php");
 
-    $categories = \App\Models\Category::paginate(2);
+    $categories = \App\Models\Category::paginate(1);
+
+    dd($categories);
+
 
     $routing = new \System\Router\Routing();
     $routing->run();

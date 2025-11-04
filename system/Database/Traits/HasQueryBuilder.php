@@ -116,46 +116,47 @@
         }
 
         public function getCount() {
-            // var_dump('test');
-            // exit;
-            $query = '';
-            $query .= "SELECT COUNT(".$this->getTableName().".*) FROM " . $this->getTableName();
-
+            $query = "SELECT COUNT(*) FROM " . $this->getTableName();
+            $whereString = '';
+        
+            // ساخت شرط‌های WHERE
             if(!empty($this->where)) {
-                $whereString = '';
                 foreach($this->where as $where) {
-                    $whereString == '' 
-                        ?   
-                            $whereString .= $where['condition'] 
-                        : 
-                            $whereString .= ' ' . $where['operator'] . ' ' . $where['condition'];
+                    $whereString === '' 
+                        ? $whereString .= $where['condition'] 
+                        : $whereString .= ' ' . $where['operator'] . ' ' . $where['condition'];
                 }
+            }
+        
+            // اضافه کردن شرط deletedAt اگر وجود دارد
+            if ($this->deletedAt !== null) {
+                $deletedCondition = $this->deletedAt . " IS NULL";
+                if ($whereString === '') {
+                    $whereString = $deletedCondition;
+                } else {
+                    $whereString .= " AND " . $deletedCondition;
+                }
+            }
+        
+            // اضافه کردن WHERE اگر شرطی وجود دارد
+            if ($whereString !== '') {
                 $query .= ' WHERE ' . $whereString;
             }
-
-            $query .= ' ;';
-
-
+        
             $pdoInstance = DBConnection::getDBConnectionInstance();
             $statement = $pdoInstance->prepare($query);
-            if(sizeof($this->bindValues) > sizeof($this->values)) {
-                sizeof($this->bindValues) > 0
-                    ? 
-                        $statement->execute($this->bindValues)
-                    :
-                        $statement->execute();
+            
+            // اجرای کوئری با پارامترها
+            if(sizeof($this->bindValues) > 0) {
+                $statement->execute($this->bindValues);
+            } else if(sizeof($this->values) > 0) {
+                $statement->execute(array_values($this->values));
+            } else {
+                $statement->execute();
             }
-            else {
-                sizeof($this->values) > 0
-                ? 
-                    $statement->execute(array_values($this->values))
-                :
-                    $statement->execute();
-            }
-
-            return $statement->fetchColumn();
+        
+            return (int)$statement->fetchColumn();
         }
-
         public function getTableName() {
             return ' `' . $this->table . '`';
         }
