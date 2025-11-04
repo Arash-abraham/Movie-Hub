@@ -1,197 +1,87 @@
 <?php
     // dd helper funcrtion
     
-    function dd(...$args)
-    {
-        $backtrace = debug_backtrace()[0];
-        
-        echo <<<HTML
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Debug Output - Laravel Style</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            
-            body {
-                font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-                background: #000000;
-                min-height: 100vh;
-                padding: 20px;
-            }
-            
-            .debug-container {
-                max-width: 95%;
-                margin: 0 auto;
-                background: #000000;
-                border-radius: 12px;
-                border: 2px solid #00ff00;
-                box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
-                overflow: hidden;
-            }
-            
-            .debug-header {
-                background: #000000;
-                color: #ff0000;
-                padding: 20px 25px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 2px solid #00ff00;
-            }
-            
-            .debug-title {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                font-weight: 600;
-                font-size: 18px;
-                color: #ff0000;
-            }
-            
-            .debug-file {
-                background: #000000;
-                color: #00ff00;
-                padding: 6px 12px;
-                border-radius: 4px;
-                font-size: 13px;
-                font-family: 'Monaco', 'Consolas', monospace;
-                border: 1px solid #00ff00;
-            }
-            
-            .debug-content {
-                padding: 25px;
-                background: #000000;
-            }
-            
-            .variable-section {
-                margin-bottom: 25px;
-                border: 1px solid #00ff00;
-                border-radius: 8px;
-                overflow: hidden;
-                background: #000000;
-            }
-            
-            .variable-header {
-                background: #000000;
-                padding: 12px 16px;
-                border-bottom: 1px solid #00ff00;
-                font-weight: 600;
-                color: #ff0000;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-            
-            .variable-index {
-                background: #ff0000;
-                color: #000000;
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 12px;
-                font-weight: bold;
-            }
-            
-            .variable-content {
-                background: #000000;
-                color: #00ff00;
-                padding: 0;
-                overflow-x: auto;
-            }
-            
-            .variable-pre {
-                padding: 20px;
-                margin: 0;
-                font-family: 'Monaco', 'Consolas', 'Fira Code', monospace;
-                font-size: 14px;
-                line-height: 1.5;
-                tab-size: 4;
-                background: #000000;
-                color: #00ff00;
-            }
-            
-            .debug-footer {
-                background: #000000;
-                padding: 15px 25px;
-                border-top: 2px solid #00ff00;
-                text-align: center;
-                color: #ff0000;
-                font-size: 13px;
-            }
-            
-            .type-string { color: #00ff00; }
-            .type-integer { color: #00ff00; }
-            .type-float { color: #00ff00; }
-            .type-boolean { color: #ff0000; }
-            .type-null { color: #ff0000; }
-            .type-array { color: #00ff00; }
-            .type-object { color: #ff0000; }
-        </style>
-    </head>
-    <body>
-        <div class="debug-container">
-            <div class="debug-header">
-                <div class="debug-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff0000" stroke-width="2">
-                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    Debug Output
-                </div>
-                <div class="debug-file">
-                    {$backtrace['file']}:{$backtrace['line']}
-                </div>
-            </div>
-            
-            <div class="debug-content">
-    HTML;
+
+    if (!function_exists('dd')) {
+        /**
+         * Hacker-style debug dumper with Matrix theme, copy-to-clipboard, and file/line.
+         * Designed for personal use — clean, fast, beautiful.
+         */
+        function dd(...$args): never
+        {
+            $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
+            $file = $trace['file'] ?? 'unknown';
+            $line = $trace['line'] ?? '0';
+            $rel = ltrim(str_replace([$_SERVER['DOCUMENT_ROOT'] ?? '', '\\'], ['', '/'], $file), '/');
     
-        foreach ($args as $index => $arg) {
-            $variableNumber = $index + 1;
-            echo <<<HTML
-                <div class="variable-section">
-                    <div class="variable-header">
-                        <div class="variable-index">{$variableNumber}</div>
-                        Variable #{$variableNumber}
-                    </div>
-                    <div class="variable-content">
-                        <pre class="variable-pre">
-    HTML;
+            echo '<!DOCTYPE html><html lang="en"><head>';
+            echo '<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">';
+            echo '<title>DD • ' . htmlspecialchars($rel) . ':' . $line . '</title>';
+            echo '<style>
+                :root{--bg:#000;--fg:#0f0;--dim:#080;--border:#0f0;--shadow:rgba(0,255,0,.3)}
+                *{margin:0;padding:0;box-sizing:border-box}
+                body{font-family:"Fira Code","Courier New",monospace;background:var(--bg);color:var(--fg);padding:16px;line-height:1.6}
+                .dd{max-width:1100px;margin:auto;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 0 20px var(--shadow)}
+                .h{background:#001100;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);font-weight:600;font-size:14px}
+                .t{color:var(--fg)}
+                .f{color:var(--dim);font-size:11px}
+                .c{padding:16px}
+                .v{margin-bottom:16px;border:1px solid var(--dim);border-radius:6px;overflow:hidden}
+                .vh{background:#001100;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:13px}
+                .i{width:18px;height:18px;background:var(--fg);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold}
+                .vb{background:#000;padding:12px;overflow-x:auto}
+                pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-size:13px}
+                .str{color:#0f8}
+                .int,.flt{color:#0ff}
+                .bool{color:#f00}
+                .nul{color:#f80}
+                .arr{color:#0f8}
+                .obj{color:#f0f}
+                .key{color:#8f8}
+                .cpy{background:var(--fg);color:#000;border:none;padding:1px 5px;border-radius:3px;font-size:10px;cursor:pointer;margin-left:6px}
+                .cpy:hover{background:#0c0}
+            </style></head><body><div class="dd">';
             
-            highlight_string("<?php\n" . var_export($arg, true));
-            
-            echo <<<HTML
-                        </pre>
-                    </div>
-                </div>
-    HTML;
+            echo '<div class="h"><div class="t">DEBUG</div><div class="f">' . htmlspecialchars($rel . ':' . $line) . '</div></div>';
+            echo '<div class="c">';
+    
+            foreach ($args as $i => $val) {
+                $n = $i + 1;
+                $t = strtolower(gettype($val));
+                $c = match($t) {
+                    'string' => 'str', 'integer' => 'int', 'double' => 'flt',
+                    'boolean' => 'bool', 'null' => 'nul', 'array' => 'arr', 'object' => 'obj',
+                    default => 'str'
+                };
+                $exp = htmlspecialchars(var_export($val, true), ENT_SUBSTITUTE);
+                $exp = preg_replace([
+                    '/&quot;(.*?)&quot;/',
+                    '/\b(true|false)\b/i',
+                    '/\bnull\b/i',
+                    '/=&gt;/',
+                    '/\[(\d+)\]/',
+                    '/([a-zA-Z_\x7f-\xff][\w\x7f-\xff]*)(?=\s*=>|\s*\{)/'
+                ], [
+                    '<span class="str">"$1"</span>',
+                    '<span class="bool">$1</span>',
+                    '<span class="nul">null</span>',
+                    '<span style="color:#666">=></span>',
+                    '[<span class="int">$1</span>]',
+                    '<span class="key">$1</span>'
+                ], $exp);
+    
+                echo '<div class="v"><div class="vh"><div class="i">' . $n . '</div>Var #' . $n . ' <span style="color:#666">(' . $t . ')</span>';
+                echo '<button class="cpy" onclick="copy(this)" data-clip="' . htmlspecialchars(strip_tags($exp)) . '">COPY</button></div>';
+                echo '<div class="vb"><pre>' . $exp . '</pre></div></div>';
+            }
+    
+            echo '</div></div>';
+            echo '<script>
+                function copy(el){navigator.clipboard.writeText(el.dataset.clip).then(()=>{el.innerText="OK";setTimeout(()=>{el.innerText="COPY"},800)})}
+            </script>';
+            echo '</body></html>';
+            exit;
         }
-    
-        echo <<<HTML
-            </div>
-            
-            <div class="debug-footer">
-                ⚡ Debug Console • arash-abraham
-            </div>
-        </div>
-    </body>
-    </html>
-    HTML;
-        
-        die(1);
     }
 
     require_once("../config/app.php");
@@ -200,8 +90,8 @@
     require_once("../routes/web.php");
     require_once("../routes/api.php");
 
-    $post = \App\Models\Post::find(2);
-    dd($post);
+    $users = \App\Models\Role::all()->where('id','>','1')->get();
+    dd($users);
 
     $routing = new \System\Router\Routing();
     $routing->run();

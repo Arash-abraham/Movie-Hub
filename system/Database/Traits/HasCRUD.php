@@ -63,6 +63,7 @@
         protected function allMethod()
         {
             $this->resetQuery();
+            
             $this->setSql("SELECT * FROM {$this->getTableName()}");
 
             if ($this->deletedAt !== null) {
@@ -73,7 +74,7 @@
             $data = $statement->fetchAll();
 
             if ($data) {
-                $this->arrayToObject($data);
+                $this->arrayToObjects($data);
                 return $this->collection;
             }
 
@@ -174,25 +175,24 @@
         protected function getMethod($array = [])
         {
             if ($this->sql == '') {
-                $fields = empty($array) ? $this->getTableName() . '.*' : implode(', ', array_map([$this, 'getAttributeName'], $array));
+                $fields = empty($array) ? '*' : implode(', ', array_map([$this, 'getAttributeName'], $array));
                 $this->setSql("SELECT {$fields} FROM {$this->getTableName()}");
             }
-
+        
             if ($this->deletedAt !== null) {
                 $this->setWhere("AND", $this->getAttributeName($this->deletedAt) . " IS NULL");
             }
-
+        
             $statement = $this->executeQuery();
-            $data = $statement->fetchAll();
-
+            $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        
             if ($data) {
                 $this->arrayToObjects($data);
                 return $this->collection;
             }
-
+        
             return [];
         }
-
         // ========== PAGINATE ==========
         protected function paginateMethod($perPage)
         {

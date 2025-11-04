@@ -15,7 +15,7 @@
         protected $casts = [];
 
         public function category() {
-            return $this->belongsTo("Category","cat_id","id");
+            return $this->blongsTo("Category","cat_id","id");
         }
     }
 ?>

@@ -13,6 +13,7 @@
         use HasAttributes, HasCRUD, HasQueryBuilder, HasMethodCaller, HasRelation;
 
         protected $table;
+        public $exists = false;
         protected $fillable = [];
         protected $hidden = [];
         protected $casts = [];
