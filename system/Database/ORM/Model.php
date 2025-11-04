@@ -7,11 +7,11 @@
     use System\Database\Traits\HasMethodCaller;
     use System\Database\Traits\HasQueryBuilder;
     use System\Database\Traits\HasRelation;
-    use System\Database\Traits\HasSoftDelete; 
 
-    abstract class Model {
-        use HasAttributes, HasCrud, HasQueryBuilder, HasMethodCaller , HasRelation, HasSoftDelete;
-        
+    abstract class Model
+    {
+        use HasAttributes, HasCRUD, HasQueryBuilder, HasMethodCaller, HasRelation;
+
         protected $table;
         protected $fillable = [];
         protected $hidden = [];
@@ -20,7 +20,8 @@
         protected $guarded = [];
         protected $createdAt = 'created_at';
         protected $updatedAt = 'updated_at';
-        protected $deletedAt = NULL;
+        protected $deletedAt = 'deleted_at';  // فعال
+        // protected $deletedAt = null;       // غیرفعال
         protected $collection = [];
     }
 ?>

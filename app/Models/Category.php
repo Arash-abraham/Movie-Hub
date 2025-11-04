@@ -1,6 +1,6 @@
 <?php 
 
-    namespace App;
+    namespace App\Models;
 
     use System\Database\ORM\Model;
     
@@ -13,7 +13,7 @@
         protected $casts = [];
 
         public function posts() {
-            $this->hasMany("Post","cat_id","id");
+            return $this->hasMany("Post","cat_id","id");
         }
     }
 ?>
