@@ -12,7 +12,8 @@
 
         public function hasMany($model , $foreignKey , $otherKey) {
             if($this->{$this->primaryKey}) {
-                $modelObject = new $model();
+                $className = "\\App\\" . $model;
+                $modelObject = new $className();
                 return $modelObject->getHasRelation($this->table , $foreignKey , $otherKey , $this->$otherKey);
             }
         }
