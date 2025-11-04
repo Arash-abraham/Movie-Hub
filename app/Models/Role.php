@@ -12,8 +12,8 @@
         protected $guarded = ["id"];
         protected $casts = [];
 
-        public function users() {
-            return $this->belongsToMany("User","user_role","id","role_id","user_id","id"); // First id for role , Second id for user
-        }
+        // public function users() {
+        //     return $this->belongsToMany("User","user_role","id","role_id","user_id","id"); // First id for role , Second id for user
+        // }
     }
 ?>
