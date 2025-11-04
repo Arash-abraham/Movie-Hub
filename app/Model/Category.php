@@ -11,5 +11,9 @@
         ];
         protected $guarded = ["id"];
         protected $casts = [];
+
+        public function posts() {
+            $this->hasMany("","cat_id","id");
+        }
     }
 ?>
