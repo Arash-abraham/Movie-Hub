@@ -116,6 +116,8 @@
         }
 
         public function getCount() {
+            // var_dump('test');
+            // exit;
             $query = '';
             $query .= "SELECT COUNT(".$this->getTableName().".*) FROM " . $this->getTableName();
 
