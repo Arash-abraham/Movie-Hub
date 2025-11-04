@@ -11,5 +11,9 @@
         ];
         protected $guarded = ["id"];
         protected $casts = [];
+
+        public function roles() {
+            return $this->belongsToMany();
+        }
     }
 ?>
