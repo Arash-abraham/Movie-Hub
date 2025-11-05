@@ -55,11 +55,11 @@
                             
                             // Add visibility indicator
                             if ($property->isPublic()) {
-                                $visibility = 'public ';
+                                $visibility = '+';
                             } elseif ($property->isProtected()) {
-                                $visibility = 'protected ';
+                                $visibility = '#';
                             } else {
-                                $visibility = 'private ';
+                                $visibility = '-';
                             }
                             
                             $key = "'$visibility$name'";
@@ -125,43 +125,6 @@
             $output = preg_replace('/,\s*\]/', "\n]", $output);
             $output = preg_replace('/,\s*\}/', "\n}", $output);
             return $output;
-        }
-    
-        function add_collapsible($html) {
-            // Add collapsible to arrays
-            $html = preg_replace_callback('/(\s*)(\[[\s\S]*?\])(,?)(\s*)$/m', function($matches) {
-                $indent = $matches[1];
-                $content = $matches[2];
-                $comma = $matches[3];
-                $end = $matches[4];
-                
-                // Only make non-empty arrays collapsible
-                if (strlen(trim(strip_tags($content))) > 20) {
-                    return $indent . 
-                           '<div class="collapsible-array">' .
-                           '<span class="collapsible-toggle">▶</span>' .
-                           '<div class="collapsible-content">' . $content . '</div>' .
-                           '</div>' . $comma . $end;
-                }
-                
-                return $matches[0];
-            }, $html);
-            
-            // Add collapsible to objects
-            $html = preg_replace_callback('/(\s*)(\w+\s*\{[\s\S]*?\})(,?)(\s*)$/m', function($matches) {
-                $indent = $matches[1];
-                $content = $matches[2];
-                $comma = $matches[3];
-                $end = $matches[4];
-                
-                return $indent . 
-                       '<div class="collapsible-object">' .
-                       '<span class="collapsible-toggle">▶</span>' .
-                       '<div class="collapsible-content">' . $content . '</div>' .
-                       '</div>' . $comma . $end;
-            }, $html);
-            
-            return $html;
         }
     
         function dd(...$args): never
@@ -288,43 +251,6 @@
                     font-size: 13px;
                     line-height: 1.5;
                     font-family: "Fira Code", "Courier New", monospace;
-                    position: relative;
-                }
-                
-                /* Collapsible styles */
-                .collapsible-array,
-                .collapsible-object {
-                    position: relative;
-                    display: inline-block;
-                    vertical-align: top;
-                }
-                .collapsible-toggle {
-                    position: absolute;
-                    left: -15px;
-                    top: 2px;
-                    cursor: pointer;
-                    user-select: none;
-                    font-size: 10px;
-                    color: #666;
-                    width: 12px;
-                    height: 12px;
-                    text-align: center;
-                    line-height: 12px;
-                    transition: transform 0.2s;
-                }
-                .collapsible-array.collapsed .collapsible-toggle,
-                .collapsible-object.collapsed .collapsible-toggle {
-                    transform: rotate(-90deg);
-                }
-                .collapsible-content {
-                    display: inline-block;
-                    margin-left: 4px;
-                    border-left: 1px solid #333;
-                    padding-left: 12px;
-                }
-                .collapsible-array.collapsed .collapsible-content,
-                .collapsible-object.collapsed .collapsible-content {
-                    display: none;
                 }
                 
                 .string { color: #4ec9b0; }
@@ -387,11 +313,8 @@
                     $raw = full_export($val);
                     $raw = format_output($raw);
                     
-                    // First escape HTML, then add collapsible functionality
-                    $escaped = htmlspecialchars($raw, ENT_SUBSTITUTE);
-                    $with_collapsible = add_collapsible($escaped);
-                    
-                    // Apply syntax highlighting AFTER adding collapsible
+                    // Apply syntax highlighting
+                    $highlighted = htmlspecialchars($raw, ENT_SUBSTITUTE);
                     $highlighted = preg_replace([
                         // Strings
                         '/\'([^\']*)\'/',
@@ -404,7 +327,11 @@
                         // Array indexes
                         '/\[(\d+)\]/',
                         // Object class names
-                        '/(\w+)\s*\{/',
+                        '/(\w+(?:\\\\\w+)*)\s*\{/',
+                        // Visibility indicators
+                        '/\'\+([^\']*)\' =>/',
+                        '/\'#([^\']*)\' =>/',
+                        '/\'-([^\']*)\' =>/',
                     ], [
                         '<span class="string">\'$1\'</span>',
                         '<span class="boolean">$1</span>',
@@ -412,7 +339,10 @@
                         '<span class="comment">$0</span>',
                         '[<span class="integer">$1</span>]',
                         '<span class="object">$1</span> {',
-                    ], $with_collapsible);
+                        '<span class="visibility-public">\'+$1\'</span> =>',
+                        '<span class="visibility-protected">\'#$1\'</span> =>',
+                        '<span class="visibility-private">\'-$1\'</span> =>',
+                    ], $highlighted);
     
                     $plain = strip_tags($raw);
     
@@ -447,24 +377,6 @@
                             alert("Copy failed!");
                         });
                     }
-                    
-                    // Collapsible functionality
-                    document.addEventListener("click", function(e) {
-                        if (e.target.classList.contains("collapsible-toggle")) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            const parent = e.target.parentElement;
-                            parent.classList.toggle("collapsed");
-                        }
-                    });
-                    
-                    // Auto-collapse large arrays/objects
-                    document.querySelectorAll(".collapsible-array, .collapsible-object").forEach(el => {
-                        const content = el.querySelector(".collapsible-content");
-                        if (content && content.textContent.length > 200) {
-                            el.classList.add("collapsed");
-                        }
-                    });
                   </script>';
             echo '</body></html>';
             
