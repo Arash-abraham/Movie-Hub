@@ -140,7 +140,7 @@
     require_once("../routes/web.php");
     require_once("../routes/api.php");
 
-    $category = \App\Models\Category::find(1);
+    $category = \App\Models\Category::all();
     dd($category);
 
     $routing = new \System\Router\Routing();
