@@ -1,52 +1,75 @@
 <?php
     if (!function_exists('dd')) {
-        function full_export($var, $depth = 0, $max_depth = 30) {
+        function full_export($var, $depth = 0, $max_depth = 5, $max_items = 50, $max_length = 500) {
             $indent = str_repeat('  ', $depth);
             $type = gettype($var);
-    
+
             if ($depth > $max_depth) return '...';
-    
+
             switch ($type) {
                 case 'array':
                     if (empty($var)) return '[]';
+                    $count = count($var);
                     $items = [];
+                    $i = 0;
                     foreach ($var as $k => $v) {
-                        $key = full_export($k, $depth + 1, $max_depth);
-                        $val = full_export($v, $depth + 1, $max_depth);
+                        if ($i++ >= $max_items) {
+                            $items[] = "$indent  ... ($count items total)";
+                            break;
+                        }
+                        $key = full_export($k, $depth + 1, $max_depth, $max_items, $max_length);
+                        $val = full_export($v, $depth + 1, $max_depth, $max_items, $max_length);
                         $items[] = "$indent  $key => $val";
                     }
                     return "[\n" . implode(",\n", $items) . "\n$indent]";
-    
+
                 case 'object':
                     $class = get_class($var);
                     $props = [];
-                    foreach ((array)$var as $k => $v) {
-                        $key = preg_replace(['/^\x00.*\x00/', '/^\x00.+\x00/'], ['', ''], $k);
-                        $key = full_export($key, $depth + 1, $max_depth);
-                        $val = full_export($v, $depth + 1, $max_depth);
+                    $reflection = new ReflectionClass($var);
+                    $i = 0;
+                    
+                    // فقط پراپرتی‌های public را نمایش بده
+                    foreach ($reflection->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
+                        if ($i++ >= $max_items) {
+                            $props[] = "$indent  ... (more properties)";
+                            break;
+                        }
+                        $property->setAccessible(true);
+                        $key = $property->getName();
+                        $val = full_export($property->getValue($var), $depth + 1, $max_depth, $max_items, $max_length);
                         $props[] = "$indent  \"$key\" => $val";
                     }
+                    
                     if (empty($props)) return "object($class) {}";
                     return "object($class) {\n" . implode(",\n", $props) . "\n$indent}";
-    
+
                 case 'string':
                     $str = addslashes($var);
-                    if (strlen($str) > 1000) $str = substr($str, 0, 1000) . '...';
+                    if (strlen($str) > $max_length) {
+                        $str = substr($str, 0, $max_length) . '... (' . strlen($var) . ' chars)';
+                    }
                     return '"' . $str . '"';
-    
+
                 case 'boolean': return $var ? 'true' : 'false';
                 case 'NULL': return 'null';
-                default: return var_export($var, true);
+                case 'integer': return '(int) ' . $var;
+                case 'double': return '(float) ' . $var;
+                default: return '(' . $type . ') ' . var_export($var, true);
             }
         }
-    
+
         function dd(...$args): never
         {
+            // افزایش memory limit موقت
+            $originalMemoryLimit = ini_get('memory_limit');
+            ini_set('memory_limit', '256M');
+            
             $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
             $file = $trace['file'] ?? 'unknown';
             $line = $trace['line'] ?? '0';
             $rel = ltrim(str_replace([$_SERVER['DOCUMENT_ROOT'] ?? '', '\\'], ['', '/'], $file), '/');
-    
+
             echo '<!DOCTYPE html><html lang="fa"><head>';
             echo '<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">';
             echo '<title>DD • ' . htmlspecialchars($rel) . ':' . $line . '</title>';
@@ -76,50 +99,69 @@
                 .key{color:#8f8}
                 .cpy{background:var(--fg);color:#000;border:none;padding:2px 7px;border-radius:3px;font-size:10px;cursor:pointer;margin-left:auto;font-weight:bold}
                 .cpy:hover{background:#0c0}
+                .warning{background:#330000;color:#ff6666;padding:8px;border-radius:4px;margin:8px 0;font-size:12px;border:1px solid #ff0000}
                 summary{list-style:none}
                 summary::-webkit-details-marker{display:none}
             </style></head><body><div class="dd">';
             
             echo '<div class="h"><div class="t">DEBUG</div><div class="f">' . htmlspecialchars($rel . ':' . $line) . '</div></div>';
             echo '<div class="c">';
-    
+
+            // نمایش هشدار برای داده‌های بزرگ
+            $total_size = 0;
+            foreach ($args as $arg) {
+                $total_size += strlen(serialize($arg));
+            }
+            
+            if ($total_size > 1000000) { // بیش از 1MB
+                echo '<div class="warning">⚠️ داده‌های بزرگ تشخیص داده شد. ممکن است نمایش ناقص باشد.</div>';
+            }
+
             $first = true;
             foreach ($args as $i => $val) {
-                $n = $i + 1;
-                $t = strtolower(gettype($val));
-    
-                $raw = full_export($val);
-                $exp = htmlspecialchars($raw, ENT_SUBSTITUTE);
-                $exp = preg_replace([
-                    '/&quot;(.*?)&quot;/',
-                    '/\b(true|false)\b/i',
-                    '/\bnull\b/i',
-                    '/=&gt;/',
-                    '/\[(\d+)\]/',
-                    '/&quot;([^&]+)&quot;\s*=&gt;/'
-                ], [
-                    '<span class="str">"$1"</span>',
-                    '<span class="bool">$1</span>',
-                    '<span class="nul">null</span>',
-                    '<span style="color:#666">=></span>',
-                    '[<span class="int">$1</span>]',
-                    '<span class="key">$1</span><span style="color:#666">=></span>'
-                ], $exp);
-    
-                $plain = strip_tags($exp);
-    
-                echo '<details class="v"' . ($first ? ' open' : '') . '>';
-                echo '<summary class="vh">
-                        <div class="i">' . $n . '</div>
-                        Var #' . $n . ' <span style="color:#666">(' . $t . ')</span>
-                        <button class="cpy" onclick="copy(this)" data-clip="' . htmlspecialchars($plain, ENT_QUOTES) . '">COPY</button>
-                      </summary>';
-                echo '<div class="vb"><pre>' . $exp . '</pre></div>';
-                echo '</details>';
-    
-                $first = false;
+                try {
+                    $n = $i + 1;
+                    $t = strtolower(gettype($val));
+
+                    $raw = full_export($val);
+                    $exp = htmlspecialchars($raw, ENT_SUBSTITUTE);
+                    $exp = preg_replace([
+                        '/&quot;(.*?)&quot;/',
+                        '/\b(true|false)\b/i',
+                        '/\bnull\b/i',
+                        '/=&gt;/',
+                        '/\[(\d+)\]/',
+                        '/&quot;([^&]+)&quot;\s*=&gt;/',
+                        '/\(int\) (\d+)/',
+                        '/\(float\) ([\d.]+)/'
+                    ], [
+                        '<span class="str">"$1"</span>',
+                        '<span class="bool">$1</span>',
+                        '<span class="nul">null</span>',
+                        '<span style="color:#666">=></span>',
+                        '[<span class="int">$1</span>]',
+                        '<span class="key">$1</span><span style="color:#666">=></span>',
+                        '<span class="int">$1</span>',
+                        '<span class="flt">$1</span>'
+                    ], $exp);
+
+                    $plain = strip_tags($exp);
+
+                    echo '<details class="v"' . ($first ? ' open' : '') . '>';
+                    echo '<summary class="vh">
+                            <div class="i">' . $n . '</div>
+                            Var #' . $n . ' <span style="color:#666">(' . $t . ')</span>
+                            <button class="cpy" onclick="copy(this)" data-clip="' . htmlspecialchars($plain, ENT_QUOTES) . '">COPY</button>
+                        </summary>';
+                    echo '<div class="vb"><pre>' . $exp . '</pre></div>';
+                    echo '</details>';
+
+                    $first = false;
+                } catch (Throwable $e) {
+                    echo '<div class="warning">خطا در پردازش متغیر #' . ($i + 1) . ': ' . htmlspecialchars($e->getMessage()) . '</div>';
+                }
             }
-    
+
             echo '</div></div>';
             echo '<script>
                     function copy(el){
@@ -129,8 +171,18 @@
                             setTimeout(()=>{el.innerText=orig},800);
                         }).catch(()=>{alert("کپی نشد!")});
                     }
-                  </script>';
+                    
+                    // بستن اتوماتیک وقتی داده‌ها بزرگ هستند
+                    if (' . ($total_size > 500000 ? 'true' : 'false') . ') {
+                        setTimeout(() => {
+                            document.querySelectorAll(".v").forEach(d => d.open = false);
+                        }, 100);
+                    }
+                </script>';
             echo '</body></html>';
+            
+            // بازگردانی memory limit
+            ini_set('memory_limit', $originalMemoryLimit);
             exit;
         }
     }
