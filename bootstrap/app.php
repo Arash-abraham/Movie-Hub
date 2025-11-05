@@ -90,10 +90,6 @@
     require_once("../routes/web.php");
     require_once("../routes/api.php");
 
-    $role = \App\Models\Role::find(2)->users()->get();
-
-    dd($users);
-
 
     $routing = new \System\Router\Routing();
     $routing->run();
