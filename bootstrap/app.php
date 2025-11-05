@@ -29,13 +29,7 @@
                         }
                         $key = is_int($k) ? $k : "'$k'";
                         $val = full_export($v, $depth + 1, $max_depth, $max_items, $max_length);
-                        
-                        // Wrap each array item in collapsible structure
-                        if (is_array($v) && !empty($v) || is_object($v)) {
-                            $items[] = "$indent  $key => <div class='collapsible-item'><span class='collapsible-toggle'>▶</span>$val</div>";
-                        } else {
-                            $items[] = "$indent  $key => $val";
-                        }
+                        $items[] = "$indent  $key => $val";
                     }
                     return "[\n" . implode(",\n", $items) . "\n$indent]";
     
@@ -102,10 +96,7 @@
                     }
                     
                     if (empty($props)) return "$class {}";
-                    
-                    // Wrap object content in collapsible structure
-                    $objectContent = "$class {\n" . implode(",\n", $props) . "\n$indent}";
-                    return "<div class='collapsible-item'><span class='collapsible-toggle'>▶</span>$objectContent</div>";
+                    return "$class {\n" . implode(",\n", $props) . "\n$indent}";
     
                 case 'string':
                     // Escape and truncate long strings
@@ -134,6 +125,43 @@
             $output = preg_replace('/,\s*\]/', "\n]", $output);
             $output = preg_replace('/,\s*\}/', "\n}", $output);
             return $output;
+        }
+    
+        function add_collapsible($html) {
+            // Add collapsible to arrays
+            $html = preg_replace_callback('/(\s*)(\[[\s\S]*?\])(,?)(\s*)$/m', function($matches) {
+                $indent = $matches[1];
+                $content = $matches[2];
+                $comma = $matches[3];
+                $end = $matches[4];
+                
+                // Only make non-empty arrays collapsible
+                if (strlen(trim(strip_tags($content))) > 20) {
+                    return $indent . 
+                           '<div class="collapsible-array">' .
+                           '<span class="collapsible-toggle">▶</span>' .
+                           '<div class="collapsible-content">' . $content . '</div>' .
+                           '</div>' . $comma . $end;
+                }
+                
+                return $matches[0];
+            }, $html);
+            
+            // Add collapsible to objects
+            $html = preg_replace_callback('/(\s*)(\w+\s*\{[\s\S]*?\})(,?)(\s*)$/m', function($matches) {
+                $indent = $matches[1];
+                $content = $matches[2];
+                $comma = $matches[3];
+                $end = $matches[4];
+                
+                return $indent . 
+                       '<div class="collapsible-object">' .
+                       '<span class="collapsible-toggle">▶</span>' .
+                       '<div class="collapsible-content">' . $content . '</div>' .
+                       '</div>' . $comma . $end;
+            }, $html);
+            
+            return $html;
         }
     
         function dd(...$args): never
@@ -260,18 +288,20 @@
                     font-size: 13px;
                     line-height: 1.5;
                     font-family: "Fira Code", "Courier New", monospace;
+                    position: relative;
                 }
                 
-                /* Collapsible items styles */
-                .collapsible-item {
+                /* Collapsible styles */
+                .collapsible-array,
+                .collapsible-object {
                     position: relative;
                     display: inline-block;
                     vertical-align: top;
                 }
                 .collapsible-toggle {
                     position: absolute;
-                    left: -18px;
-                    top: 0;
+                    left: -15px;
+                    top: 2px;
                     cursor: pointer;
                     user-select: none;
                     font-size: 10px;
@@ -282,7 +312,8 @@
                     line-height: 12px;
                     transition: transform 0.2s;
                 }
-                .collapsible-item.collapsed .collapsible-toggle {
+                .collapsible-array.collapsed .collapsible-toggle,
+                .collapsible-object.collapsed .collapsible-toggle {
                     transform: rotate(-90deg);
                 }
                 .collapsible-content {
@@ -291,7 +322,8 @@
                     border-left: 1px solid #333;
                     padding-left: 12px;
                 }
-                .collapsible-item.collapsed .collapsible-content {
+                .collapsible-array.collapsed .collapsible-content,
+                .collapsible-object.collapsed .collapsible-content {
                     display: none;
                 }
                 
@@ -355,8 +387,11 @@
                     $raw = full_export($val);
                     $raw = format_output($raw);
                     
-                    // Apply syntax highlighting
-                    $highlighted = htmlspecialchars($raw, ENT_SUBSTITUTE);
+                    // First escape HTML, then add collapsible functionality
+                    $escaped = htmlspecialchars($raw, ENT_SUBSTITUTE);
+                    $with_collapsible = add_collapsible($escaped);
+                    
+                    // Apply syntax highlighting AFTER adding collapsible
                     $highlighted = preg_replace([
                         // Strings
                         '/\'([^\']*)\'/',
@@ -377,7 +412,7 @@
                         '<span class="comment">$0</span>',
                         '[<span class="integer">$1</span>]',
                         '<span class="object">$1</span> {',
-                    ], $highlighted);
+                    ], $with_collapsible);
     
                     $plain = strip_tags($raw);
     
@@ -413,20 +448,20 @@
                         });
                     }
                     
-                    // Collapsible functionality for array items and objects
+                    // Collapsible functionality
                     document.addEventListener("click", function(e) {
                         if (e.target.classList.contains("collapsible-toggle")) {
                             e.preventDefault();
                             e.stopPropagation();
-                            const parent = e.target.closest(".collapsible-item");
+                            const parent = e.target.parentElement;
                             parent.classList.toggle("collapsed");
                         }
                     });
                     
-                    // Auto-collapse large objects
-                    document.querySelectorAll(".collapsible-item").forEach(el => {
-                        const content = el.querySelector(".collapsible-content") || el;
-                        if (content.textContent.length > 500) {
+                    // Auto-collapse large arrays/objects
+                    document.querySelectorAll(".collapsible-array, .collapsible-object").forEach(el => {
+                        const content = el.querySelector(".collapsible-content");
+                        if (content && content.textContent.length > 200) {
                             el.classList.add("collapsed");
                         }
                     });
@@ -437,7 +472,7 @@
             ini_set('memory_limit', $originalMemoryLimit);
             exit;
         }
-    }   
+    }
     require_once("../config/app.php");
     require_once("../config/database.php");
     
