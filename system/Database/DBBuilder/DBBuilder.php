@@ -9,8 +9,12 @@
             die('Migrations run successfully !');
         }
 
-        protected function createTables() {
-
+        private function createTables() {
+            $migrations = $this->getMigrations();
+            $pdoInstance = DBConnection::getDBConnectionInstance();
+            foreach ($migrations as $migration) {
+                
+            }
         }
     }
 ?>
