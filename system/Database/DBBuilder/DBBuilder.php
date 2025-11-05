@@ -13,7 +13,8 @@
             $migrations = $this->getMigrations();
             $pdoInstance = DBConnection::getDBConnectionInstance();
             foreach ($migrations as $migration) {
-                
+                $statement = $pdoInstance->prepare($migration);
+                $statement->execute();
             }
         }
     }
