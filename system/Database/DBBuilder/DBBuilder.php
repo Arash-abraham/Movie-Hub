@@ -16,6 +16,7 @@
                 $statement = $pdoInstance->prepare($migration);
                 $statement->execute();
             }
+            return true;
         }
     }
 ?>
