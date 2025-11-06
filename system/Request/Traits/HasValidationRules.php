@@ -5,8 +5,8 @@
     trait HasValidationRules {
         public function normalValidation($name, $ruleArray) {
             foreach ($ruleArray as $rule) {
-                if (is_array($rule)) {
-                    
+                if ($rule == 'required') {
+                    $this->required($name);
                 }
             }
         }
