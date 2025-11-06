@@ -24,6 +24,14 @@ use System\Request\Traits\HasFileValidationRules;
             }
         }
 
+        public function file($name) {
+            return isset($this->files[$name])
+                ? 
+                    $this->files[$name]
+                :
+                    false;
+        }
+
         protected function postAttributes() {
             foreach($_POST as $key => $value) {
                 $this->{$key} = htmlentities($value);
