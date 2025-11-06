@@ -20,7 +20,7 @@
         }
 
         private function getMigrations() {
-
+            return [];
         }
 
         private function getOldMigrations() {
@@ -29,6 +29,6 @@
         private function putOldMigrations(){
 
         }
-        
+
     }
 ?>
