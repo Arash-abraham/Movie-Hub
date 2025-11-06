@@ -20,7 +20,10 @@ use System\Request\Traits\HasFileValidationRules;
         }
 
         protected function postAttributes() {
-            
+            foreach($_POST as $key => $value) {
+                $this->{$key} = htmlentities($value);
+                $this->request[$key] = $value;
+            }
         }
     }
 ?>
