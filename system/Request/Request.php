@@ -16,7 +16,11 @@ use System\Request\Traits\HasFileValidationRules;
         protected $errorVariablesName = [];
 
         public function __construct() {
+            $this->postAttributes();
+        }
 
+        protected function postAttributes() {
+            
         }
     }
 ?>
