@@ -20,7 +20,19 @@
         }
 
         private function getMigrations() {
+            $oldMigrationArray = $this->getOldMigrations();
+            $migrationDirectory = BASE_DIR . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR;
+            $allMigrationsArray = glob($migrationDirectory .'*.php');
+            $newMigrationsArray = array_diff($allMigrationsArray, $oldMigrationArray);
+            $this->putOldMigrations($allMigrationsArray);
 
+            $sqlCodeArray = [];
+            foreach($newMigrationsArray as $fileName) {
+                $sqlCode = require $fileName;
+                array_push($sqlCodeArray, $sqlCode[0]);
+            }
+
+            return $sqlCodeArray;
         }
 
         private function getOldMigrations() {
