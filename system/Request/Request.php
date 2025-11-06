@@ -20,7 +20,7 @@ use System\Request\Traits\HasFileValidationRules;
                 $this->postAttributes();
             }
             if(!empty($_FILES)){
-                
+                $this->files = $_FILES;
             }
         }
 
