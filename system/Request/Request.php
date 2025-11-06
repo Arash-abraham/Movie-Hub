@@ -32,6 +32,15 @@
         protected function run($rules) {
             foreach($rules as $att => $value) {
                 $ruleArray = explode("|", $value);
+                if(in_array('file' , $ruleArray)) {
+                    $this->fileVaidation($att, $ruleArray);
+                }
+                else if(in_array('number', $ruleArray)) {
+                    $this->numberValidation($att, $ruleArray);
+                }
+                else {
+                    $this->normalValidation($att, $ruleArray);
+                }
             }
         }
 
