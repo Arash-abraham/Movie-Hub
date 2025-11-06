@@ -26,7 +26,7 @@
         }
 
         protected function rules() {
-            
+            return [];
         }
 
         public function file($name) {
