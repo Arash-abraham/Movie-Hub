@@ -33,7 +33,7 @@
 
         }
         private function putOldMigrations(){
-
+            $data = file_get_contents(__DIR__.'');
         }
 
     }
