@@ -38,5 +38,9 @@ use System\Request\Traits\HasFileValidationRules;
                 $this->request[$key] = $value;
             }
         }
+
+        public function all() {
+            return $this->request;
+        }
     }
 ?>
