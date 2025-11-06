@@ -18,5 +18,9 @@
             }
             return true;
         }
+
+        private function getMigrations() {
+
+        }
     }
 ?>
