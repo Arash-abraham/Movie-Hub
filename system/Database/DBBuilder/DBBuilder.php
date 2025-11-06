@@ -21,7 +21,12 @@
 
         private function getMigrations() {
             $data = file_get_contents(__DIR__.'/oldTables.db');
-            return [];
+            return empty($data)
+                ?
+                    []
+                :
+                    unserialize($data);    
+                ;
         }
 
         private function getOldMigrations() {
