@@ -62,6 +62,9 @@
                 }
             }
         }
+        protected function maxStr($name, $count) {
+
+        }
     }
 
 ?>
