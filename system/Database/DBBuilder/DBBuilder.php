@@ -20,6 +20,7 @@
         }
 
         private function getMigrations() {
+            $data = file_get_contents(__DIR__.'/oldTables.db');
             return [];
         }
 
