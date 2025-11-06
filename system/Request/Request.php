@@ -29,6 +29,10 @@
             $this->errorRedirect();
         }
 
+        protected function run() {
+            
+        }
+
         protected function rules() {
             return [];
         }
