@@ -16,6 +16,16 @@
                     $rule = str_replace('min:','', $rule);
                     $this->minStr($name, $rule);
                 }
+                else if (strpos($rule,'exists:') === 0) {
+                    $rule = str_replace('exists:','', $rule);
+                    $rule = explode(',', $rule);
+                    $kry = isset($rule[1]) == false
+                        ? 
+                            NULL
+                        : 
+                            $rule[1];
+                    $this->existsIn($name, $rule[0], $kry);
+                }
             }
         }
     }
