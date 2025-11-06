@@ -26,6 +26,12 @@
                             $rule[1];
                     $this->existsIn($name, $rule[0], $kry);
                 }
+                else if($rule == 'email') {
+                    $this->email($name);
+                }
+                else if($rule == 'date') {
+                    $this->date($name);
+                }
             }
         }
     }
