@@ -16,7 +16,12 @@ use System\Request\Traits\HasFileValidationRules;
         protected $errorVariablesName = [];
 
         public function __construct() {
-            $this->postAttributes();
+            if(isset($_POST)){
+                $this->postAttributes();
+            }
+            if(!empty($_FILES)){
+                
+            }
         }
 
         protected function postAttributes() {
