@@ -20,6 +20,10 @@
         }
 
         private function getMigrations() {
+
+        }
+
+        private function getOldMigrations() {
             $data = file_get_contents(__DIR__.'/oldTables.db');
             return empty($data)
                 ?
@@ -28,12 +32,8 @@
                     unserialize($data);    
                 ;
         }
-
-        private function getOldMigrations() {
-
-        }
-        private function putOldMigrations(){
-            $data = file_get_contents(__DIR__.'');
+        private function putOldMigrations($value){
+            file_put_contents(__DIR__.'/oldTables.db', serialize($value));
         }
 
     }
