@@ -29,8 +29,10 @@
             $this->errorRedirect();
         }
 
-        protected function run() {
-            
+        protected function run($rules) {
+            foreach($rules as $att => $value) {
+                $ruleArray = explode("|", $value);
+            }
         }
 
         protected function rules() {
