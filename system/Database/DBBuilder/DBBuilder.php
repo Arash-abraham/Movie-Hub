@@ -22,5 +22,13 @@
         private function getMigrations() {
 
         }
+
+        private function getOldMigrations() {
+
+        }
+        private function putOldMigrations(){
+
+        }
+        
     }
 ?>
