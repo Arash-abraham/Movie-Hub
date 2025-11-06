@@ -23,6 +23,10 @@
             }
 
             $rules = $this->rules();
+            if(!empty($rules)) {
+                $this->run($rules);
+            }
+            $this->errorRedirect();
         }
 
         protected function rules() {
