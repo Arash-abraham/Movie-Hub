@@ -91,8 +91,8 @@
             }
         }
         protected function required($name) {
-            if(!isset($this->request[$name])) {
-                
+            if((!isset($this->request[$name]) or $this->request[$name] === '' ) && $this->checkFirstError($name)) {
+                $this->setError($name,"$name is required");
             }
         }
     }
