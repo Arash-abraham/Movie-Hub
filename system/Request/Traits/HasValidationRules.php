@@ -97,8 +97,8 @@
         }
         protected function number($name) {
             if($this->chechFieldExist($name)) {
-                if(!is_numeric()) {
-
+                if(!is_numeric($this->request[$name]) && $this->checkFirstError($name)) {
+                    
                 }
             }
         }
