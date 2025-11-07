@@ -113,7 +113,7 @@
 
         protected function email($name) {
             if(!filter_var($name, FILTER_VALIDATE_EMAIL)) {
-                
+                $this->setError($name,"$name must be email format");
             }
         }
     }
