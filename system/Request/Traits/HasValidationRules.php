@@ -110,6 +110,10 @@
                 }
             }
         }
+
+        protected function email($name) {
+
+        }
     }
 
 ?>
