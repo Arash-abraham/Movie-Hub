@@ -105,7 +105,9 @@
 
         protected function date($name) {
             if($this->chechFieldExist($name)) {
-                
+                if(!preg_match()) {
+                    
+                }
             }
         }
     }
