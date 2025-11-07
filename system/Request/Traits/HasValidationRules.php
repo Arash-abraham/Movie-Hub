@@ -90,7 +90,9 @@
                 }
             }
         }
-        
+        protected function required($name) {
+            
+        }
     }
 
 ?>
