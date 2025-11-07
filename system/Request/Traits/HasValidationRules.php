@@ -95,6 +95,13 @@
                 $this->setError($name,"$name is required");
             }
         }
+        protected function number($name) {
+            if($this->chechFieldExist($name)) {
+                if(!is_numeric()) {
+
+                }
+            }
+        }
     }
 
 ?>
