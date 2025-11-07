@@ -91,7 +91,9 @@
             }
         }
         protected function required($name) {
-            
+            if(!isset($this->request[$name])) {
+                
+            }
         }
     }
 
