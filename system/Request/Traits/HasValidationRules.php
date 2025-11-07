@@ -63,7 +63,32 @@
             }
         }
         protected function maxStr($name, $count) {
-
+            if($this->chechFieldExist($name)) {
+                if(strlen($this->request[$name]) >= $count && $this->checkFirstError($name)) {
+                    $this->setError($name,'max lenght equal or lower than ' . $count .' character');
+                }
+            }
+        }
+        protected function minStr($name, $count) {
+            if($this->chechFieldExist($name)) {
+                if(strlen($this->request[$name]) <= $count && $this->checkFirstError($name)) {
+                    $this->setError($name,'min lenght equal or upper than ' . $count .' character');
+                }
+            }
+        }
+        protected function maxNumber($name, $count) {
+            if($this->chechFieldExist($name)) {
+                if($this->request[$name] <= $count && $this->checkFirstError($name)) {
+                    $this->setError($name,'max lenght equal or lower than ' . $count .' character');
+                }
+            }
+        }
+        protected function minNumber($name, $count) {
+            if($this->chechFieldExist($name)) {
+                if($this->request[$name] <= $count && $this->checkFirstError($name)) {
+                    $this->setError($name,'min lenght equal or upper than ' . $count .' character');
+                }
+            }
         }
     }
 
