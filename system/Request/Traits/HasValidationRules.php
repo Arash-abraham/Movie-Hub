@@ -98,10 +98,12 @@
         protected function number($name) {
             if($this->chechFieldExist($name)) {
                 if(!is_numeric($this->request[$name]) && $this->checkFirstError($name)) {
-                    
+                    $this->setError($name,"$name must be number format");
                 }
             }
         }
+
+        protected function date($name) {
     }
 
 ?>
