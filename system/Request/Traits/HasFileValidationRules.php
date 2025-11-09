@@ -7,7 +7,9 @@
     trait HasFileValidationRules {
         protected function fileValidation($name,$ruleArray) {
             foreach($ruleArray as $rule) {
-
+                if($rule == 'required') {
+                    $this->fileRequired($name);
+                }
             }
         }
     }
