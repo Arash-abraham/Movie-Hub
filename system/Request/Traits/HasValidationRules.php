@@ -125,8 +125,8 @@
                     $statement = DBConnection::getDBConnectionInstance()->prepare($sql);
                     $statement->execute([$value]);
                     $result = $statement->fetchColumn();
-                    if($result == 0) {
-
+                    if($result == 0 || $result === false) {
+                        $this->setError($name,"$name not already exist");
                     }
                 }
             }
