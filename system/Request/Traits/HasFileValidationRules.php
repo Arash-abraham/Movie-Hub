@@ -32,7 +32,7 @@
         }
         protected function fileType($name , $typesArray) {
             if($this->checkFirstError($name) && $this->checkFileExist($name)) {
-
+                $currentFileType = explode("/", $this->file[$name]["type"][1]);
             }
         }
     }
