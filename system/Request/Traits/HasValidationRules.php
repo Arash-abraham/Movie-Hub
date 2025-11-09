@@ -124,6 +124,10 @@
                     $sql = "SELECT COUNT(*) FROM $table WHERE $field = ?";
                     $statement = DBConnection::getDBConnectionInstance()->prepare($sql);
                     $statement->execute([$value]);
+                    $result = $statement->fetchColumn();
+                    if($result == 1) {
+                        
+                    }
                 }
             }
         }
