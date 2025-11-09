@@ -10,6 +10,9 @@
                 if($rule == 'required') {
                     $this->fileRequired($name);
                 }
+                else if($rule == '') {
+                    
+                }
             }
         }
     }
