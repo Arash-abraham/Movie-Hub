@@ -26,7 +26,7 @@
             }
         }
         protected function fileRequired($name) {
-            
+            if(!isset($this->files[$name][]))
         }
     }
 ?>
