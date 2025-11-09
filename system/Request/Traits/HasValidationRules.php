@@ -118,7 +118,9 @@
         }
 
         public function existsIn($name , $table , $field = 'id') {
-            
+            if($this->chechFieldExist($name)) {
+                
+            }
         }
     }
 
