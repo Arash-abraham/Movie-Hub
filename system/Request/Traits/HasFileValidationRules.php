@@ -26,7 +26,9 @@
             }
         }
         protected function fileRequired($name) {
-            if(!isset($this->files[$name]['name']))
+            if(!isset($this->files[$name]['name']) || empty($this->files[$name]['name']) && $this->checkFirstError($name)) {
+                
+            }
         }
     }
 ?>
