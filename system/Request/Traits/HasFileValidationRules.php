@@ -39,7 +39,9 @@
                 }
             }
         }
-        protected function maxFile($name , $size)
+        protected function maxFile($name , $size) {
+            
+        }
 
     }
 ?>
