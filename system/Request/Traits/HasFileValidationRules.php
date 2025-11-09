@@ -5,9 +5,9 @@
     use System\Database\DBConnection\DBConnection;
 
     trait HasFileValidationRules {
-        protected function fileValidation($ruleArray) {
+        protected function fileValidation($name,$ruleArray) {
             foreach($ruleArray as $rule) {
-                
+
             }
         }
     }
