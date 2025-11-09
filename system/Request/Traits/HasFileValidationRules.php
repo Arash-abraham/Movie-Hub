@@ -30,5 +30,8 @@
                 $this->setError($name , "$name is required");
             }
         }
+        protected function fileType($name) {
+
+        }
     }
 ?>
