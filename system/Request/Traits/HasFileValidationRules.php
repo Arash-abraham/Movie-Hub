@@ -43,7 +43,7 @@
             $size = $size * 1024;
             if($this->checkFirstError($name) && $this->checkFileExist($name)) {
                 if($this->files[$name]["size"] > $size) {
-                    $this->setError($name , "$name size must be lower than " . ($size / 1024 ));
+                    $this->setError($name , "$name size must be lower than " . ($size / 1024 ) . "kb");
                 }
             }
         }
