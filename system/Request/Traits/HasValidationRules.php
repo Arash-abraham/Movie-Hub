@@ -125,8 +125,8 @@
                     $statement = DBConnection::getDBConnectionInstance()->prepare($sql);
                     $statement->execute([$value]);
                     $result = $statement->fetchColumn();
-                    if($result == 1) {
-                        
+                    if($result == 0) {
+
                     }
                 }
             }
