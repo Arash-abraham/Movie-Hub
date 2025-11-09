@@ -13,7 +13,7 @@
                 else if (strpos($rule,'mimes:') === 0) {
                     $rule = str_replace('mimes:','', $rule);
                     $rule = explode(',', $rule);
-                    $this->maxStr($name, $rule);
+                    $this->filetype($name, $rule);
                 }
             }
         }
