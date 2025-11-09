@@ -10,8 +10,9 @@
                 if($rule == 'required') {
                     $this->fileRequired($name);
                 }
-                else if($rule == '') {
-                    
+                else if (strpos($rule,'max:') === 0) {
+                    $rule = str_replace('max:','', $rule);
+                    $this->maxStr($name, $rule);
                 }
             }
         }
