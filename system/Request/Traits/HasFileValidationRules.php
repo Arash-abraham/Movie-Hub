@@ -39,5 +39,7 @@
                 }
             }
         }
+        protected function maxFile($name , $size)
+
     }
 ?>
