@@ -116,6 +116,10 @@
                 $this->setError($name,"$name must be email format");
             }
         }
+
+        public function existsIn($name , $table , $field = 'id') {
+            
+        }
     }
 
 ?>
