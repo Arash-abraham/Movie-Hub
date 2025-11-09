@@ -15,6 +15,14 @@
                     $rule = explode(',', $rule);
                     $this->filetype($name, $rule);
                 }
+                elseif (strpos($rule, "max:") === 0) {
+                    $rule = str_replace('max:', "", $rule);
+                    $this->maxFile($name, $rule);
+                } 
+                elseif (strpos($rule, "min:") === 0) {
+                    $rule = str_replace('min:', "", $rule);
+                    $this->minFile($name, $rule);
+                }
             }
         }
     }
