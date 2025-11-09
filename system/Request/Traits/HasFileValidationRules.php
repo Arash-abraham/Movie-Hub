@@ -31,7 +31,7 @@
             }
         }
         protected function fileType($name , $typesArray) {
-            if($this->checkFirstError($name) ) {
+            if($this->checkFirstError($name) && $this->checkFileExist($name)) {
 
             }
         }
