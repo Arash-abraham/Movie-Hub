@@ -122,6 +122,7 @@
                 if($this->checkFirstError($name)) {
                     $value = $this->$name;
                     $sql = "SELECT COUNT(*) FROM $table WHERE $field = ?";
+                    $statement = DBConnection::getDBConnectionInstance()->prepare($sql);
                 }
             }
         }
