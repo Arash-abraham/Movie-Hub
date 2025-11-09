@@ -25,6 +25,8 @@
                 }
             }
         }
-        protected function fileRequired($name) {}
+        protected function fileRequired($name) {
+            
+        }
     }
 ?>
