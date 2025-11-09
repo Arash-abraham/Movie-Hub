@@ -30,8 +30,10 @@
                 $this->setError($name , "$name is required");
             }
         }
-        protected function fileType($name) {
+        protected function fileType($name , $typesArray) {
+            if($this->checkFirstError($name) ) {
 
+            }
         }
     }
 ?>
