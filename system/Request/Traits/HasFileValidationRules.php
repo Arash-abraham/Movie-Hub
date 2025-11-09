@@ -5,8 +5,10 @@
     use System\Database\DBConnection\DBConnection;
 
     trait HasFileValidationRules {
-        protected function fileValidation() {
-
+        protected function fileValidation($ruleArray) {
+            foreach($ruleArray as $rule) {
+                
+            }
         }
     }
 ?>
