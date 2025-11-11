@@ -9,6 +9,11 @@
     // The development of the Session class has been completed beautifully :)
 
     class Auth {
+
+        public function __call($name, $arguments) {
+            return $this->methodCaller($name, $arguments);
+        }
+
         private function methodCaller($method, $arguments) {
             /* 
                 This method basically calls methods that have the Method extension.
