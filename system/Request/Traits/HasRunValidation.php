@@ -4,7 +4,9 @@
 
     trait HasRunValidation {
         protected function errorRedirect() {
-            
+            if($this->errorExist == false ) {
+                return $this->request;
+            }
         }
     }
 
