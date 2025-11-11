@@ -17,6 +17,10 @@
             }
             return false;
         }
+
+        private function checkFieldExist($name) {
+            return (isset($this->reqest($name)) && )
+        }
     }
 
 ?>
