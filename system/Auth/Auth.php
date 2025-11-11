@@ -17,6 +17,10 @@
                 return redirect($this->redirectTo);
             }
             $user = User::find(Session::get('user'));
+            if(empty($user)){
+                Session::remove('user');
+                return redirect($this->redirectTo);
+            }
         }
 
         public function __call($name, $arguments) {
