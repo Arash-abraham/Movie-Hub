@@ -21,6 +21,7 @@
                 Session::remove('user');
                 return redirect($this->redirectTo);
             }
+            return $user;
         }
 
         public function __call($name, $arguments) {
