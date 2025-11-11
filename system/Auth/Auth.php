@@ -10,6 +10,12 @@
 
     class Auth {
         private function methodCaller($method, $arguments) {
+            /* 
+                This method basically calls methods that have the Method extension.
+                For example :
+                    A method called authMethod is defined,
+                    methodCaller removes the word Method and calls the method.
+            */
             
         }
     }
