@@ -10,10 +10,13 @@
 
     class Auth {
 
-        private $redirectT = '/login';
+        private $redirectTo = '/login';
 
         private function userMethod() {
-            
+            if(Session::get('user')) {
+                return redirect($this->redirectTo);
+            }
+            $user = 
         }
 
         public function __call($name, $arguments) {
