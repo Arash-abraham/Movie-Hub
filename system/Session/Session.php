@@ -23,7 +23,8 @@
 
         public static function __callStatic($name, $arguments) {
             // The reason for using __callStatic is to allow us to use Session methods statically.
-            
+            $instance = new self();
+            return call_user_func_array(array($instance, $name), $arguments);
         }
     }
 
