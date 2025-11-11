@@ -16,7 +16,9 @@
                     A method called authMethod is defined,
                     methodCaller removes the word Method and calls the method.
             */
-            
+            $suffix = 'Method';
+            $methodName = $method.$suffix;
+            return call_user_func_array([$this, $methodName], $arguments);
         }
     }
     
