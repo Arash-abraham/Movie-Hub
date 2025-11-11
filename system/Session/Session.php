@@ -8,14 +8,16 @@
         }
 
         public function get($session_name) {
-            if (isset($_SESSION[$session_name])) {
+            if(isset($_SESSION[$session_name])) {
                 return $_SESSION[$session_name];
             }
             return false;
         }
 
-        public function remove() {
-
+        public function remove($session_name) {
+            if(isset($_SESSION[$session_name])) {
+                
+            }
         }
 
         public static function __callStatic($name, $arguments) {
