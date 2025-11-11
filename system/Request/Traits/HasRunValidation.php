@@ -32,8 +32,8 @@
             return false;
         }
 
-        private function setError() {
-            
+        private function setError($name , $error) {
+
         }
     }
 
