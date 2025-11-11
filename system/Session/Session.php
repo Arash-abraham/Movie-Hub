@@ -16,8 +16,9 @@
 
         public function remove($session_name) {
             if(isset($_SESSION[$session_name])) {
-                
+                unset($_SESSION[$session_name]);
             }
+            return false;
         }
 
         public static function __callStatic($name, $arguments) {
