@@ -2,6 +2,8 @@
 
     namespace System\Request\Traits;
 
+use function Laravel\Prompts\error;
+
     trait HasRunValidation {
         protected function errorRedirect() {
             if($this->errorExist == false ) {
@@ -34,6 +36,8 @@
 
         private function setError($name , $errorMessage) {
             array_push($this->errorVariablesName , $name , $errorMessage);
+            error($name , $errorMessage);
+            $this->errorExist = true;
         }
     }
 
