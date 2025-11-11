@@ -22,7 +22,8 @@
         }
 
         public static function __callStatic($name, $arguments) {
-
+            // The reason for using __callStatic is to allow us to use Session methods statically.
+            
         }
     }
 
