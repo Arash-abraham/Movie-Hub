@@ -31,6 +31,10 @@
             }
             return false;
         }
+
+        private function setError() {
+            
+        }
     }
 
 ?>
