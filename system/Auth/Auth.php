@@ -12,8 +12,8 @@
 
         private $redirectT = '/login';
 
-        private function loginMethod(... $args) {
-
+        private function userMethod() {
+            
         }
 
         public function __call($name, $arguments) {
