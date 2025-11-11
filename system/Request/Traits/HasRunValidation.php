@@ -12,9 +12,10 @@
 
         private function checkFirstError($name) {
             // errorExist Will be developed later.
-            if(!errorExist($name)) {
-
+            if(!errorExist($name) && !in_array($name , $this->errorVariablesName)) {
+                return true;
             }
+            return false;
         }
     }
 
