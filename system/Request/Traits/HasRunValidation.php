@@ -7,11 +7,11 @@
             if($this->errorExist == false ) {
                 return $this->request;
             }
-            return back();
+            return back(); // Will be developed later.
         }
 
         private function checkFirstError($name) {
-            
+
         }
     }
 
