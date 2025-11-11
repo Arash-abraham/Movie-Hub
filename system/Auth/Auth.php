@@ -10,8 +10,19 @@
 
     class Auth {
 
+        private $redirectT = '/login';
+
+        private function loginMethod(... $args) {
+
+        }
+
         public function __call($name, $arguments) {
             return $this->methodCaller($name, $arguments);
+        }
+
+        public static function __callStatic($name, $arguments) {
+            $instance = new self();
+            return $instance->methodCaller($name, $arguments);
         }
 
         private function methodCaller($method, $arguments) {
@@ -22,7 +33,7 @@
                     methodCaller removes the word Method and calls the method.
             */
             $suffix = 'Method';
-            $methodName = $method.$suffix;
+            $methodName = $method . $suffix;
             return call_user_func_array([$this, $methodName], $arguments);
         }
     }
