@@ -32,8 +32,8 @@
             return false;
         }
 
-        private function setError($name , $error) {
-
+        private function setError($name , $errorMessage) {
+            array_push($this->errorVariablesName , $name , $errorMessage);
         }
     }
 
