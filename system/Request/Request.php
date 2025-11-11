@@ -34,7 +34,7 @@
                 $ruleArray = explode("|", $value);
                 if(in_array('file' , $ruleArray)) {
                     unset($ruleArray[array_search('file', $ruleArray)]);
-                    $this->fileVaidation($att, $ruleArray);
+                    $this->fileValidation($att, $ruleArray);
                 }
                 else if(in_array('number', $ruleArray)) {
                     $this->numberValidation($att, $ruleArray);
