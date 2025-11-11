@@ -19,7 +19,7 @@
         }
 
         private function checkFieldExist($name) {
-            return (isset($this->reqest($name)) && )
+            return (isset($this->reqest[$name]) && !empty($this->reqest[$name])) ? true : false;
         }
     }
 
