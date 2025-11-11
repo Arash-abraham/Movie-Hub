@@ -9,7 +9,9 @@
     // The development of the Session class has been completed beautifully :)
 
     class Auth {
-        
+        private function methodCaller($method, $arguments) {
+            
+        }
     }
     
 ?>
