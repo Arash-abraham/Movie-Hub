@@ -3,6 +3,8 @@
     namespace System\Auth;
 
     use App\Models\User;
-    use System\Session\Session;
+    use System\Session\Session; 
 
+    // Before developing the Auth class, Session must first be developed.
+    
 ?>
