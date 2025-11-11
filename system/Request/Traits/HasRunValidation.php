@@ -21,6 +21,16 @@
         private function checkFieldExist($name) {
             return (isset($this->reqest[$name]) && !empty($this->reqest[$name])) ? true : false;
         }
+
+        private function checkFileExist($name) {
+            if(isset($this->files[$name]['name'])) {
+                if(!empty($this->reqest[$name]['name'])) {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
     }
 
 ?>
