@@ -16,7 +16,7 @@
             if(Session::get('user')) {
                 return redirect($this->redirectTo);
             }
-            $user = 
+            $user = User::find(Session::get('user'));
         }
 
         public function __call($name, $arguments) {
