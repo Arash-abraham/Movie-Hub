@@ -11,7 +11,10 @@
         }
 
         private function checkFirstError($name) {
+            // errorExist Will be developed later.
+            if(!errorExist($name)) {
 
+            }
         }
     }
 
