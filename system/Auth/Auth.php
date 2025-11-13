@@ -38,12 +38,11 @@
 
         private function checkLoginMethod() {
             if(!Session::get('user')) {
-                return redirect($this->redirectTo);
+                return false;
             }
             $user = User::find(Session::get('user'));
             if(empty($user)){
-                Session::remove('user');
-                return redirect($this->redirectTo);
+                return false;
             }
             return true;
         }
