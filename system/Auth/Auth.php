@@ -61,12 +61,17 @@
             return false;
         }
 
-        private function loginBySmslMethod($pohoneNumber , $password) {
-
+        private function loginBySmslMethod($pohoneNumber , $password) {            
+        
         }
 
         private function loginByIdMethod($id) {
-
+            $user = User::find($id);
+            if(empty($user)){
+                error("login" , "User dosn't exist !");
+                return false;
+            }
+            return true;
         }
 
         private function logout() {
