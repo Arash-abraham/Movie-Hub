@@ -54,7 +54,7 @@
                 return false;
             }
             if(password_verify($password, $user[0]->password) && $user[0]->is_active == 1) {
-
+                Session::set("user", $user[0]->id);
             }
         }
 
