@@ -53,8 +53,8 @@
                 error("login" , "User dosn't exist !");
                 return false;
             }
-            if(password_verify($password, $user->password)) {
-                
+            if(password_verify($password, $user[0]->password) && $user[0]->is_active == 1) {
+
             }
         }
 
