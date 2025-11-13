@@ -25,7 +25,15 @@
         }
 
         private function checkMethod() {
-            
+            if(Session::get('user')) {
+                return redirect($this->redirectTo);
+            }
+            $user = User::find(Session::get('user'));
+            if(empty($user)){
+                Session::remove('user');
+                return redirect($this->redirectTo);
+            }
+            return true;
         }
 
         public function __call($name , $arguments) {
