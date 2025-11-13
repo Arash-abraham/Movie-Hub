@@ -47,6 +47,18 @@
             return true;
         }
 
+        private function loginByEmailMethod($email , $password) {
+
+        }
+
+        private function loginBySmslMethod($pohoneNumber , $password) {
+
+        }
+
+        private function loginByIdMethod($id) {
+
+        }
+
         private function logout() {
             Session::remove('user');
         }
