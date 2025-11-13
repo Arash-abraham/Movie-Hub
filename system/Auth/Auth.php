@@ -62,7 +62,7 @@
         }
 
         private function loginBySmslMethod($pohoneNumber , $password) {            
-        
+            // TODO
         }
 
         private function loginByIdMethod($id) {
