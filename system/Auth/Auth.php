@@ -24,7 +24,9 @@
             return $user;
         }
 
-
+        private function checkMethod() {
+            
+        }
 
         public function __call($name , $arguments) {
             return $this->methodCaller($name , $arguments);
