@@ -36,6 +36,14 @@
             return true;
         }
 
+        private function checkLoginMethod() {
+
+        }
+
+        private function logout() {
+            Session::remove('user');
+        }
+
         public function __call($name , $arguments) {
             return $this->methodCaller($name , $arguments);
         }
