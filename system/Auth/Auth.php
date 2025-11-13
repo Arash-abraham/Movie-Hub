@@ -24,8 +24,10 @@
             return $user;
         }
 
-        public function __call($name, $arguments) {
-            return $this->methodCaller($name, $arguments);
+
+
+        public function __call($name , $arguments) {
+            return $this->methodCaller($name , $arguments);
         }
 
         public static function __callStatic($name, $arguments) {
@@ -33,7 +35,7 @@
             return $instance->methodCaller($name, $arguments);
         }
 
-        private function methodCaller($method, $arguments) {
+        private function methodCaller($method , $arguments) {
             /* 
                 This method basically calls methods that have the Method extension.
                 For example :
@@ -42,8 +44,14 @@
             */
             $suffix = 'Method';
             $methodName = $method . $suffix;
+            
+            if (!method_exists($this, $methodName)) {
+                throw new \BadMethodCallException("Method {$method} does not exist in Auth class");
+            }
+            
             return call_user_func_array([$this, $methodName], $arguments);
         }
+
     }
     
 ?>
