@@ -48,7 +48,14 @@
         }
 
         private function loginByEmailMethod($email , $password) {
-
+            $user = User::where('email' , $email)->get();
+            if(empty($user)){
+                error("login" , "User dosn't exist !");
+                return false;
+            }
+            if(password_verify($password, $user->password)) {
+                
+            }
         }
 
         private function loginBySmslMethod($pohoneNumber , $password) {
