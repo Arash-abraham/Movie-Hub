@@ -9,8 +9,8 @@
 
         }
 
-        private function registerView($name) {
-
+        private function registerView($view) {
+            array_push($this->viewNameArray, $view);
         }
     }
 
