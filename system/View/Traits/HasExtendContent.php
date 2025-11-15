@@ -15,7 +15,7 @@
         private function findExtend() {
             $filePathArray = [];
             
-            preg_match(`/\s*{% extends\s+['"]([^'"]+)['"]\s*%}/`, $this->content, $filePathArray);
+            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->content, $filePathArray);
             
             if(isset($filePathArray[1])) {
                 return $filePathArray[1];
@@ -26,8 +26,8 @@
     }
 
     //DEBUG
-    $content1 = ' {% extends "base.app" %}             dsfdsfdsf';
-    preg_match("/\s*{% extends\s+['\"]([^'\"]+)['\"]\s+%}/", $content1, $match1);
-    var_dump($match1);
+    // $content1 = ' {%  extends   "base.app" %} ';
+    // preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $content1, $match1);
+    // var_dump($match1);
 
 ?>
