@@ -26,8 +26,8 @@
     }
 
     //DEBUG
-    $content1 = "{% extends 'base.app' %}";
-    preg_match("/\s*{% extends\s+['\"]([^'\"]+)['\"]\s*%}/", $content1, $match1);
+    $content1 = ' {% extends "base.app" %}             dsfdsfdsf';
+    preg_match("/\s*{% extends\s+['\"]([^'\"]+)['\"]\s+%}/", $content1, $match1);
     var_dump($match1);
 
 ?>
