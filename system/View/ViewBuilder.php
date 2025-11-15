@@ -14,8 +14,4 @@
         }
     }
 
-    // $app = new ViewBuilder();
-    // $app->run('app');
-    // print_r($app);
-
 ?>
