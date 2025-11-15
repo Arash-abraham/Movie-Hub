@@ -1,4 +1,4 @@
-# Movie-Hub
+# Avesta
 
 The project will be finished soon.
 You might be wondering why I am using twig instead of blade! I have to tell you that it is a personal decision and both are quite similar.
