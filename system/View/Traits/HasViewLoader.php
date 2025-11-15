@@ -6,7 +6,7 @@
         private $viewNameArray = [];
 
         private function ViewLoader($dir) {
-            $dir = __DIR__ ."";
+            $dir = trim($dir,"");
         }
 
         private function registerView($view) {
