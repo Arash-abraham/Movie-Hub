@@ -10,7 +10,7 @@
         }
 
         private function findExtend() {
-
+            $filePathArray = [];
         }
     }
 
