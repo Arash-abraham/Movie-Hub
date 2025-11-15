@@ -16,6 +16,10 @@
                 // dirname(dirname(dirname(__DIR__))) => /Avesta
                 $this->registerView($dir);
                 $content = file_get_contents($path."/resources/View/$dir.twig");
+                return $content;
+            }
+            else {
+                throw new \Exception("View not found");
             }
         }
 
