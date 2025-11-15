@@ -6,7 +6,10 @@
         private $extendContent;
 
         private function checkExtendContent() {
+            $layoutsFilePath = $this->findExtend();
+            if ($layoutsFilePath) {
 
+            }
         }
 
         private function findExtend() {
