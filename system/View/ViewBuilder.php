@@ -13,6 +13,7 @@
 
         public function run($dir) {
             $this->content = $this->viewLoader($dir);
+            $this->checkExtendContent();
         }
     }
 
