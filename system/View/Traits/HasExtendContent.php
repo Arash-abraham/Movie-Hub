@@ -26,6 +26,7 @@
     }
 
     //DEBUG
-    
+    $content1 = "{% extends 'base.app' %}";
+    preg_match(`/\s*{% extends\s+['"]([^'"]+)['"]\s*%}/`, $this->content, $filePathArray);
 
 ?>
