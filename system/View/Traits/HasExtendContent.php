@@ -11,6 +11,7 @@
 
         private function findExtend() {
             $filePathArray = [];
+            preg_match("TODO", $this->content, $filePathArray);
         }
     }
 
