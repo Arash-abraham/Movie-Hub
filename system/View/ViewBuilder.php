@@ -4,4 +4,8 @@
 
     use System\View\Traits\HasViewLoader;
 
+    class ViewBuilder {
+        
+    }
+
 ?>
