@@ -6,7 +6,11 @@
         private $extendContent;
 
         private function checkExtendContent() {
-            
+
+        }
+
+        private function findExtend() {
+
         }
     }
 
