@@ -5,7 +5,9 @@
     use System\View\Traits\HasViewLoader;
 
     class ViewBuilder {
-        
+        public function run($dir) {
+            
+        }
     }
 
 ?>
