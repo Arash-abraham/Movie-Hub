@@ -5,7 +5,7 @@
     trait HasViewLoader {
         private $viewNameArray = [];
 
-        private function ViewLoader($dir) {
+        private function viewLoader($dir) {
             $dir = trim($dir," .");
             $dir = str_replace(".","/", $dir);
             $path = dirname(dirname(dirname(__DIR__)));
