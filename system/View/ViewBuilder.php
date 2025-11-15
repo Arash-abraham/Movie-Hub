@@ -15,6 +15,7 @@
             $this->content = $this->viewLoader($dir);
             $this->checkExtendContent();
         }
+        
     }
 
 ?>
