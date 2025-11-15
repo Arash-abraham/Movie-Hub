@@ -8,6 +8,9 @@
         private function ViewLoader($dir) {
             $dir = trim($dir," .");
             $dir = str_replace(".","/", $dir);
+            if(file_exists(dirname(__DIR__))) {
+
+            }
         }
 
         private function registerView($view) {
