@@ -7,6 +7,7 @@
 
         private function ViewLoader($dir) {
             $dir = trim($dir," .");
+            $dir = str_replace(".","/", $dir);
         }
 
         private function registerView($view) {
