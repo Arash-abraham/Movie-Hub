@@ -15,7 +15,7 @@
         private function findExtend() {
             $filePathArray = [];
             
-            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->content, $filePathArray);
+            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->content, $filePathArray); //$this->content  error?
             
             if(isset($filePathArray[1])) {
                 return $filePathArray[1];
@@ -24,9 +24,9 @@
             return false;
         }
         private function findBlocksNames() {
-            $filePathArray = [];
+            $blocksNamesArray = [];
             
-            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->content, $filePathArray);
+            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray);
             
             if(isset($filePathArray[1])) {
                 return $filePathArray[1];
