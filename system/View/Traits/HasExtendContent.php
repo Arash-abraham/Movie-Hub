@@ -45,7 +45,7 @@
 
         private function initialBlocks($blockName) {
             $string = $this->content;
-            $startWord = "{% block '".$blockName."' %}";
+            $startWord = "{% block ".$blockName." %}";
             $endWord = "{% endblock %}";
         }
     }
