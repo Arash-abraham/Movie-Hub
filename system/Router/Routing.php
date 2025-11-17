@@ -110,7 +110,7 @@
             ];
             
             http_response_code(404);
-            echo $twig->render('error.twig', $data);
+            echo $twig->render('404.twig', $data);
             exit;
         }
 
