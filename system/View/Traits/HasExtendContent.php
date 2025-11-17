@@ -28,8 +28,8 @@
             
             preg_match_all("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
             
-            if(isset($filePathArray[1])) {
-                return $filePathArray[1];
+            if(isset($blocksNamesArray[1])) {
+                return $blocksNamesArray[1];
             }
             
             return false;
