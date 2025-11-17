@@ -64,6 +64,7 @@
             $length = $endPos - $startPos;
 
             $blockContent = substr($string, $startPos, $length);
+        
         }
     }
 
