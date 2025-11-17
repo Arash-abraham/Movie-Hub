@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{{ variable|default('Error - ') ~ error_code }}{% endblock %}</title>
+    <title>{% block title %}{{ variable|default('Error - ' ~ error_code) }}{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +14,23 @@
         }
     </style>
 </head>
-<body class="bg-black text-white min-h-screen flex items-center justify-center p-4">
-    <div class="text-center max-w-md mx-auto">
-    {% block content %}{% endblock %}
-    
-    {% block scripts %}{% endblock %}
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <!-- Main Content - This will grow and push footer to bottom -->
+    <div class="flex-grow flex items-center justify-center p-4">
+        <div class="text-center max-w-md mx-auto">
+            {% block content %}{% endblock %}
+            {% block scripts %}{% endblock %}
+        </div>
     </div>
+    
+    <!-- Footer - This will stay at bottom -->
+    <footer class="py-4 text-center border-t border-gray-800 mt-auto">
+        <div class="container mx-auto px-4">
+            <p class="text-gray-500 text-sm">
+                &copy; 2025 Avesta. All rights reserved. 
+                <span class="text-gray-400">Preserving ancient wisdom for modern times.</span>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
