@@ -15,7 +15,7 @@
                         $this->initialBlocks($blockName);
                     }
                 }
-                return false;
+                return $this->content = $this->extendContent;
             }
         }
 
