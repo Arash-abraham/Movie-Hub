@@ -11,7 +11,9 @@
                 $this->extendContent = $this->viewLoader($layoutsFilePath);
                 $blocksNamesArray = $this->findBlocksNames();
                 if($blocksNamesArray) {
+                    foreach($blocksNamesArray as $blockName) {
 
+                    }
                 }
                 return false;
             }
