@@ -23,6 +23,17 @@
             
             return false;
         }
+        private function findBlocksNames() {
+            $filePathArray = [];
+            
+            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->content, $filePathArray);
+            
+            if(isset($filePathArray[1])) {
+                return $filePathArray[1];
+            }
+            
+            return false;
+        }
     }
 
     //DEBUG
