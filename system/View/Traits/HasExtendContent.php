@@ -47,6 +47,8 @@
             $string = $this->content;
             $startWord = "{% block ".$blockName." %}";
             $endWord = "{% endblock %}";
+
+            $startPos = strpos($string, $startWord);
         }
     }
 
