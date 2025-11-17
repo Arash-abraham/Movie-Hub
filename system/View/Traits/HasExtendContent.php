@@ -10,6 +10,10 @@
             if ($layoutsFilePath) {
                 $this->extendContent = $this->viewLoader($layoutsFilePath);
                 $blocksNamesArray = $this->findBlocksNames();
+                if($blocksNamesArray) {
+
+                }
+                return false;
             }
         }
 
