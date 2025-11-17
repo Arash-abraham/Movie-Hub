@@ -42,9 +42,10 @@
             
             return false;
         }
-        
-        private function initialBlocks($blockName) {
 
+        private function initialBlocks($blockName) {
+            $string = $this->content;
+            $startWord = "{% extends '".$blockName."'";
         }
     }
 
