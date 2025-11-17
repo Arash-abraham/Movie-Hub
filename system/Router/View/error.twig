@@ -1,50 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - 404</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
-</head>
-<body class="bg-black text-white min-h-screen flex items-center justify-center p-4">
-    <div class="text-center max-w-md mx-auto">
-        <!-- Error Code -->
-        <h1 class="text-8xl font-bold text-white mb-6 tracking-tight">404</h1>
-        
-        <!-- Title -->
-        <h2 class="text-2xl font-semibold text-gray-200 mb-4">Page Not Found</h2>
-        
-        <!-- Description -->
-        <p class="text-gray-400 mb-8 leading-relaxed">
-            The page you're looking for doesn't exist or has been moved. 
-            Please check the URL or navigate back to the homepage.
-        </p>
-        
-        <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <a href="/" class="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-200 transform hover:-translate-y-0.5">
-                Go Home
-            </a>
-            <button onclick="history.back()" class="bg-transparent border border-gray-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition duration-200">
-                Go Back
-            </button>
-        </div>
-        
-        <!-- Divider -->
-        <div class="border-t border-gray-800 max-w-xs mx-auto mb-6"></div>
-        
-        <!-- Help Text -->
-        <p class="text-gray-500 text-sm">
-            If you believe this is an error, please contact support.
-        </p>
+{% extends "base.twig" %}
+
+
+{% block content %}
+    <!-- Error Code -->
+    <h1 class="text-8xl font-bold text-white mb-6 tracking-tight">404</h1>
+    
+    <!-- Title -->
+    <h2 class="text-2xl font-semibold text-gray-200 mb-4">Page Not Found</h2>
+    
+    <!-- Description -->
+    <p class="text-gray-400 mb-8 leading-relaxed">
+        The page you're looking for doesn't exist or has been moved. 
+        Please check the URL or navigate back to the homepage.
+    </p>
+    
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+        <a href="/" class="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-200 transform hover:-translate-y-0.5">
+            Go Home
+        </a>
+        <button onclick="history.back()" class="bg-transparent border border-gray-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition duration-200">
+            Go Back
+        </button>
     </div>
-</body>
-</html>
+    
+    <!-- Divider -->
+    <div class="border-t border-gray-800 max-w-xs mx-auto mb-6"></div>
+    
+    <!-- Help Text -->
+    <p class="text-gray-500 text-sm">
+        If you believe this is an error, please contact support.
+    </p>
+
+{% endblock %}
