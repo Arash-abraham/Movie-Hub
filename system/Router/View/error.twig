@@ -1,104 +1,50 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{page_title}}</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            primary: '#1a365d',
-                            secondary: '#2d3748',
-                            accent: '#e53e3e',
-                        }
-                    }
-                }
-            }
-        </script>
-        <style>
-            body {
-                background: url('/img/joker.jpg');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-                color: #e2e8f0;
-            }
-    
-            
-            .hero-slider {
-                height: 70vh;
-            }
-            
-            .error-animation {
-                animation: float 3s ease-in-out infinite;
-            }
-            
-            @keyframes float {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-20px); }
-                100% { transform: translateY(0px); }
-            }
-            
-            .glow-text {
-                text-shadow: 0 0 20px rgba(229, 62, 62, 0.5);
-            }
-        </style>
-    </head>
-    <body class="text-white">
-
-        <!-- Header -->
-        <header class="bg-gray-800/80 backdrop-blur-md sticky top-0 z-50 shadow-lg">
-            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-red-600">Movie Hub</h1>
-                </div>
-
-                <!-- Navigation Menu -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="hover:text-red-500 transition">Home</a>
-                    <a href="#" class="hover:text-red-500 transition">Movies</a>
-                    <a href="#" class="hover:text-red-500 transition">Series</a>
-                    <a href="#" class="hover:text-red-500 transition">News</a>
-                    <a href="#" class="hover:text-red-500 transition">Categories</a>
-                    <a href="#" class="hover:text-red-500 transition">Contact</a>
-                </nav>
-
-                <!-- Search and Login -->
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <input type="text" placeholder="Search for movies or series..." class="bg-gray-700/80 px-4 py-2 rounded-full text-sm w-40 md:w-64 focus:outline-none focus:ring-2 focus:ring-red-500">
-                        <button class="absolute right-3 top-2 text-gray-400">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-sm transition">Login / Sign Up</button>
-                </div>
-            </div>
-        </header>
-
-        <!-- 404 Content -->
-        <section class="hero-slider relative flex items-center">
-            <div class="container mx-auto px-4 relative z-10">
-                <div class="max-w-2xl text-left"> 
-
-                    <h1 class="text-6xl md:text-8xl font-bold mb-4">{{error_code}}</h1>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">{{error_title}}</h2>
-                    <p class="text-xl mb-8 text-gray-300">
-                        {{message}}
-                    </p>
-                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-                    <a href="{{home_url}}" class="group relative bg-white/10 backdrop-blur-md border border-white/20 hover:border-red-400/50 px-8 py-4 rounded-2xl font-medium transition-all duration-300 flex items-center justify-center w-fit hover:bg-white/15 hover:scale-105 shadow-lg">
-                        <i class="fas fa-home mr-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="font-semibold">Go to Homepage</span>
-                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </a>
-                </div>
-                </div>  
-            </div>
-        </section>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - 404</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen flex items-center justify-center p-4">
+    <div class="text-center max-w-md mx-auto">
+        <!-- Error Code -->
+        <h1 class="text-8xl font-bold text-white mb-6 tracking-tight">404</h1>
+        
+        <!-- Title -->
+        <h2 class="text-2xl font-semibold text-gray-200 mb-4">Page Not Found</h2>
+        
+        <!-- Description -->
+        <p class="text-gray-400 mb-8 leading-relaxed">
+            The page you're looking for doesn't exist or has been moved. 
+            Please check the URL or navigate back to the homepage.
+        </p>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <a href="/" class="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-200 transform hover:-translate-y-0.5">
+                Go Home
+            </a>
+            <button onclick="history.back()" class="bg-transparent border border-gray-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition duration-200">
+                Go Back
+            </button>
+        </div>
+        
+        <!-- Divider -->
+        <div class="border-t border-gray-800 max-w-xs mx-auto mb-6"></div>
+        
+        <!-- Help Text -->
+        <p class="text-gray-500 text-sm">
+            If you believe this is an error, please contact support.
+        </p>
+    </div>
+</body>
 </html>
