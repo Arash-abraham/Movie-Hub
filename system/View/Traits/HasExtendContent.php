@@ -30,6 +30,7 @@
             
             return false;
         }
+
         private function findBlocksNames() {
             $blocksNamesArray = [];
             
@@ -40,6 +41,10 @@
             }
             
             return false;
+        }
+        
+        private function initialBlocks($blockName) {
+
         }
     }
 
