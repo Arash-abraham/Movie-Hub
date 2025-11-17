@@ -51,19 +51,20 @@
             $startPos = strpos($string, $startWord);
 
             if($startPos === false) {
-                return $this->extendContent == str_replace("{% bloack $blockName %}{% endblock %}" , "" , $this->extendContent);
+                return $this->extendContent = str_replace("{% bloack $blockName %}{% endblock %}" , "" , $this->extendContent);
             }
 
             $startPos += strlen($startWord);
             $endPos = strpos($string, $endWord, $startPos);
 
             if($startPos === false) {
-                return $this->extendContent == str_replace("{% bloack $blockName %}{% endblock %}" , "" , $this->extendContent);
+                return $this->extendContent = str_replace("{% bloack $blockName %}{% endblock %}" , "" , $this->extendContent);
             }
             
             $length = $endPos - $startPos;
 
             $blockContent = substr($string, $startPos, $length);
+            return $this->extendContent = str_replace("{% bloack $blockName %}{% endblock %}" , $blockContent , $this->extendContent);
         
         }
     }
