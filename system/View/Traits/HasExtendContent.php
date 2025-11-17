@@ -9,6 +9,7 @@
             $layoutsFilePath = $this->findExtend();
             if ($layoutsFilePath) {
                 $this->extendContent = $this->viewLoader($layoutsFilePath);
+                $blocksNamesArray = $this->findBlocksNames();
             }
         }
 
