@@ -26,7 +26,7 @@
         private function findBlocksNames() {
             $blocksNamesArray = [];
             
-            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray);
+            preg_match_all("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
             
             if(isset($filePathArray[1])) {
                 return $filePathArray[1];
