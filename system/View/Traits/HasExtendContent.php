@@ -49,6 +49,10 @@
             $endWord = "{% endblock %}";
 
             $startPos = strpos($string, $startWord);
+
+            if($startPos === false) {
+                return $this->extendContent == str_replace();
+            }
         }
     }
 
