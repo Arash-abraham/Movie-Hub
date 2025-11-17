@@ -45,8 +45,8 @@
 
         private function initialBlocks($blockName) {
             $string = $this->content;
-            $startWord = "{% extends '".$blockName."' %}";
-            
+            $startWord = "{% block '".$blockName."' %}";
+            $endWord = "{% endblock %}";
         }
     }
 
