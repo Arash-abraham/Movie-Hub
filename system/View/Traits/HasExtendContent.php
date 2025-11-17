@@ -54,6 +54,7 @@
                 return $this->extendContent == str_replace("{% bloack $blockName %}{% endblock %}" , "" , $this->extendContent);
             }
             $startPos += strlen($startWord);
+            $endPos = strpos($string, $endWord);
         }
     }
 
