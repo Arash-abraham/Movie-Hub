@@ -8,7 +8,7 @@
         private function checkExtendContent() {
             $layoutsFilePath = $this->findExtend();
             if ($layoutsFilePath) {
-
+                $this->extendContent = $this->viewLoader($layoutsFilePath);
             }
         }
 
