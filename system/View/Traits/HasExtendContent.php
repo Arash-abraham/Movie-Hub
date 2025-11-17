@@ -12,7 +12,7 @@
                 $blocksNamesArray = $this->findBlocksNames();
                 if($blocksNamesArray) {
                     foreach($blocksNamesArray as $blockName) {
-
+                        $this->initialBlocks($blockName);
                     }
                 }
                 return false;
