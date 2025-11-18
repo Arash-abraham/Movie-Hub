@@ -14,10 +14,10 @@
         private function findIncludesNames() {
             $includesNamesArray = [];
             
-            preg_match_all("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
+            preg_match_all("/\s*{%\s+include\s+['\"]([^'\"]+)['\"]\s+%}/", $this->content, $includesNameArray , PREG_UNMATCHED_AS_NULL);
             
-            if(isset($blocksNamesArray[1])) {
-                return $blocksNamesArray[1];
+            if(isset($includesNameArray[1])) {
+                return $includesNameArray[1];
             }
             
             return false;
