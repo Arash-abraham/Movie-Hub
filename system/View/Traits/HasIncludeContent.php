@@ -2,7 +2,7 @@
 
     namespace System\View\Traits;
 
-    trait HasExtendContent {
+    trait HasIncludeContent {
         private $extendContent;
 
         private function checkExtendContent() {
