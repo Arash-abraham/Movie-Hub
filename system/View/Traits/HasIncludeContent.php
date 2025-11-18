@@ -12,6 +12,9 @@
                         $this->initialIncludes($includeName);
                     }
                 }
+                else {
+                    break;
+                }
             }
         }
 
