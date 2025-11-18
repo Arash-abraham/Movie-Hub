@@ -3,20 +3,8 @@
     namespace System\View\Traits;
 
     trait HasIncludeContent {
-        private $extendContent;
 
-        private function checkExtendContent() {
-            $layoutsFilePath = $this->findExtend();
-            if ($layoutsFilePath) {
-                $this->extendContent = $this->viewLoader($layoutsFilePath);
-                $blocksNamesArray = $this->findBlocksNames();
-                if($blocksNamesArray) {
-                    foreach($blocksNamesArray as $blockName) {
-                        $this->initialBlocks($blockName);
-                    }
-                }
-                return $this->content = $this->extendContent;
-            }
+        private function checkIncludeContent() {
         }
 
         private function findExtend() {

@@ -34,6 +34,7 @@
         private function findBlocksNames() {
             $blocksNamesArray = [];
             
+            // regex need update -> this regex dosn't true !
             preg_match_all("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
             
             if(isset($blocksNamesArray[1])) {
