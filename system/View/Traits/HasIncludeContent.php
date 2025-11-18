@@ -12,7 +12,7 @@
 
 
         private function findIncludesNames() {
-            $blocksNamesArray = [];
+            $includesNamesArray = [];
             
             preg_match_all("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
             
