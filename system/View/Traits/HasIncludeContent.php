@@ -7,6 +7,11 @@
         private function checkIncludeContent() {
             while(true) {
                 $includesNameArray = $this->findIncludesNames();
+                if(!empty($includesNameArray)) {
+                    foreach($includesNameArray as $includeName) {
+                        $this->initialIncludes($includeName);
+                    }
+                }
             }
         }
 
@@ -24,6 +29,7 @@
         }
 
         private function initialIncludes($includeName) {
+            $this->content = str_replace("{% include '$includeName' %}",$this->viewLoader($includeName) , $this->content);
         }
     }
 
