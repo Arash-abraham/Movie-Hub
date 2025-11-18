@@ -7,17 +7,6 @@
         private function checkIncludeContent() {
         }
 
-        private function findExtend() {
-            $filePathArray = [];
-            
-            preg_match("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->content, $filePathArray); //$this->content  error?
-            
-            if(isset($filePathArray[1])) {
-                return $filePathArray[1];
-            }
-            
-            return false;
-        }
 
         private function findBlocksNames() {
             $blocksNamesArray = [];
@@ -31,29 +20,7 @@
             return false;
         }
 
-        private function initialBlocks($blockName) {
-            $string = $this->content;
-            $startWord = "{% block ".$blockName." %}";
-            $endWord = "{% endblock %}";
-
-            $startPos = strpos($string, $startWord);
-
-            if($startPos === false) {
-                return $this->extendContent = str_replace("{% bloack $blockName %}{% endblock %}" , "" , $this->extendContent);
-            }
-
-            $startPos += strlen($startWord);
-            $endPos = strpos($string, $endWord, $startPos);
-
-            if($startPos === false) {
-                return $this->extendContent = str_replace("{% bloack $blockName %}{% endblock %}" , "" , $this->extendContent);
-            }
-            
-            $length = $endPos - $startPos;
-
-            $blockContent = substr($string, $startPos, $length);
-            return $this->extendContent = str_replace("{% bloack $blockName %}{% endblock %}" , $blockContent , $this->extendContent);
-        
+        private function initialIncludes($includeName) {
         }
     }
 
