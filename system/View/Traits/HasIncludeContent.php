@@ -5,10 +5,13 @@
     trait HasIncludeContent {
 
         private function checkIncludeContent() {
+            while(true) {
+                $includesNameArray = $this->findIncludesNames();
+            }
         }
 
 
-        private function findBlocksNames() {
+        private function findIncludesNames() {
             $blocksNamesArray = [];
             
             preg_match_all("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
