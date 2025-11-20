@@ -35,7 +35,7 @@
             $blocksNamesArray = [];
             
             // regex need update -> this regex dosn't true !
-            preg_match_all("/\s*{%\s+extends\s+['\"]([^'\"]+)['\"]\s+%}/", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
+            preg_match_all("/\s*{%\s+block\s+([\w_]+)\s*%}(.*?){%\s+endblock\s*%}/s", $this->extendContent, $blocksNamesArray , PREG_UNMATCHED_AS_NULL);
             
             if(isset($blocksNamesArray[1])) {
                 return $blocksNamesArray[1];
