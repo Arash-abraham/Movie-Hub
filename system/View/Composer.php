@@ -14,9 +14,9 @@
         private static function getInstance() {
             if(empty(self::$instance)) {
                 self::$instance = new self;
-                return self::$instance;
             }
-            
+            return self::$instance;
+
         }
     }
 
