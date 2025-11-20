@@ -11,6 +11,10 @@
             
         }
 
+        private function registerView($name , $callBack) {
+            
+        }
+
         private function setViewArray($viewArray) {
             $this->viewArray = $viewArray;
         }
