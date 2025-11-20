@@ -16,7 +16,7 @@
             $this->content = $this->viewLoader($dir);
             $this->checkExtendContent();
             $this->checkIncludeContent();
-            Composer::setViews();
+            Composer::setViews($this->viewNameArray);
         }
     }
 
