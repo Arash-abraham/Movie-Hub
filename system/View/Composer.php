@@ -13,7 +13,10 @@
 
         private function setViewArray($viewArray) {
             $this->viewArray = $viewArray;
-            
+        }
+
+        private function getViewVars() {
+            return $this->vars;
         }
 
         private static function getInstance() {
