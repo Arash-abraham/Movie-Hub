@@ -11,8 +11,9 @@
             
         }
 
-        private function setViewArray() {
-
+        private function setViewArray($viewArray) {
+            $this->viewArray = $viewArray;
+            
         }
 
         private static function getInstance() {
