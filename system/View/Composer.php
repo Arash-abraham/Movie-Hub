@@ -11,6 +11,10 @@
             
         }
 
+        private function setViewArray() {
+
+        }
+
         private static function getInstance() {
             if(empty(self::$instance)) {
                 self::$instance = new self;
