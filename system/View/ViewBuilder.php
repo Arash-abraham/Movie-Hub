@@ -12,7 +12,7 @@
         use HasViewLoader , HasExtendContent , HasIncludeContent;
 
         public $content;
-
+        public $vars = [];
         public function run($dir) {
             $this->content = $this->viewLoader($dir);
             $this->checkExtendContent();
@@ -20,7 +20,7 @@
             Composer::setViews($this->viewNameArray);
             $appServiceProvider = new AppServiceProvider();
             $appServiceProvider->boot();
-            
+            $this->vars = Composer::getVars();
         }
     }
 
