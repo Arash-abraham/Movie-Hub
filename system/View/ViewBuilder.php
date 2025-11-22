@@ -6,7 +6,7 @@
     use System\View\Traits\HasViewLoader;
     use System\View\Traits\HasExtendContent;
     use System\View\Traits\HasIncludeContent;
-    
+    use Exception;
 
     class ViewBuilder {
         use HasViewLoader , HasExtendContent , HasIncludeContent;
