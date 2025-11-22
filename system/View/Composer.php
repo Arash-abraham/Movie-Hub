@@ -34,6 +34,17 @@
 
         public static function __callStatic($name, $arguments) {
             $instance = self::getInstance();
+            switch($name) {
+                case 'view':
+                    return call_user_func(array($instance,'registerView'),$arguments);
+                break;
+                case 'setViews':
+                    return call_user_func(array($instance,'setViewArray'),$arguments);
+                break;
+                case 'getVars':
+                    return call_user_func(array($instance,'getViewVars'),$arguments);
+                break;
+            }
         }
 
         private static function getInstance() {
