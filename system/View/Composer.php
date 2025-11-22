@@ -33,7 +33,7 @@
         }
 
         public static function __callStatic($name, $arguments) {
-            
+            $instance = self::getInstance();
         }
 
         private static function getInstance() {
