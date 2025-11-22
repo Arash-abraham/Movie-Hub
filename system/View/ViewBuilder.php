@@ -2,6 +2,7 @@
 
     namespace System\View;
 
+    use App\Providers\AppServiceProvider;
     use System\View\Traits\HasViewLoader;
     use System\View\Traits\HasExtendContent;
     use System\View\Traits\HasIncludeContent;
@@ -17,6 +18,7 @@
             $this->checkExtendContent();
             $this->checkIncludeContent();
             Composer::setViews($this->viewNameArray);
+            $appServiceProvider = new AppServiceProvider();
         }
     }
 
