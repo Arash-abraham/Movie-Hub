@@ -5,25 +5,19 @@ You might be wondering why I am using twig instead of blade! I have to tell you 
 Don't make it hard for yourself and just think about the path. 🙏
 
 
-## 🏆 Achievements
 
-## 📈 Activity Overview
+## 📊 GitHub Activity
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=arash-abraham&show_icons=true&hide_title=true&count_private=true)
+<div align="center">
+  
+![Metrics](https://github-readme-stats.vercel.app/api?username=arash-abraham&show_icons=true&count_private=true&hide_title=true&hide_border=true)
 
-### 🔧 Recent Contributions
-- Contributed to **AminZibayi/EA_Template**
-- Contributed to **ActivityWatch/aw-watcher-window**  
-- Contributed to **AminZibayi/aw-watcher-window**
-- And 1 other repository
+</div>
 
----
+**Contributed to:** EA_Template, aw-watcher-window, and 2 other repositories
 
-### 👨‍💻 Code Review
-**100% Commits** ✓  
-**Pull Requests** ✓
+**Code Review:** 100% Commits ✓ | Pull Requests ✓
 
 ---
 
-## 📊 Contribution Activity
-![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=arash-abraham&theme=github)
+![Contribution Graph](https://activity-graph.herokuapp.com/graph?username=arash-abraham&theme=react-dark)
