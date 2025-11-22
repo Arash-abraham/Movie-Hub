@@ -6,18 +6,20 @@ Don't make it hard for yourself and just think about the path. 🙏
 
 
 
-## 📊 GitHub Activity
+# Achievements
+
+## 📊 Code Review
 
 <div align="center">
-  
-![Metrics](https://github-readme-stats.vercel.app/api?username=arash-abraham&show_icons=true&count_private=true&hide_title=true&hide_border=true)
+
+| Metric | Percentage |
+|--------|------------|
+| **Commits & Issues** | 50% |
+| **Pull Requests** | 50% |
 
 </div>
 
-**Contributed to:** EA_Template, aw-watcher-window, and 2 other repositories
-
-**Code Review:** 100% Commits ✓ | Pull Requests ✓
-
----
-
-![Contribution Graph](https://activity-graph.herokuapp.com/graph?username=arash-abraham&theme=react-dark)
+### 🔍 Detailed Breakdown
+- **Commits**: 50% ✓
+- **Issues**: 50% ✓  
+- **Pull Requests**: 50% ✓
