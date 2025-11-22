@@ -14,7 +14,9 @@
         private function registerView($name , $callBack) {
             if(in_array(str_replace('.','/',$name) , $this->viewArray) or $name == '*') {
                 $viewVars = $callBack();
-                foreach($viewVars as )
+                foreach($viewVars as $key => $value) {
+                    $this->vars[$key] = $value;
+                }
             }
         }
 
