@@ -32,6 +32,10 @@
             return $this->vars;
         }
 
+        public static function __callStatic($name, $arguments) {
+            
+        }
+
         private static function getInstance() {
             if(empty(self::$instance)) {
                 self::$instance = new self;
