@@ -7,7 +7,7 @@
         
         $data = $vars;
         
-        echo $twig->render($dir, $data);
+        echo $twig->render(str_replace('.','/',$dir), $data);
         exit;
     }
 ?>
