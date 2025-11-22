@@ -1,5 +1,7 @@
 <?php
-    function view($dir , $vars = []) {
+    use System\View\ViewBuilder;
 
+    function view($dir , $vars = []) {
+        $viewBuilder = new ViewBuilder();
     }
 ?>
