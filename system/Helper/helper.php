@@ -6,7 +6,9 @@
         $twig = new \Twig\Environment($loader);
         
         $data = $vars;
-        
+        if(!empty($data)) {
+            extract($data);
+        }
         echo $twig->render(str_replace('.','/',$dir), $data);
         exit;
     }
