@@ -2,9 +2,12 @@
 
     // This section will be developed in the future.
     namespace App\Providers;
-
-    class AppServiceProvider {
-
+    use System\View\Composer;
+    
+    class AppServiceProvider extends Provider {
+        public function boot() {
+            
+        }
     }
 
 ?>
