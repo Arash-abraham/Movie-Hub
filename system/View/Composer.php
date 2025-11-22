@@ -18,6 +18,9 @@
                     $this->vars[$key] = $value;
                 }
             }
+            if(isset($this->viewArray[$name])) {
+                unset($this->viewArray[$name]);
+            }
         }
 
 
