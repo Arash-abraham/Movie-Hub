@@ -1,23 +1,21 @@
 <?php
 
-    define("APP_TITLE","Movie Hub");
+    require_once 'vendor/autoload.php';
 
-    define("BASE_URL","http://localhost:8000");
+    use Dotenv\Dotenv;
 
-    define("BASE_DIR",realpath(dirname(__DIR__)).`/../`);
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 
-    $temporary = str_replace(BASE_URL,"",explode("?",$_SERVER["REQUEST_URI"])[0]);
-    $temporary === '/' ? $temporary = '': $temporary = substr($temporary,1);
+    $dotenv->required(['APP_TITLE', 'BASE_URL']);
 
-    define('CURRENT_ROUTE',$temporary);
+    define("APP_TITLE", $_ENV['APP_TITLE']);
+    define("BASE_URL", rtrim($_ENV['BASE_URL'], '/'));
+    define("BASE_DIR", realpath(dirname(__DIR__)));
 
-    global $routes;
+    if ($_ENV['APP_DEBUG'] ?? false) {
+        error_log("Config loaded - APP_TITLE: " . APP_TITLE . ", BASE_URL: " . BASE_URL);
+    }
 
-    $routes = [
-        'get' => [],
-        'post' => [],
-        'put' => [],
-        'delete'=> []
-    ];
 
 ?>
