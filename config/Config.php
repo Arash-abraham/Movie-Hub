@@ -18,6 +18,8 @@
                 $key = str_replace('.php' , '' , $key);
                 $this->config_nested_array[$key] = $config;
             }
+            $this->initialDefualtValues();
+            $this->config_dot_array = $this->array_dot();
         }
 
         private static function getInstance() {
