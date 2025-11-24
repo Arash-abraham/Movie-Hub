@@ -20,8 +20,8 @@
             return self::$instance;
         }
 
-        public static function get() {
-            
+        public static function get($key) {
+
         }
     }
 
