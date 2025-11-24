@@ -25,6 +25,9 @@
             if(isset($instance->config_dot_array[$key])) {
                 return $instance->config_dot_array[$key];
             }
+            else {
+                throw new \Exception('"' . $key . '" not exist in config');
+            }
         }
     }
 
