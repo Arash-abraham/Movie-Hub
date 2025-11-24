@@ -17,10 +17,12 @@
             if(empty(self::$instance)) {
                 self::$instance = new self();
             }
-            return set::$instance;
+            return self::$instance;
         }
 
-        
+        public static function get() {
+            
+        }
     }
 
 ?>
