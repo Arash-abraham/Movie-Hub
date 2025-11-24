@@ -8,9 +8,19 @@
         private function __construct() {
             $this->initialConfigArrays();
         }
+        
         private function initialConfigArrays() {
-            
+
         }
+
+        private static function getInstance() {
+            if(empty(self::$instance)) {
+                self::$instance = new self();
+            }
+            return set::$instance;
+        }
+
+        
     }
 
 ?>
