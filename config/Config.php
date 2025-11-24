@@ -16,6 +16,7 @@
                 $key = $fileName;
                 $key = str($configPath , '' , $key);
                 $key = str_replace('.php' , '' , $key);
+                $this->config_nested_array[$key] = $config;
             }
         }
 
