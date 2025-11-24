@@ -22,6 +22,9 @@
 
         public static function get($key) {
             $instance = self::getInstance();
+            if(isset($instance->config_dot_array[$key])) {
+                return $instance->config_dot_array[$key];
+            }
         }
     }
 
