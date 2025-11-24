@@ -10,7 +10,11 @@
         }
         
         private function initialConfigArrays() {
-
+            $configPath = dirname(dirname(__DIR__)) . '/config/';
+            foreach(glob($configPath . '*.php') as $fileName) {
+                $config = require $fileName;
+                $key = $fileName;
+            }
         }
 
         private static function getInstance() {
