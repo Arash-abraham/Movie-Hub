@@ -21,7 +21,7 @@
         }
 
         public static function get($key) {
-
+            $instance = self::getInstance();
         }
     }
 
