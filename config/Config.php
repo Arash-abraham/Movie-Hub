@@ -14,6 +14,8 @@
             foreach(glob($configPath . '*.php') as $fileName) {
                 $config = require $fileName;
                 $key = $fileName;
+                $key = str($configPath , '' , $key);
+                $key = str_replace('.php' , '' , $key);
             }
         }
 
