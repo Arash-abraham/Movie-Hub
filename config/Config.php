@@ -19,7 +19,7 @@
                 $this->config_nested_array[$key] = $config;
             }
             $this->initialDefualtValues();
-            $this->config_dot_array = $this->array_dot();
+            $this->config_dot_array = $this->array_dot($this->config_nested_array);
         }
 
         private static function getInstance() {
