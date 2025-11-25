@@ -400,8 +400,13 @@
             return html_entity_decode($text);
         }
 
-        function old() {
-            
+        function old($name) {
+            if(isset($_SESSION['temprary_old'][$name])) {
+                return $_SESSION['temprary_old'][$name];
+            }
+            else {
+                return NULL;
+            }
         }
     }
 ?>
