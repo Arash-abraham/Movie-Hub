@@ -38,15 +38,20 @@
 
         }
 
-        private function array_dot($array , $return_array = array() , $return_key) {
+        private function array_dot($array, $return_key = '') {
+            $return_array = [];
             foreach($array as $key => $value) {
+                $new_key = $return_key . $key;
                 if(is_array($value)) {
-                    print 'test';
-                }
-                else {
-                    $return_array[$return_key.$key] = $value;
+                    $return_array = array_merge(
+                        $return_array, 
+                        $this->array_dot($value, $new_key . '.')
+                    );
+                } else {
+                    $return_array[$new_key] = $value;
                 }
             }
+            return $return_array;
         }
 
         private static function getInstance() {
