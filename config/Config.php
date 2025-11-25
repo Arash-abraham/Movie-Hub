@@ -24,6 +24,9 @@
 
         private function initialDefualtValues() {
             $temporary = str_replace($this->config_nested_array['app']['BASE_URL'],'',explode('?',$_SERVER['REQUEST_URI'][0]));
+            if($temporary === '/') {
+                $temporary = '';
+            }
         }
 
         private static function getInstance() {
