@@ -1,7 +1,8 @@
 <?php
 
     namespace System\Router;
-    use ReflectionMethod;
+
+    use Config\Config;
 
     class Routing {
         private $current_route;
@@ -10,7 +11,7 @@
         private $values = []; 
 
         public function __construct() {
-            $this->current_route = explode('/',CURRENT_ROUTE);
+            $this->current_route = explode('/',Config::get('app.CURRENT_ROUTE'));
             
             $this->method_field = $this->methodField();
 

@@ -1,5 +1,7 @@
 <?php
 
+    namespace Config;
+
     class Config {
         private static $instance;
         private $config_nested_array = [];
