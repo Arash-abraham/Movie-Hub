@@ -9,6 +9,7 @@
 
         echo $twig->render(str_replace('.','/',$dir), $data);
     }
+
     if (!function_exists('dd')) {
         function full_export($var, $depth = 0, $max_depth = 5, $max_items = 50, $max_length = 1000) {
             static $processed = [];
@@ -394,8 +395,13 @@
             ini_set('memory_limit', $originalMemoryLimit);
             exit;
         }
+
         function html($text) {
             return html_entity_decode($text);
+        }
+
+        function old() {
+            
         }
     }
 ?>
