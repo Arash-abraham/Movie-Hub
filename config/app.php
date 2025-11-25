@@ -17,5 +17,10 @@
         error_log("Config loaded - APP_TITLE: " . APP_TITLE . ", BASE_URL: " . BASE_URL);
     }
 
+    return [
+        'APP_TITLE' => $_ENV['APP_TITLE'],
+        'BASE_URL' => rtrim($_ENV['BASE_URL'], '/'),
+        'BASE_DIR' => realpath(dirname(__DIR__))
+    ];
 
 ?>

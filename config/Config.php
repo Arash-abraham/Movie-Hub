@@ -22,6 +22,10 @@
             $this->config_dot_array = $this->array_dot($this->config_nested_array);
         }
 
+        private function initialDefualtValues() {
+            $temporary = str_replace($this->config_nested_array['app']['BASE_URL'],'',explode('?',$_SERVER['REQUEST_URI'][0]));
+        }
+
         private static function getInstance() {
             if(empty(self::$instance)) {
                 self::$instance = new self();
