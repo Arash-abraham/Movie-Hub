@@ -7,8 +7,16 @@
     }
     if(isset($_SESSION['old'])) {
         $_SESSION['temporary'] = $_SESSION['old'];
+        unset($_SESSION['old']);
     }
-    
+
+    $params = [];
+    $params = !isset($_GET) 
+        ?
+            $params
+        :
+            array_merge($params , $_GET);
+
     require_once("../system/Helper/helper.php");
 
 
