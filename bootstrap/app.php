@@ -2,6 +2,10 @@
 
     session_start();
 
+    if(isset($_SESSION['old'])) {
+        unset($_SESSION['temporary']);
+    }
+
     require_once("../system/Helper/helper.php");
 
 
