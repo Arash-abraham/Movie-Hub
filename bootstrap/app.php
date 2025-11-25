@@ -22,6 +22,9 @@
             :
                 array_merge($params , $_POST);
     
+    $_SESSION['old'] = $params;
+    unset($params);
+
     require_once("../system/Helper/helper.php");
 
 
