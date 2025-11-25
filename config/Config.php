@@ -28,7 +28,7 @@
                 $temporary = '';
             }
             else {
-                
+                $temporary = substr($temporary , 1);
             }
         }
 
