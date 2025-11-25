@@ -9,4 +9,5 @@
 
         echo $twig->render(str_replace('.','/',$dir), $data);
     }
+    
 ?>

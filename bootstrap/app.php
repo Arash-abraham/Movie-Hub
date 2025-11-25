@@ -385,6 +385,10 @@
             exit;
         }
     }
+
+    require_once("../system/Helper/helper.php");
+
+
     require_once("../config/routes.php");
 
     require_once("../config/app.php");
