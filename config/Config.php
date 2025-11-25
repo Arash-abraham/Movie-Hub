@@ -39,7 +39,9 @@
         }
 
         private function array_dot($array , $return_array = array() , $return_key) {
-            
+            foreach($array as $key => $value) {
+                
+            }
         }
 
         private static function getInstance() {
