@@ -27,6 +27,9 @@
             if($temporary === '/') {
                 $temporary = '';
             }
+            else {
+                
+            }
         }
 
         private static function getInstance() {
