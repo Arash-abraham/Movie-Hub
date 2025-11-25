@@ -1,7 +1,6 @@
 <?php
 
     namespace Config;
-
     class Config {
         private static $instance;
         private $config_nested_array = [];
@@ -16,7 +15,7 @@
             foreach(glob($configPath . '*.php') as $fileName) {
                 $config = require $fileName;
                 $key = $fileName;
-                $key = str($configPath , '' , $key);
+                $key = str_replace($configPath , '' , $key);
                 $key = str_replace('.php' , '' , $key);
                 $this->config_nested_array[$key] = $config;
             }
@@ -36,7 +35,7 @@
                 $temporary = substr($temporary ,1);
             }
 
-            $this->config_nested_array['app']['CURRUNT_ROUTE'] = $temporary;
+            $this->config_nested_array['app']['CURRENT_ROUTE'] = $temporary;
 
         }
 

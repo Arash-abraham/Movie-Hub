@@ -1,6 +1,7 @@
 <?php
 
-    require_once '../vendor/autoload.php';
+    // require_once '../vendor/autoload.php';
+
 
     use Dotenv\Dotenv;
 
@@ -16,13 +17,5 @@
     if ($_ENV['APP_DEBUG'] ?? false) {
         error_log("Config loaded - APP_TITLE: " . APP_TITLE . ", BASE_URL: " . BASE_URL);
     }
-
-    // print $_ENV['APP_TITLE'];
-
-    return [
-        'APP_TITLE' => $_ENV['APP_TITLE'],
-        'BASE_URL' => rtrim($_ENV['BASE_URL'], '/'),
-        'BASE_DIR' => realpath(dirname(__DIR__))
-    ];
 
 ?>
