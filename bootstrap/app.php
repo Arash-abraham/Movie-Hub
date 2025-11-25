@@ -15,8 +15,13 @@
         ?
             $params
         :
-            array_merge($params , $_GET);
-
+            array_merge($params , $_GET); 
+    $params = !isset($_POST) 
+            ?
+                $params
+            :
+                array_merge($params , $_POST);
+    
     require_once("../system/Helper/helper.php");
 
 
