@@ -5,7 +5,10 @@
     if(isset($_SESSION['old'])) {
         unset($_SESSION['temporary']);
     }
-
+    if(isset($_SESSION['old'])) {
+        $_SESSION['temporary'] = $_SESSION['old'];
+    }
+    
     require_once("../system/Helper/helper.php");
 
 
