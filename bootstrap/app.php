@@ -1,7 +1,4 @@
 <?php
-    if (!function_exists('dd')) {
-
-    }
 
     require_once("../system/Helper/helper.php");
 
