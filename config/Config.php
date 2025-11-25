@@ -40,8 +40,8 @@
 
         private function array_dot($array , $return_array = array() , $return_key) {
             foreach($array as $key => $value) {
-                if() {
-
+                if(true) {
+                    print 'test';
                 }
                 else {
                     $return_array[$return_key.$key] = $value;
