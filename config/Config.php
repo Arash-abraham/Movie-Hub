@@ -35,6 +35,10 @@
             }
 
             $this->config_nested_array['app']['CURRUNT_ROUTE'] = $temporary;
+
+        }
+
+        private function array_dot($array , $return_array = array() , $return_key) {
             
         }
 
