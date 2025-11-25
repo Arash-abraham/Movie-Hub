@@ -1,14 +1,7 @@
 <?php
     if (!function_exists('dd')) {
 
-    
-        function format_output($output) {
-            // Clean up the output formatting
-            $output = preg_replace('/\n\s+\n/', "\n", $output);
-            $output = preg_replace('/,\s*\]/', "\n]", $output);
-            $output = preg_replace('/,\s*\}/', "\n}", $output);
-            return $output;
-        }
+
     
         function dd(...$args): never
         {
