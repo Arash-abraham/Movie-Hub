@@ -33,6 +33,9 @@
             else {
                 $temporary = substr($temporary ,1);
             }
+
+            $this->config_nested_array['app']['CURRUNT_ROUTE'] = $temporary;
+            
         }
 
         private static function getInstance() {
