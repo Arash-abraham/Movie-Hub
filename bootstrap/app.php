@@ -1,7 +1,4 @@
 <?php
-
-use function Avifinfo\read;
-
     if (!function_exists('dd')) {
         function full_export($var, $depth = 0, $max_depth = 5, $max_items = 50, $max_length = 1000) {
             static $processed = [];
