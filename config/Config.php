@@ -40,7 +40,7 @@
 
         private function array_dot($array , $return_array = array() , $return_key) {
             foreach($array as $key => $value) {
-                if(true) {
+                if(is_array($value)) {
                     print 'test';
                 }
                 else {
