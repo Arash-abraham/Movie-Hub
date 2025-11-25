@@ -23,12 +23,15 @@
         }
 
         private function initialDefualtValues() {
-            $temporary = str_replace($this->config_nested_array['app']['BASE_URL'],'',explode('?',$_SERVER['REQUEST_URI'][0]));
+            // $temporary = str_replace($this->config_nested_array['app']['BASE_URL'],'',explode('?',$_SERVER['REQUEST_URI'][0])); // ERROR
+            $exploded = explode('?', $_SERVER['REQUEST_URI']); // حذف [0]
+            $temporary = str_replace($this->config_nested_array['app']['BASE_URL'], '', $exploded[0]); //TRUE Code
+
             if($temporary === '/') {
                 $temporary = '';
             }
             else {
-                $temporary = substr($temporary , 1);
+                $temporary = substr($temporary ,1);
             }
         }
 
