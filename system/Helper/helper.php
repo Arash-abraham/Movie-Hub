@@ -394,5 +394,8 @@
             ini_set('memory_limit', $originalMemoryLimit);
             exit;
         }
+        function html($text) {
+            return html_entity_decode($text);
+        }
     }
 ?>
