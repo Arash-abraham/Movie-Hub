@@ -488,5 +488,16 @@
 
     function methodField() {
         $methodField = strtolower($_SERVER['REQUEST_METHOD']);
+        if($methodField == 'post') {
+            if(isset($_POST['_method'])) {
+                if($_POST['_method'] == 'put') {
+
+                }
+                elseif($_POST['_method'] == 'delete') {
+                    
+                }
+            }
+
+        }
     }
 ?>
