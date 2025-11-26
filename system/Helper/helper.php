@@ -415,6 +415,10 @@
             if($_SESSION['temporaryFlash'][$name]) {
                 $temporary = $_SESSION['temporaryFlash'][$name];
                 unset($_SESSION['temporaryFlash'][$name]);
+                return $temporary;
+            }
+            else {
+                return false;
             }
         }
     }
