@@ -412,7 +412,7 @@
 
     function flash($name , $msg = NULL) {
         if(empty($msg)) {
-            if($_SESSION['']) {
+            if($_SESSION['temporaryFlash'][$name]) {
 
             }
         }
