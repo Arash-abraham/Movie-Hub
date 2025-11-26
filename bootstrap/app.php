@@ -5,9 +5,17 @@
     if(isset($_SESSION['old'])) {
         unset($_SESSION['temporary']);
     }
+    if(isset($_SESSION['temporaryFlash'])) {
+        unset($_SESSION['temporaryFlash']);
+    }
+
     if(isset($_SESSION['old'])) {
         $_SESSION['temporary'] = $_SESSION['old'];
         unset($_SESSION['old']);
+    }
+    if(isset($_SESSION['flash'])) {
+        $_SESSION['temporaryFlash'] = $_SESSION['flash'];
+        unset($_SESSION['flash']);
     }
 
     $params = [];
