@@ -421,5 +421,8 @@
                 return false;
             }
         }
+        else {
+            $_SESSION['flash'][$name] = $msg;
+        }
     }
 ?>
