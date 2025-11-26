@@ -434,10 +434,47 @@
             return false;
         }
     }
+
     function allFlash() {
         if($_SESSION['temporaryFlash']) {
             $temporary = $_SESSION['temporaryFlash'];
             unset($_SESSION['temporaryFlash']);
+            return $temporary;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function error($name , $msg = NULL) {
+        if(empty($msg)) {
+            if($_SESSION['temporaryErrorFlash'][$name]) {
+                $temporary = $_SESSION['temporaryErrorFlash'][$name];
+                unset($_SESSION['temporaryErrorFlash'][$name]);
+                return $temporary;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            $_SESSION['errorFlash'][$name] = $msg;
+        }
+    }
+
+    function errorExists($name) {
+        if(isset($_SESSION['temporaryErrorFlash'][$name])) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function allErrors() {
+        if($_SESSION['temporaryErrorFlash']) {
+            $temporary = $_SESSION['temporaryErrorFlash'];
+            unset($_SESSION['temporaryErrorFlash']);
             return $temporary;
         }
         else {
