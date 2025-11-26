@@ -4,7 +4,9 @@
 
     class HomeController extends Controller {
         public function index() {
-            print 'index method in HomeController';
+            return view('app',[
+                'name' => 'arash'
+            ]);
         }
 
         public function create() {
