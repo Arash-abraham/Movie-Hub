@@ -494,10 +494,10 @@
 
                 }
                 elseif($_POST['_method'] == 'delete') {
-                    
+
                 }
             }
-
         }
+        return $methodField;
     }
 ?>
