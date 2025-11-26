@@ -17,10 +17,10 @@
         :
             array_merge($params , $_GET); 
     $params = !isset($_POST) 
-            ?
-                $params
-            :
-                array_merge($params , $_POST);
+        ?
+            $params
+        :
+            array_merge($params , $_POST);
     
     $_SESSION['old'] = $params;
     unset($params);
