@@ -410,7 +410,7 @@
         }
     }
 
-    function flash($name , $msg) {
-            
+    function flash($name , $msg = NULL) {
+
     }
 ?>
