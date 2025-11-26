@@ -425,4 +425,13 @@
             $_SESSION['flash'][$name] = $msg;
         }
     }
+
+    function flashExists($name) {
+        if(isset($_SESSION['temporaryFlash'][$name])) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 ?>
