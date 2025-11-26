@@ -412,8 +412,8 @@
 
     function flash($name , $msg = NULL) {
         if(empty($msg)) {
-            if() {
-                
+            if($_SESSION['']) {
+
             }
         }
     }
