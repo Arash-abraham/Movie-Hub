@@ -6,7 +6,7 @@
         public function index() {
             return view('app',[
                 'name' => 'arash'
-            ]);
+            ]); // worked :)
         }
 
         public function create() {
