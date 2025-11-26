@@ -409,4 +409,8 @@
             }
         }
     }
+
+    function flash($name , $msg) {
+            
+    }
 ?>
