@@ -434,4 +434,14 @@
             return false;
         }
     }
+    function allFlash() {
+        if($_SESSION['temporaryFlash']) {
+            $temporary = $_SESSION['temporaryFlash'];
+            unset($_SESSION['temporaryFlash']);
+            return $temporary;
+        }
+        else {
+            return false;
+        }
+    }
 ?>
