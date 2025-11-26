@@ -29,7 +29,7 @@ The framework is solid, but there's always room for growth:
 If you encounter any issues or have suggestions:
 
 - **Telegram**: [ @Octawian ]
-- **Email**: [  ]
+- **Email**: [ arashebi777@gmail.com ]
 
 I apologize in advance for any problems you might find and appreciate your feedback!
 
